@@ -1,3 +1,5 @@
+.vs
 *.user
-packages/
-.vs/
+bin
+obj
+packages
