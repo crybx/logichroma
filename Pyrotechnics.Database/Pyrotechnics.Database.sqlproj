@@ -25,7 +25,6 @@
     <TargetDatabaseSet>True</TargetDatabaseSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <OutputPath>bin\Release\</OutputPath>
     <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
     <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
     <DebugType>pdbonly</DebugType>
@@ -94,6 +93,6 @@
     <None Include="dbo\Scripts\PostDeploy\AddColors.sql" />
     <None Include="dbo\Scripts\PostDeploy\AddGameStatusTypes.sql" />
     <None Include="Pyrotechnics.Database.local.publish.xml" />
-    <None Include="Pyrotechnics.Database.Azure.publish.xml" />
+    <None Include="Pyrotechnics.Database.AzureSandbox.publish.xml" />
   </ItemGroup>
 </Project>

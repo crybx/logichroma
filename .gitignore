@@ -1,8 +1,10 @@
-.dbmdl
 .vs
+*.dbmdl
 *.user
 bin
 obj
 packages
 
-Pyrotechnics.Database/Pyrotechnics.Database.Azure.publish.xml
+Pyrotechnics/Web.AzureSandbox.config
+Pyrotechnics/Properties/PublishProfiles/AzureSandbox.pubxml
+Pyrotechnics.Database/Pyrotechnics.Database.AzureSandbox.publish.xml
