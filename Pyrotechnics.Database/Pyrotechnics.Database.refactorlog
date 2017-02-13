@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="ae64dc2b-71e9-467e-9b7c-0be41bfd06ab" ChangeDateTime="02/09/2017 18:58:12">
+    <Property Name="ElementName" Value="[dbo].[Cards].[Name]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Cards]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ColorId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="9cd211ee-8814-459d-adb6-ed2b23a09fa1" ChangeDateTime="02/09/2017 19:01:44">
+    <Property Name="ElementName" Value="[dbo].[Decks].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Decks]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="GameId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="2e01fdb7-32e5-4b47-9c9e-6a68ec7df98b" ChangeDateTime="02/09/2017 20:19:01">
+    <Property Name="ElementName" Value="[dbo].[Cards].[Value]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Cards]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="FaceValue" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="0b09ce0f-5a5c-488c-b057-f9aea17ada5b" ChangeDateTime="02/09/2017 20:29:57">
+    <Property Name="ElementName" Value="[dbo].[Games].[IsEnded]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Games]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="GameStatus" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="349e1ad6-cb6c-4593-b790-6deccd00f142" ChangeDateTime="02/09/2017 22:26:54">
+    <Property Name="ElementName" Value="[dbo].[Cards].[Count]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Cards]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="CountInDeck" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="792526ea-de9f-456d-a709-628dc03442da" ChangeDateTime="02/10/2017 13:39:53">
+    <Property Name="ElementName" Value="[dbo].[Decks].[StateId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Decks]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="CardStateId" />
+  </Operation>
+</Operations>

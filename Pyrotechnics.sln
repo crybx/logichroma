@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pyrotechnics", "Pyrotechnic
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pyrotechnics.Tests", "Pyrotechnics.Tests\Pyrotechnics.Tests.csproj", "{081ED052-8586-4C62-BFB6-6BCACEC6C67E}"
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Pyrotechnics.Database", "Pyrotechnics.Database\Pyrotechnics.Database.sqlproj", "{7759464C-BBCD-4F0C-A05E-94227E96CE48}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,12 @@ Global
 		{081ED052-8586-4C62-BFB6-6BCACEC6C67E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{081ED052-8586-4C62-BFB6-6BCACEC6C67E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{081ED052-8586-4C62-BFB6-6BCACEC6C67E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7759464C-BBCD-4F0C-A05E-94227E96CE48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7759464C-BBCD-4F0C-A05E-94227E96CE48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7759464C-BBCD-4F0C-A05E-94227E96CE48}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{7759464C-BBCD-4F0C-A05E-94227E96CE48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7759464C-BBCD-4F0C-A05E-94227E96CE48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7759464C-BBCD-4F0C-A05E-94227E96CE48}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

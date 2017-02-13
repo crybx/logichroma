@@ -1,0 +1,446 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="PyrotechnicsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Cards">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FaceValue" Type="int" Nullable="false" />
+          <Property Name="CountInDeck" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CardStates">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Colors">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Decks">
+          <Key>
+            <PropertyRef Name="GameId" />
+            <PropertyRef Name="Order" />
+          </Key>
+          <Property Name="GameId" Type="int" Nullable="false" />
+          <Property Name="Order" Type="int" Nullable="false" />
+          <Property Name="CardId" Type="int" Nullable="false" />
+          <Property Name="CardStateId" Type="int" Nullable="false" />
+          <Property Name="ColorId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Games">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="DifficultyLvl" Type="int" Nullable="false" />
+          <Property Name="NextCard" Type="int" />
+          <Property Name="StartDateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GameStatuses">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GameStatusTypeId" Type="int" Nullable="false" />
+          <Property Name="DateTime" Type="datetime" Nullable="false" />
+          <Property Name="GameId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GameStatusTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Decks_CardId">
+          <End Role="Cards" Type="Self.Cards" Multiplicity="1" />
+          <End Role="Decks" Type="Self.Decks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cards">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Decks">
+              <PropertyRef Name="CardId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Decks_CardStateId">
+          <End Role="CardStates" Type="Self.CardStates" Multiplicity="1" />
+          <End Role="Decks" Type="Self.Decks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CardStates">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Decks">
+              <PropertyRef Name="CardStateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Decks_ColorId">
+          <End Role="Colors" Type="Self.Colors" Multiplicity="1" />
+          <End Role="Decks" Type="Self.Decks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Colors">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Decks">
+              <PropertyRef Name="ColorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Decks_GameId">
+          <End Role="Games" Type="Self.Games" Multiplicity="1" />
+          <End Role="Decks" Type="Self.Decks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Games">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Decks">
+              <PropertyRef Name="GameId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GameStatuses_GameId">
+          <End Role="Games" Type="Self.Games" Multiplicity="1" />
+          <End Role="GameStatuses" Type="Self.GameStatuses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Games">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GameStatuses">
+              <PropertyRef Name="GameId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GameStatuses_GameStatusTypeId">
+          <End Role="GameStatusTypes" Type="Self.GameStatusTypes" Multiplicity="1" />
+          <End Role="GameStatuses" Type="Self.GameStatuses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GameStatusTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GameStatuses">
+              <PropertyRef Name="GameStatusTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PyrotechnicsModelStoreContainer">
+          <EntitySet Name="Cards" EntityType="Self.Cards" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CardStates" EntityType="Self.CardStates" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Colors" EntityType="Self.Colors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Decks" EntityType="Self.Decks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Games" EntityType="Self.Games" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GameStatuses" EntityType="Self.GameStatuses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GameStatusTypes" EntityType="Self.GameStatusTypes" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Decks_CardId" Association="Self.FK_Decks_CardId">
+            <End Role="Cards" EntitySet="Cards" />
+            <End Role="Decks" EntitySet="Decks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Decks_CardStateId" Association="Self.FK_Decks_CardStateId">
+            <End Role="CardStates" EntitySet="CardStates" />
+            <End Role="Decks" EntitySet="Decks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Decks_ColorId" Association="Self.FK_Decks_ColorId">
+            <End Role="Colors" EntitySet="Colors" />
+            <End Role="Decks" EntitySet="Decks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Decks_GameId" Association="Self.FK_Decks_GameId">
+            <End Role="Games" EntitySet="Games" />
+            <End Role="Decks" EntitySet="Decks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GameStatuses_GameId" Association="Self.FK_GameStatuses_GameId">
+            <End Role="Games" EntitySet="Games" />
+            <End Role="GameStatuses" EntitySet="GameStatuses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GameStatuses_GameStatusTypeId" Association="Self.FK_GameStatuses_GameStatusTypeId">
+            <End Role="GameStatusTypes" EntitySet="GameStatusTypes" />
+            <End Role="GameStatuses" EntitySet="GameStatuses" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PyrotechnicsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Card">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FaceValue" Type="Int32" Nullable="false" />
+          <Property Name="CountInDeck" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Decks" Relationship="Self.FK_Decks_CardId" FromRole="Cards" ToRole="Decks" />
+        </EntityType>
+        <EntityType Name="CardState">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Decks" Relationship="Self.FK_Decks_CardStateId" FromRole="CardStates" ToRole="Decks" />
+        </EntityType>
+        <EntityType Name="Color">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Decks" Relationship="Self.FK_Decks_ColorId" FromRole="Colors" ToRole="Decks" />
+        </EntityType>
+        <EntityType Name="Deck">
+          <Key>
+            <PropertyRef Name="GameId" />
+            <PropertyRef Name="Order" />
+          </Key>
+          <Property Name="GameId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Order" Type="Int32" Nullable="false" />
+          <Property Name="CardId" Type="Int32" Nullable="false" />
+          <Property Name="CardStateId" Type="Int32" Nullable="false" />
+          <Property Name="ColorId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Card" Relationship="Self.FK_Decks_CardId" FromRole="Decks" ToRole="Cards" />
+          <NavigationProperty Name="CardState" Relationship="Self.FK_Decks_CardStateId" FromRole="Decks" ToRole="CardStates" />
+          <NavigationProperty Name="Color" Relationship="Self.FK_Decks_ColorId" FromRole="Decks" ToRole="Colors" />
+          <NavigationProperty Name="Game" Relationship="PyrotechnicsModel.FK_Decks_GameId" FromRole="Deck" ToRole="Game" />
+        </EntityType>
+        <EntityType Name="Game">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DifficultyLvl" Type="Int32" Nullable="false" />
+          <Property Name="NextCard" Type="Int32" />
+          <Property Name="StartDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="GameStatuses" Relationship="Self.FK_GameStatuses_GameId" FromRole="Games" ToRole="GameStatuses" />
+          <NavigationProperty Name="Decks" Relationship="PyrotechnicsModel.FK_Decks_GameId" FromRole="Game" ToRole="Deck" />
+        </EntityType>
+        <EntityType Name="GameStatus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GameStatusTypeId" Type="Int32" Nullable="false" />
+          <Property Name="DateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="GameId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Game" Relationship="Self.FK_GameStatuses_GameId" FromRole="GameStatuses" ToRole="Games" />
+          <NavigationProperty Name="GameStatusType" Relationship="Self.FK_GameStatuses_GameStatusTypeId" FromRole="GameStatuses" ToRole="GameStatusTypes" />
+        </EntityType>
+        <EntityType Name="GameStatusType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="GameStatuses" Relationship="Self.FK_GameStatuses_GameStatusTypeId" FromRole="GameStatusTypes" ToRole="GameStatuses" />
+        </EntityType>
+        <Association Name="FK_Decks_CardId">
+          <End Role="Cards" Type="Self.Card" Multiplicity="1" />
+          <End Role="Decks" Type="Self.Deck" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cards">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Decks">
+              <PropertyRef Name="CardId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Decks_CardStateId">
+          <End Role="CardStates" Type="Self.CardState" Multiplicity="1" />
+          <End Role="Decks" Type="Self.Deck" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CardStates">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Decks">
+              <PropertyRef Name="CardStateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Decks_ColorId">
+          <End Role="Colors" Type="Self.Color" Multiplicity="1" />
+          <End Role="Decks" Type="Self.Deck" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Colors">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Decks">
+              <PropertyRef Name="ColorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GameStatuses_GameId">
+          <End Role="Games" Type="Self.Game" Multiplicity="1" />
+          <End Role="GameStatuses" Type="Self.GameStatus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Games">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GameStatuses">
+              <PropertyRef Name="GameId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GameStatuses_GameStatusTypeId">
+          <End Role="GameStatusTypes" Type="Self.GameStatusType" Multiplicity="1" />
+          <End Role="GameStatuses" Type="Self.GameStatus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GameStatusTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GameStatuses">
+              <PropertyRef Name="GameStatusTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PyrotechnicsDbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cards" EntityType="Self.Card" />
+          <EntitySet Name="CardStates" EntityType="Self.CardState" />
+          <EntitySet Name="Colors" EntityType="Self.Color" />
+          <EntitySet Name="Decks" EntityType="Self.Deck" />
+          <EntitySet Name="Games" EntityType="Self.Game" />
+          <EntitySet Name="GameStatuses" EntityType="Self.GameStatus" />
+          <EntitySet Name="GameStatusTypes" EntityType="Self.GameStatusType" />
+          <AssociationSet Name="FK_Decks_CardId" Association="Self.FK_Decks_CardId">
+            <End Role="Cards" EntitySet="Cards" />
+            <End Role="Decks" EntitySet="Decks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Decks_CardStateId" Association="Self.FK_Decks_CardStateId">
+            <End Role="CardStates" EntitySet="CardStates" />
+            <End Role="Decks" EntitySet="Decks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Decks_ColorId" Association="Self.FK_Decks_ColorId">
+            <End Role="Colors" EntitySet="Colors" />
+            <End Role="Decks" EntitySet="Decks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GameStatuses_GameId" Association="Self.FK_GameStatuses_GameId">
+            <End Role="Games" EntitySet="Games" />
+            <End Role="GameStatuses" EntitySet="GameStatuses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GameStatuses_GameStatusTypeId" Association="Self.FK_GameStatuses_GameStatusTypeId">
+            <End Role="GameStatusTypes" EntitySet="GameStatusTypes" />
+            <End Role="GameStatuses" EntitySet="GameStatuses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Decks_GameId" Association="PyrotechnicsModel.FK_Decks_GameId">
+            <End Role="Game" EntitySet="Games" />
+            <End Role="Deck" EntitySet="Decks" />
+          </AssociationSet>
+        </EntityContainer>
+        <Association Name="FK_Decks_GameId">
+          <End Type="PyrotechnicsModel.Game" Role="Game" Multiplicity="1" />
+          <End Type="PyrotechnicsModel.Deck" Role="Deck" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Game">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Deck">
+              <PropertyRef Name="GameId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PyrotechnicsModelStoreContainer" CdmEntityContainer="PyrotechnicsDbEntities">
+          <EntitySetMapping Name="Cards">
+            <EntityTypeMapping TypeName="PyrotechnicsModel.Card">
+              <MappingFragment StoreEntitySet="Cards">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FaceValue" ColumnName="FaceValue" />
+                <ScalarProperty Name="CountInDeck" ColumnName="CountInDeck" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CardStates">
+            <EntityTypeMapping TypeName="PyrotechnicsModel.CardState">
+              <MappingFragment StoreEntitySet="CardStates">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Colors">
+            <EntityTypeMapping TypeName="PyrotechnicsModel.Color">
+              <MappingFragment StoreEntitySet="Colors">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Decks">
+            <EntityTypeMapping TypeName="PyrotechnicsModel.Deck">
+              <MappingFragment StoreEntitySet="Decks">
+                <ScalarProperty Name="GameId" ColumnName="GameId" />
+                <ScalarProperty Name="Order" ColumnName="Order" />
+                <ScalarProperty Name="CardId" ColumnName="CardId" />
+                <ScalarProperty Name="CardStateId" ColumnName="CardStateId" />
+                <ScalarProperty Name="ColorId" ColumnName="ColorId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Games">
+            <EntityTypeMapping TypeName="PyrotechnicsModel.Game">
+              <MappingFragment StoreEntitySet="Games">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="DifficultyLvl" ColumnName="DifficultyLvl" />
+                <ScalarProperty Name="NextCard" ColumnName="NextCard" />
+                <ScalarProperty Name="StartDateTime" ColumnName="StartDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GameStatuses">
+            <EntityTypeMapping TypeName="PyrotechnicsModel.GameStatus">
+              <MappingFragment StoreEntitySet="GameStatuses">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="GameStatusTypeId" ColumnName="GameStatusTypeId" />
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+                <ScalarProperty Name="GameId" ColumnName="GameId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GameStatusTypes">
+            <EntityTypeMapping TypeName="PyrotechnicsModel.GameStatusType">
+              <MappingFragment StoreEntitySet="GameStatusTypes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
