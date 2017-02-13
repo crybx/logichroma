@@ -1,5 +1,8 @@
+.dbmdl
 .vs
 *.user
 bin
 obj
 packages
+
+Pyrotechnics.Database/Pyrotechnics.Database.Azure.publish.xml

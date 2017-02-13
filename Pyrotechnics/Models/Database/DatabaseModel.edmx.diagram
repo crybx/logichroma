@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d93074f63bce45279d4f8133c0274c6d" Name="Diagram1">
+        <EntityTypeShape EntityType="PyrotechnicsModel.Card" Width="1.5" PointX="0.875" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PyrotechnicsModel.CardState" Width="1.5" PointX="0.875" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="PyrotechnicsModel.Color" Width="1.5" PointX="3.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PyrotechnicsModel.Deck" Width="1.5" PointX="3.25" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PyrotechnicsModel.Game" Width="1.5" PointX="5.5" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PyrotechnicsModel.GameStatus" Width="1.5" PointX="7.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PyrotechnicsModel.GameStatusType" Width="1.875" PointX="7.75" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="PyrotechnicsModel.FK_Decks_CardId" ManuallyRouted="false" />
+        <AssociationConnector Association="PyrotechnicsModel.FK_Decks_CardStateId" ManuallyRouted="false" />
+        <AssociationConnector Association="PyrotechnicsModel.FK_Decks_ColorId" ManuallyRouted="false" />
+        <AssociationConnector Association="PyrotechnicsModel.FK_GameStatuses_GameId" ManuallyRouted="false" />
+        <AssociationConnector Association="PyrotechnicsModel.FK_GameStatuses_GameStatusTypeId" ManuallyRouted="false" />
+        <AssociationConnector Association="PyrotechnicsModel.FK_Decks_GameId" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
