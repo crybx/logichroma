@@ -179,6 +179,18 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BusinessObjects\CardModel.cs" />
+    <Compile Include="Models\Database\AspNetRole.cs">
+      <DependentUpon>DatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Database\AspNetUser.cs">
+      <DependentUpon>DatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Database\AspNetUserClaim.cs">
+      <DependentUpon>DatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Database\AspNetUserLogin.cs">
+      <DependentUpon>DatabaseModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Database\Card.cs">
       <DependentUpon>DatabaseModel.tt</DependentUpon>
     </Compile>
@@ -210,6 +222,7 @@
     <Compile Include="Models\Database\Game.cs">
       <DependentUpon>DatabaseModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DataRepositories\UsersRepository.cs" />
     <Compile Include="Models\GameOptionsModel.cs" />
     <Compile Include="Models\Database\GameStatus.cs">
       <DependentUpon>DatabaseModel.tt</DependentUpon>
