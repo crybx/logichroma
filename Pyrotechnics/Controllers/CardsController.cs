@@ -1,12 +1,11 @@
 ﻿using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using Pyrotechnics.Models;
 using Pyrotechnics.Models.Database;
 using Pyrotechnics.Models.DataRepositories;
 
 namespace Pyrotechnics.Controllers
 {
+    [Authorize(Roles = "canEditGameAssets")]
     public class CardsController : Controller
     {
         private readonly CardsRepository _cardRepo = new CardsRepository();
