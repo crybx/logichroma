@@ -2,13 +2,22 @@
 using System.Web.Mvc;
 using Pyrotechnics.Models.Database;
 using Pyrotechnics.Models.DataRepositories;
+using Pyrotechnics.Models.DataRepositoryInterfaces;
 
 namespace Pyrotechnics.Controllers
 {
     [Authorize(Roles = "canEditGameAssets")]
     public class CardsController : Controller
     {
-        private readonly CardsRepository _cardRepo = new CardsRepository();
+        private readonly ICardRepository _cardRepo;
+
+        public CardsController() : this(new CardRepository()) { }
+
+
+        public CardsController(ICardRepository cardRepo)
+        {
+            _cardRepo = cardRepo;
+        }
 
         // GET: Cards
         public ActionResult Index()
@@ -50,7 +59,7 @@ namespace Pyrotechnics.Controllers
         {
             if (ModelState.IsValid)
             {
-                _cardRepo.CreateCard(card);
+                _cardRepo.AddCard(card);
                 return RedirectToAction("Index");
             }
 

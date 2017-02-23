@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using Pyrotechnics.Models.Database;
+using Pyrotechnics.Models.DataRepositoryInterfaces;
 
 namespace Pyrotechnics.Models.DataRepositories
 {
-    public class CardsRepository
+    public class CardRepository : ICardRepository
     {
         private readonly PyrotechnicsDbEntities _db = new PyrotechnicsDbEntities();
         
@@ -27,7 +28,7 @@ namespace Pyrotechnics.Models.DataRepositories
             return card;
         }
 
-        public void CreateCard(Card card)
+        public void AddCard(Card card)
         {
             _db.Cards.Add(card);
             _db.SaveChanges();

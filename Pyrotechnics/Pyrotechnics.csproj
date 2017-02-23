@@ -215,7 +215,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DatabaseModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\DataRepositories\CardsRepository.cs" />
+    <Compile Include="Models\DataRepositories\CardRepository.cs" />
     <Compile Include="Models\Database\Deck.cs">
       <DependentUpon>DatabaseModel.tt</DependentUpon>
     </Compile>
@@ -223,6 +223,7 @@
       <DependentUpon>DatabaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DataRepositories\UsersRepository.cs" />
+    <Compile Include="Models\DataRepositoryInterfaces\ICardRepository.cs" />
     <Compile Include="Models\GameOptionsModel.cs" />
     <Compile Include="Models\Database\GameStatus.cs">
       <DependentUpon>DatabaseModel.tt</DependentUpon>
