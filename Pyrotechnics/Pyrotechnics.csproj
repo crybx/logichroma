@@ -222,8 +222,10 @@
     <Compile Include="Models\Database\Game.cs">
       <DependentUpon>DatabaseModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DataRepositories\GameRepository.cs" />
     <Compile Include="Models\DataRepositories\UsersRepository.cs" />
     <Compile Include="Models\DataRepositoryInterfaces\ICardRepository.cs" />
+    <Compile Include="Models\DataRepositoryInterfaces\IGameRepository.cs" />
     <Compile Include="Models\GameOptionsModel.cs" />
     <Compile Include="Models\Database\GameStatus.cs">
       <DependentUpon>DatabaseModel.tt</DependentUpon>
@@ -311,12 +313,13 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Game\StartNew.cshtml" />
+    <Content Include="Views\Game\Start.cshtml" />
     <Content Include="Views\Cards\Create.cshtml" />
     <Content Include="Views\Cards\Delete.cshtml" />
     <Content Include="Views\Cards\Details.cshtml" />
     <Content Include="Views\Cards\Edit.cshtml" />
     <Content Include="Views\Cards\Index.cshtml" />
+    <Content Include="Views\Game\Index.cshtml" />
     <None Include="Web.AzureSandbox.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
