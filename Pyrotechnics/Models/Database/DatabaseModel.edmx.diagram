@@ -18,10 +18,10 @@
         <AssociationConnector Association="PyrotechnicsModel.FK_GameStatuses_GameId" ManuallyRouted="false" />
         <AssociationConnector Association="PyrotechnicsModel.FK_GameStatuses_GameStatusTypeId" ManuallyRouted="false" />
         <AssociationConnector Association="PyrotechnicsModel.FK_Decks_GameId" />
-        <EntityTypeShape EntityType="PyrotechnicsModel.AspNetRole" Width="1.5" PointX="0.75" PointY="9.5" />
-        <EntityTypeShape EntityType="PyrotechnicsModel.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="8" />
-        <EntityTypeShape EntityType="PyrotechnicsModel.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="10.75" />
-        <EntityTypeShape EntityType="PyrotechnicsModel.AspNetUser" Width="1.5" PointX="3" PointY="8.375" />
+        <EntityTypeShape EntityType="PyrotechnicsModel.AspNetRole" Width="1.5" PointX="0.875" PointY="10.75" />
+        <EntityTypeShape EntityType="PyrotechnicsModel.AspNetUserClaim" Width="1.5" PointX="0.875" PointY="8.375" />
+        <EntityTypeShape EntityType="PyrotechnicsModel.AspNetUserLogin" Width="1.5" PointX="5.5" PointY="10.5" />
+        <EntityTypeShape EntityType="PyrotechnicsModel.AspNetUser" Width="1.5" PointX="3.25" PointY="8.375" />
         <AssociationConnector Association="PyrotechnicsModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="PyrotechnicsModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="PyrotechnicsModel.AspNetUserRoles" />

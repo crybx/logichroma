@@ -11,13 +11,12 @@ namespace Pyrotechnics.Controllers
     {
         private readonly ICardRepository _cardRepo;
 
-        public CardsController() : this(new CardRepository()) { }
-
-
         public CardsController(ICardRepository cardRepo)
         {
             _cardRepo = cardRepo;
         }
+
+        public CardsController() : this(new CardRepository()) {}
 
         // GET: Cards
         public ActionResult Index()
