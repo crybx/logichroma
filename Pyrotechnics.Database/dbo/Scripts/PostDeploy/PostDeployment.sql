@@ -11,6 +11,6 @@ Post-Deployment Script Template
 */
 :r AddColors.sql
 :r AddCardStates.sql
-:r AddCards.sql
+:r AddCardTypes.sql
 :r AddGameStatusTypes.sql
 :r AddAspNetRoles.sql

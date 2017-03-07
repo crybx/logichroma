@@ -74,12 +74,12 @@
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\Colors.sql" />
-    <Build Include="dbo\Tables\Cards.sql" />
+    <Build Include="dbo\Tables\CardTypes.sql" />
     <Build Include="dbo\Tables\CardStates.sql" />
     <Build Include="dbo\Tables\Games.sql" />
-    <Build Include="dbo\Tables\Decks.sql" />
+    <Build Include="dbo\Tables\GameCards.sql" />
     <None Include="dbo\Scripts\PostDeploy\AddCardStates.sql" />
-    <None Include="dbo\Scripts\PostDeploy\AddCards.sql" />
+    <None Include="dbo\Scripts\PostDeploy\AddCardTypes.sql" />
     <Build Include="dbo\Tables\GameStatuses.sql" />
     <Build Include="dbo\Tables\GameStatusTypes.sql" />
     <Build Include="dbo\Tables\__MigrationHistory.sql" />

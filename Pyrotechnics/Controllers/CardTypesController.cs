@@ -7,21 +7,21 @@ using Pyrotechnics.Models.DataRepositoryInterfaces;
 namespace Pyrotechnics.Controllers
 {
     [Authorize(Roles = "canEditGameAssets")]
-    public class CardsController : Controller
+    public class CardTypesController : Controller
     {
-        private readonly ICardRepository _cardRepo;
+        private readonly ICardTypeRepository _cardTypeRepo;
 
-        public CardsController(ICardRepository cardRepo)
+        public CardTypesController(ICardTypeRepository cardTypeRepo)
         {
-            _cardRepo = cardRepo;
+            _cardTypeRepo = cardTypeRepo;
         }
 
-        public CardsController() : this(new CardRepository()) {}
+        public CardTypesController() : this(new CardTypeRepository()) {}
 
         // GET: Cards
         public ActionResult Index()
         {
-            var model = _cardRepo.GetCards();
+            var model = _cardTypeRepo.GetCards();
             return View(model);
         }
 
@@ -33,14 +33,14 @@ namespace Pyrotechnics.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var card = _cardRepo.GetCardDetails(id.Value);
+            var cardType = _cardTypeRepo.GetCardDetails(id.Value);
 
-            if (card == null)
+            if (cardType == null)
             {
                 return HttpNotFound();
             }
 
-            return View(card);
+            return View(cardType);
         }
 
         // GET: Cards/Create
@@ -54,15 +54,15 @@ namespace Pyrotechnics.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,FaceValue,CountInDeck")] Card card)
+        public ActionResult Create([Bind(Include = "Id,FaceValue,CountInDeck")] CardType cardType)
         {
             if (ModelState.IsValid)
             {
-                _cardRepo.AddCard(card);
+                _cardTypeRepo.AddCard(cardType);
                 return RedirectToAction("Index");
             }
 
-            return View(card);
+            return View(cardType);
         }
 
         // GET: Cards/Edit/5
@@ -72,7 +72,7 @@ namespace Pyrotechnics.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var card = _cardRepo.GetCardDetails(id.Value);
+            var card = _cardTypeRepo.GetCardDetails(id.Value);
             if (card == null)
             {
                 return HttpNotFound();
@@ -85,14 +85,14 @@ namespace Pyrotechnics.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,FaceValue,CountInDeck")] Card card)
+        public ActionResult Edit([Bind(Include = "Id,FaceValue,CountInDeck")] CardType cardType)
         {
             if (ModelState.IsValid)
             {
-                _cardRepo.UpdateCard(card);
+                _cardTypeRepo.UpdateCard(cardType);
                 return RedirectToAction("Index");
             }
-            return View(card);
+            return View(cardType);
         }
 
         // GET: Cards/Delete/5
@@ -102,12 +102,12 @@ namespace Pyrotechnics.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var card = _cardRepo.GetCardDetails(id.Value);
-            if (card == null)
+            var cardType = _cardTypeRepo.GetCardDetails(id.Value);
+            if (cardType == null)
             {
                 return HttpNotFound();
             }
-            return View(card);
+            return View(cardType);
         }
 
         // POST: Cards/Delete/5
@@ -115,7 +115,7 @@ namespace Pyrotechnics.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            _cardRepo.DeleteCard(id);
+            _cardTypeRepo.DeleteCard(id);
             return RedirectToAction("Index");
         }
     }

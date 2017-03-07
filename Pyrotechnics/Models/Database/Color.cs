@@ -17,13 +17,13 @@ namespace Pyrotechnics.Models.Database
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Color()
         {
-            this.Decks = new HashSet<Deck>();
+            this.GameCards = new HashSet<GameCard>();
         }
     
         public int Id { get; set; }
         public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Deck> Decks { get; set; }
+        public virtual ICollection<GameCard> GameCards { get; set; }
     }
 }

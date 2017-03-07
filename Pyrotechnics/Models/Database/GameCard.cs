@@ -12,16 +12,16 @@ namespace Pyrotechnics.Models.Database
     using System;
     using System.Collections.Generic;
     
-    public partial class Deck
+    public partial class GameCard
     {
         public int GameId { get; set; }
         public int Order { get; set; }
-        public int CardId { get; set; }
+        public int CardTypeId { get; set; }
         public int CardStateId { get; set; }
         public int ColorId { get; set; }
     
-        public virtual Card Card { get; set; }
         public virtual CardState CardState { get; set; }
+        public virtual CardType CardType { get; set; }
         public virtual Color Color { get; set; }
         public virtual Game Game { get; set; }
     }

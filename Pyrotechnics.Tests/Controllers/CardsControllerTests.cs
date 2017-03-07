@@ -14,7 +14,7 @@ namespace Pyrotechnics.Tests.Controllers
         {
             // Arrange
             var cardRepo = new Mock<ICardRepository>();
-            var controller = new CardsController(cardRepo.Object);
+            var controller = new CardTypesController(cardRepo.Object);
 
             // Act
             var result = controller.Index() as ViewResult;

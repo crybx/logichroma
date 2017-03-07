@@ -7,18 +7,18 @@ using Pyrotechnics.Models.DataRepositoryInterfaces;
 
 namespace Pyrotechnics.Models.DataRepositories
 {
-    public class CardRepository : ICardRepository
+    public class CardTypeRepository : ICardTypeRepository
     {
         private readonly PyrotechnicsDbEntities _db = new PyrotechnicsDbEntities();
         
-        public IList<Card> GetCards()
+        public IList<CardType> GetCards()
         {
-            return _db.Cards.ToList();
+            return _db.CardTypes.ToList();
         }
 
-        public Card GetCardDetails(int id)
+        public CardType GetCardDetails(int id)
         {
-            var card = _db.Cards.Find(id);
+            var card = _db.CardTypes.Find(id);
 
             if (card == null)
             {
@@ -28,13 +28,13 @@ namespace Pyrotechnics.Models.DataRepositories
             return card;
         }
 
-        public void AddCard(Card card)
+        public void AddCard(CardType card)
         {
-            _db.Cards.Add(card);
+            _db.CardTypes.Add(card);
             _db.SaveChanges();
         }
 
-        public void UpdateCard(Card card)
+        public void UpdateCard(CardType card)
         {
             _db.Entry(card).State = EntityState.Modified;
             _db.SaveChanges();
@@ -42,8 +42,8 @@ namespace Pyrotechnics.Models.DataRepositories
 
         public void DeleteCard(int id)
         {
-            var card = _db.Cards.Find(id);
-            _db.Cards.Remove(card);
+            var card = _db.CardTypes.Find(id);
+            _db.CardTypes.Remove(card);
             _db.SaveChanges();
         }
     }

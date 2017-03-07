@@ -18,7 +18,7 @@ namespace Pyrotechnics.Models.Database
         public Game()
         {
             this.GameStatuses = new HashSet<GameStatus>();
-            this.Decks = new HashSet<Deck>();
+            this.GameCards = new HashSet<GameCard>();
         }
     
         public int Id { get; set; }
@@ -30,6 +30,6 @@ namespace Pyrotechnics.Models.Database
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<GameStatus> GameStatuses { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Deck> Decks { get; set; }
+        public virtual ICollection<GameCard> GameCards { get; set; }
     }
 }
