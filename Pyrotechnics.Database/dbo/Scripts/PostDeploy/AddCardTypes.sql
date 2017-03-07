@@ -1,11 +1,11 @@
 ﻿-- Populate Cards
-DECLARE @CardsTemp TABLE
+DECLARE @CardTypesTemp TABLE
 (
 	faceValue INT,
 	countInDeck INT
 )
 
-INSERT INTO @CardsTemp (faceValue, countInDeck)
+INSERT INTO @CardTypesTemp (faceValue, countInDeck)
 VALUES 
 	(1, 5),
 	(2, 5),
@@ -13,11 +13,11 @@ VALUES
 	(4, 2),
 	(5, 1)
 
-MERGE INTO Cards AS target
+MERGE INTO CardTypes AS target
 USING 
 (
 	SELECT	faceValue, countInDeck
-	FROM	@CardsTemp
+	FROM	@CardTypesTemp
 ) 
 AS source
 ON source.faceValue = target.FaceValue

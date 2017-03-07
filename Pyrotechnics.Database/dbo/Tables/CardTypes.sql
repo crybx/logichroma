@@ -1,4 +1,4 @@
-﻿CREATE TABLE [dbo].[Cards]
+﻿CREATE TABLE [dbo].[CardTypes]
 (
 	[Id] INT IDENTITY NOT NULL PRIMARY KEY,
     [FaceValue] INT NOT NULL,

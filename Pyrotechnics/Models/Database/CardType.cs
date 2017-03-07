@@ -12,12 +12,12 @@ namespace Pyrotechnics.Models.Database
     using System;
     using System.Collections.Generic;
     
-    public partial class Card
+    public partial class CardType
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Card()
+        public CardType()
         {
-            this.Decks = new HashSet<Deck>();
+            this.GameCards = new HashSet<GameCard>();
         }
     
         public int Id { get; set; }
@@ -25,6 +25,6 @@ namespace Pyrotechnics.Models.Database
         public int CountInDeck { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Deck> Decks { get; set; }
+        public virtual ICollection<GameCard> GameCards { get; set; }
     }
 }

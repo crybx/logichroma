@@ -25,10 +25,8 @@ namespace Pyrotechnics.Models.Database
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Card> Cards { get; set; }
         public virtual DbSet<CardState> CardStates { get; set; }
         public virtual DbSet<Color> Colors { get; set; }
-        public virtual DbSet<Deck> Decks { get; set; }
         public virtual DbSet<Game> Games { get; set; }
         public virtual DbSet<GameStatus> GameStatuses { get; set; }
         public virtual DbSet<GameStatusType> GameStatusTypes { get; set; }
@@ -36,5 +34,7 @@ namespace Pyrotechnics.Models.Database
         public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
         public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
+        public virtual DbSet<CardType> CardTypes { get; set; }
+        public virtual DbSet<GameCard> GameCards { get; set; }
     }
 }
