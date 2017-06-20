@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Pyrotechnics.Models.Database;
 using System.Linq;
-using System.Web;
-using Pyrotechnics.Models.Database;
 
 namespace Pyrotechnics.Models.DataRepositories
 {
@@ -13,7 +10,8 @@ namespace Pyrotechnics.Models.DataRepositories
         public bool DoesAdminExist()
         {
             var userRoles = _dataContext.AspNetUsers.Where(u => u.AspNetRoles.Any(r => r.Name == "canManageUsers"));
-            return userRoles.Any();
+            var result = userRoles.Any();
+            return result;
         }
     }
 }

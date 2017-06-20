@@ -1,7 +1,7 @@
-﻿using System.Web.Mvc;
-using Pyrotechnics.Models;
+﻿using Pyrotechnics.Models;
 using Pyrotechnics.Models.DataRepositories;
 using Pyrotechnics.Models.DataRepositoryInterfaces;
+using System.Web.Mvc;
 
 namespace Pyrotechnics.Controllers
 {
