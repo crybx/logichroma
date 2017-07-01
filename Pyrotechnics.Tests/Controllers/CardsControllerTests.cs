@@ -13,8 +13,8 @@ namespace Pyrotechnics.Tests.Controllers
         public void Index()
         {
             // Arrange
-            var cardRepo = new Mock<ICardRepository>();
-            var controller = new CardTypesController(cardRepo.Object);
+            var cardTypeRepo = new Mock<ICardTypeRepository>();
+            var controller = new CardTypesController(cardTypeRepo.Object);
 
             // Act
             var result = controller.Index() as ViewResult;
