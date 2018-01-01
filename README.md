@@ -1,2 +1,3 @@
-# pyrotechnics
-A cooperative game where players have to work together to put on a fireworks show. This is an attempt to build a web based version of the IRL card game Hanabi.
+# Chroma Match
+
+A cooperative memory game where players have to work together to build sequential stacks of color matched cards. This is an attempt to build a web based game that uses the same game mechanics as the IRL card game Hanabi.
