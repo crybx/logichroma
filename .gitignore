@@ -9,3 +9,7 @@ packages
 Pyrotechnics/Web.AzureSandbox.config
 Pyrotechnics/Properties/PublishProfiles/AzureSandbox.pubxml
 Pyrotechnics.Database/Pyrotechnics.Database.AzureSandbox.publish.xml
+
+ChromaMatch/Web.AzureSandbox.config
+ChromaMatch/Properties/PublishProfiles/AzureSandbox.pubxml
+ChromaMatch.Database/ChromaMatch.Database.AzureSandbox.publish.xml
