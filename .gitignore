@@ -13,3 +13,7 @@ Pyrotechnics.Database/Pyrotechnics.Database.AzureSandbox.publish.xml
 ChromaMatch/Web.AzureSandbox.config
 ChromaMatch/Properties/PublishProfiles/AzureSandbox.pubxml
 ChromaMatch.Database/ChromaMatch.Database.AzureSandbox.publish.xml
+
+Logichroma/Web.AzureSandbox.config
+Logichroma/Properties/PublishProfiles/AzureSandbox.pubxml
+Logichroma.Database/Logichroma.Database.AzureSandbox.publish.xml
