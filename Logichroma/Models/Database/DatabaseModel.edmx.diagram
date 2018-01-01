@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="118d1fd62df64c7ab859dd9dd112d446" Name="Diagram1">
+        <EntityTypeShape EntityType="LogichromaDbModel.AspNetRole" Width="1.5" PointX="4.5" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LogichromaDbModel.AspNetUserClaim" Width="1.5" PointX="0.5" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LogichromaDbModel.AspNetUserLogin" Width="1.5" PointX="4.5" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LogichromaDbModel.AspNetUser" Width="1.5" PointX="2.5" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LogichromaDbModel.CardState" Width="1.5" PointX="8.875" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LogichromaDbModel.CardType" Width="1.5" PointX="8.875" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LogichromaDbModel.Color" Width="1.5" PointX="6.875" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LogichromaDbModel.GameCard" Width="1.5" PointX="6.875" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LogichromaDbModel.Game" Width="1.5" PointX="4.625" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LogichromaDbModel.GameStatus" Width="1.5" PointX="2.625" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LogichromaDbModel.GameStatusType" Width="1.5" PointX="0.5" PointY="0.5" IsExpanded="true" />
+        <AssociationConnector Association="LogichromaDbModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="LogichromaDbModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="LogichromaDbModel.FK_GameCards_CardStateId" ManuallyRouted="false" />
+        <AssociationConnector Association="LogichromaDbModel.FK_GameCards_CardTypeId" ManuallyRouted="false" />
+        <AssociationConnector Association="LogichromaDbModel.FK_GameCards_ColorId" ManuallyRouted="false" />
+        <AssociationConnector Association="LogichromaDbModel.FK_GameCards_GameId" ManuallyRouted="false" />
+        <AssociationConnector Association="LogichromaDbModel.FK_GameStatuses_GameId" ManuallyRouted="false" />
+        <AssociationConnector Association="LogichromaDbModel.FK_GameStatuses_GameStatusTypeId" ManuallyRouted="false" />
+        <AssociationConnector Association="LogichromaDbModel.AspNetUserRoles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
