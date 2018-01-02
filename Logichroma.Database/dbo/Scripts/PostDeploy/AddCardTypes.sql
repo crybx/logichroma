@@ -7,8 +7,8 @@ DECLARE @CardTypesTemp TABLE
 
 INSERT INTO @CardTypesTemp (faceValue, countInDeck)
 VALUES 
-	(1, 5),
-	(2, 5),
+	(1, 3),
+	(2, 2),
 	(3, 2),
 	(4, 2),
 	(5, 1)
