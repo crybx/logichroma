@@ -3,7 +3,7 @@
 MERGE INTO dbo.GameStatusTypes AS target
 USING 
 (
-	VALUES ( N'Started' ), ( N'Completed' ), ( N'Aborted' )
+	VALUES ( N'Created'), ( N'Started' ), ( N'Completed' ), ( N'Aborted' )
 ) 
 AS source (Name)
 ON target.Name = source.Name
