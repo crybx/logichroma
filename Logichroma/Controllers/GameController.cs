@@ -16,14 +16,14 @@ namespace Logichroma.Controllers
 
         public GameController() : this(new GameRepository()) {}
 
-        public ActionResult Start()
+        public ActionResult Create()
         {
             var model = new GameOptionsModel();
             return View(model);
         }
 
         [HttpPost]
-        public ActionResult Start(GameOptionsModel options)
+        public ActionResult Create(GameOptionsModel options)
         {
             var gameTitleAvaible = _gameRepo.IsGameNameAvailable(options.GameTitle);
 
@@ -33,7 +33,7 @@ namespace Logichroma.Controllers
                 return View("Index", options);
             }
 
-            return View();
+            return Create();
         }
     }
 }
