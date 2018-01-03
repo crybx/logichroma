@@ -16,6 +16,12 @@ namespace Logichroma.Controllers
 
         public GameController() : this(new GameRepository()) {}
 
+        public ActionResult Index()
+        {
+            var model = _gameRepo.GetGames();
+            return View(model);
+        }
+
         public ActionResult Create()
         {
             var model = new GameOptionsModel();

@@ -1,4 +1,6 @@
-﻿using Logichroma.Extensions;
+﻿using AutoMapper;
+using Logichroma.Extensions;
+using Logichroma.Models.BusinessObjects;
 using Logichroma.Models.Database;
 using Logichroma.Models.DataRepositoryInterfaces;
 using System;
@@ -10,6 +12,18 @@ namespace Logichroma.Models.DataRepositories
     public class GameRepository : IGameRepository
     {
         private readonly LogichromaDbEntities _db = new LogichromaDbEntities();
+
+        public List<GameModel> GetGames()
+        {
+            var games = _db.Games
+                .Where(x => !x.GameStatuses.Any(s => s.GameStatusType.Name == "Aborted" ||
+                                                     s.GameStatusType.Name == "Completed"))
+                .ToList();
+
+            var gameModels = Mapper.Map<List<Game>, List<GameModel>>(games);
+
+            return gameModels;
+        }
 
         public bool IsGameNameAvailable(string name)
         {

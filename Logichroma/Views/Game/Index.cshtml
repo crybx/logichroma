@@ -1,8 +1,14 @@
-﻿@model Logichroma.Models.GameOptionsModel
+﻿@using Logichroma.Models.BusinessObjects;
+@model List<GameModel>
 @{
     ViewBag.Title = "Logichroma";
 }
 
-<h2>Your game "@Model.GameTitle" has been created!</h2>
+<h2>Games</h2>
 
-<p>Have fun.</p>
+<div>
+    @foreach (var game in Model)
+    {
+        <div>@game.Id - @game.Name</div>
+    }
+</div>
