@@ -35,8 +35,8 @@ namespace Logichroma.Controllers
 
             if (gameTitleAvaible)
             {
-                options.GameId = _gameRepo.AddGame(options);
-                return View("Created", options);
+                var gameModel = _gameRepo.AddGame(options);
+                return View("Created", gameModel);
             }
 
             return Create();

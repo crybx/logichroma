@@ -8,6 +8,6 @@ namespace Logichroma.Models.DataRepositoryInterfaces
     {
         List<GameModel> GetGames();
         bool IsGameNameAvailable(string name);
-        int AddGame(GameOptionsModel gameOptions);
+        GameModel AddGame(GameOptionsModel gameOptions);
     }
 }
