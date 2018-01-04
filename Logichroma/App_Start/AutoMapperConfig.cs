@@ -8,7 +8,11 @@ namespace Logichroma
     {
         public static void InitializeMappings()
         {
-            Mapper.Initialize(cfg => cfg.CreateMap<Game, GameModel>());
+            Mapper.Initialize(cfg =>
+            {
+                cfg.CreateMap<Game, GameModel>();
+                cfg.CreateMap<GameCard, CardModel>();
+            });
         }
     }
 }

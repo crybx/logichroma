@@ -1,8 +1,17 @@
-﻿@model Logichroma.Models.GameOptionsModel
+﻿@model Logichroma.Models.BusinessObjects.GameModel
 @{
     ViewBag.Title = "Logichroma";
 }
 
-<h2>Your game "@Model.GameTitle" has been created!</h2>
+<h2>Your game "@Model.Name" has been created!</h2>
 
 <p>Have fun.</p>
+
+<p>The order of the deck created is:</p>
+
+<div>
+    @foreach (var card in Model.GameCards)
+    {
+        <div>@card.ColorName @card.CardTypeFaceValue</div>
+    }
+</div>

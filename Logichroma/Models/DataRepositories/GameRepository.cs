@@ -31,7 +31,7 @@ namespace Logichroma.Models.DataRepositories
             return !nameAlreadyExists;
         }
 
-        public int AddGame(GameOptionsModel gameOptions)
+        public GameModel AddGame(GameOptionsModel gameOptions)
         {
             var game = new Game
             {
@@ -48,7 +48,8 @@ namespace Logichroma.Models.DataRepositories
 
             //TODO: create and save a game status of 'Created'
 
-            return game.Id;
+            var gameModel = Mapper.Map<Game, GameModel>(game);
+            return gameModel;
         }
 
         private void createShuffledDeck(Game game)
