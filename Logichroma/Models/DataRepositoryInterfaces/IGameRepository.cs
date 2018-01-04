@@ -9,5 +9,6 @@ namespace Logichroma.Models.DataRepositoryInterfaces
         List<GameModel> GetGames();
         bool IsGameNameAvailable(string name);
         GameModel AddGame(GameOptionsModel gameOptions);
+        void AddPlayerToGame(string userId, GameModel game);
     }
 }

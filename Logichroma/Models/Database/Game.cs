@@ -19,6 +19,7 @@ namespace Logichroma.Models.Database
         {
             this.GameCards = new HashSet<GameCard>();
             this.GameStatuses = new HashSet<GameStatus>();
+            this.GamePlayers = new HashSet<GamePlayer>();
         }
     
         public int Id { get; set; }
@@ -31,5 +32,7 @@ namespace Logichroma.Models.Database
         public virtual ICollection<GameCard> GameCards { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<GameStatus> GameStatuses { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<GamePlayer> GamePlayers { get; set; }
     }
 }

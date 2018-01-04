@@ -183,6 +183,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BusinessObjects\CardModel.cs" />
     <Compile Include="Models\BusinessObjects\GameModel.cs" />
+    <Compile Include="Models\BusinessObjects\PlayerModel.cs" />
     <Compile Include="Models\Database\AspNetRole.cs">
       <DependentUpon>DatabaseModel.tt</DependentUpon>
     </Compile>
@@ -223,6 +224,9 @@
       <DependentUpon>DatabaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Database\GameCard.cs">
+      <DependentUpon>DatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Database\GamePlayer.cs">
       <DependentUpon>DatabaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Database\GameStatus.cs">
