@@ -2,6 +2,7 @@
 using Logichroma.Models.DataRepositories;
 using Logichroma.Models.DataRepositoryInterfaces;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 
 namespace Logichroma.Controllers
 {
@@ -33,13 +34,19 @@ namespace Logichroma.Controllers
         {
             var gameTitleAvaible = _gameRepo.IsGameNameAvailable(options.GameTitle);
 
-            if (gameTitleAvaible)
+            if (!gameTitleAvaible)
             {
-                var gameModel = _gameRepo.AddGame(options);
-                return View("Created", gameModel);
+                //TODO: Include message to tell user game title isn't available.
+                return Create();
             }
 
-            return Create();
+            var gameModel = _gameRepo.AddGame(options);
+            var userId = User.Identity.GetUserId();
+                
+            _gameRepo.AddPlayerToGame(userId, gameModel);
+
+            return View("Created", gameModel);
+
         }
     }
 }

@@ -11,5 +11,6 @@ namespace Logichroma.Models.BusinessObjects
         public string Name { get; set; }
         public int DifficultyLevel { get; set; }
         public List<CardModel> GameCards { get; set; }
+        public List<PlayerModel> GamePlayers { get; set; }
     }
 }

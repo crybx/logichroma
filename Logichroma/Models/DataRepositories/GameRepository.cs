@@ -52,6 +52,18 @@ namespace Logichroma.Models.DataRepositories
             return gameModel;
         }
 
+        public void AddPlayerToGame(string userId, GameModel game)
+        {
+            var player = new GamePlayer
+            {
+                GameId = game.Id,
+                PlayerId = userId
+            };
+
+            _db.GamePlayers.Add(player);
+            _db.SaveChanges();
+        }
+
         private void createShuffledDeck(Game game)
         {
             // Create the deck.

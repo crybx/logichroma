@@ -36,5 +36,6 @@ namespace Logichroma.Models.Database
         public virtual DbSet<Game> Games { get; set; }
         public virtual DbSet<GameStatus> GameStatuses { get; set; }
         public virtual DbSet<GameStatusType> GameStatusTypes { get; set; }
+        public virtual DbSet<GamePlayer> GamePlayers { get; set; }
     }
 }

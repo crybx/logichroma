@@ -5,10 +5,10 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="118d1fd62df64c7ab859dd9dd112d446" Name="Diagram1">
-        <EntityTypeShape EntityType="LogichromaDbModel.AspNetRole" Width="1.5" PointX="4.5" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="LogichromaDbModel.AspNetUserClaim" Width="1.5" PointX="0.5" PointY="4.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="LogichromaDbModel.AspNetUserLogin" Width="1.5" PointX="4.5" PointY="5.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="LogichromaDbModel.AspNetUser" Width="1.5" PointX="2.5" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LogichromaDbModel.AspNetRole" Width="1.5" PointX="2.375" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="LogichromaDbModel.AspNetUserClaim" Width="1.5" PointX="2.375" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LogichromaDbModel.AspNetUserLogin" Width="1.5" PointX="6.625" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="LogichromaDbModel.AspNetUser" Width="1.5" PointX="4.625" PointY="6" IsExpanded="true" />
         <EntityTypeShape EntityType="LogichromaDbModel.CardState" Width="1.5" PointX="8.875" PointY="0.5" IsExpanded="true" />
         <EntityTypeShape EntityType="LogichromaDbModel.CardType" Width="1.5" PointX="8.875" PointY="2.625" IsExpanded="true" />
         <EntityTypeShape EntityType="LogichromaDbModel.Color" Width="1.5" PointX="6.875" PointY="3.875" IsExpanded="true" />
@@ -25,6 +25,9 @@
         <AssociationConnector Association="LogichromaDbModel.FK_GameStatuses_GameId" ManuallyRouted="false" />
         <AssociationConnector Association="LogichromaDbModel.FK_GameStatuses_GameStatusTypeId" ManuallyRouted="false" />
         <AssociationConnector Association="LogichromaDbModel.AspNetUserRoles" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="LogichromaDbModel.GamePlayer" Width="1.5" PointX="4.625" PointY="3.5" />
+        <AssociationConnector Association="LogichromaDbModel.FK_GamePlayers_PlayerId" />
+        <AssociationConnector Association="LogichromaDbModel.FK_GamePlayers_GameId" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
