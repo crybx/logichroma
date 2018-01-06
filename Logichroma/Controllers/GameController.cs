@@ -49,5 +49,11 @@ namespace Logichroma.Controllers
 
             return View("Created", gameModel);
         }
+
+        public ActionResult Join(int gameId)
+        {
+            var gameModel = _gameRepo.GetGame(gameId);
+            return View(gameModel);
+        }
     }
 }

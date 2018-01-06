@@ -1,0 +1,20 @@
+﻿@model Logichroma.Models.BusinessObjects.GameModel
+@{
+    ViewBag.Title = "Logichroma";
+}
+
+<h2>You are about to join the "@Model.Name" game.</h2>
+
+<div>
+    <label>@Model.GamePlayers.Count/5 players joined so far.</label>
+    
+</div>
+<div>
+    <label>Players:</label>
+    <ul>
+        @foreach (var player in Model.GamePlayers)
+        {
+            <li>@player.UserName</li>
+        }
+    </ul>
+</div>

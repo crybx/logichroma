@@ -9,6 +9,9 @@
 <div>
     @foreach (var game in Model)
     {
-        <div>@game.Id - @game.Name - Game @game.Status - @game.GamePlayers.Count Players</div>
+        <div>
+            @game.Id - @game.Name - Game @game.Status - @game.GamePlayers.Count Players - 
+            @Html.ActionLink("Join Game", "Join", "Game", new { gameId = game.Id }, null)
+        </div>
     }
 </div>
