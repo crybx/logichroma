@@ -13,6 +13,13 @@ namespace Logichroma.Models.DataRepositories
     {
         private readonly LogichromaDbEntities _db = new LogichromaDbEntities();
 
+        public GameModel GetGame(int gameId)
+        {
+            var game = _db.Games.FirstOrDefault(x => x.Id == gameId);
+            var gameModel = Mapper.Map<Game, GameModel>(game);
+            return gameModel;
+        }
+
         public List<GameModel> GetGames()
         {
             var games = _db.Games
