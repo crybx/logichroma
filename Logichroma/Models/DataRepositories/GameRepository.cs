@@ -31,11 +31,11 @@ namespace Logichroma.Models.DataRepositories
             return !nameAlreadyExists;
         }
 
-        public GameModel AddGame(GameOptionsModel gameOptions)
+        public GameModel AddGame(GameModel gameOptions)
         {
             var game = new Game
             {
-                Name = gameOptions.GameTitle,
+                Name = gameOptions.Name,
                 DifficultyLvl = 1,
                 NextCard = 0,
                 StartDateTime = DateTime.Now

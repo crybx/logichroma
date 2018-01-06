@@ -1,11 +1,12 @@
-﻿using Logichroma.Models;
+﻿using Logichroma.Models.BusinessObjects;
 using Logichroma.Models.DataRepositories;
 using Logichroma.Models.DataRepositoryInterfaces;
-using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
+using System.Web.Mvc;
 
 namespace Logichroma.Controllers
 {
+    [Authorize]
     public class GameController : Controller
     {
         private readonly IGameRepository _gameRepo;
@@ -25,14 +26,14 @@ namespace Logichroma.Controllers
 
         public ActionResult Create()
         {
-            var model = new GameOptionsModel();
+            var model = new GameModel();
             return View(model);
         }
 
         [HttpPost]
-        public ActionResult Create(GameOptionsModel options)
+        public ActionResult Create(GameModel options)
         {
-            var gameTitleAvaible = _gameRepo.IsGameNameAvailable(options.GameTitle);
+            var gameTitleAvaible = _gameRepo.IsGameNameAvailable(options.Name);
 
             if (!gameTitleAvaible)
             {
