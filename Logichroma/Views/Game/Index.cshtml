@@ -9,6 +9,6 @@
 <div>
     @foreach (var game in Model)
     {
-        <div>@game.Id - @game.Name</div>
+        <div>@game.Id - @game.Name - Game @game.Status - @game.GamePlayers.Count Players</div>
     }
 </div>

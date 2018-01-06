@@ -13,6 +13,7 @@ namespace Logichroma
                 cfg.CreateMap<Game, GameModel>();
                 cfg.CreateMap<GameCard, CardModel>();
                 cfg.CreateMap<GamePlayer, PlayerModel>();
+                cfg.CreateMap<GameStatus, GameStatusModel>();
             });
         }
     }

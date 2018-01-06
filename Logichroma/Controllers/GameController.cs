@@ -36,7 +36,7 @@ namespace Logichroma.Controllers
 
             if (!gameTitleAvaible)
             {
-                //TODO: Include message to tell user game title isn't available.
+                //TODO: Show user message that title isn't available.
                 return Create();
             }
 
@@ -44,9 +44,9 @@ namespace Logichroma.Controllers
             var userId = User.Identity.GetUserId();
                 
             _gameRepo.AddPlayerToGame(userId, gameModel);
+            _gameRepo.AddGameStatus("Created", gameModel);
 
             return View("Created", gameModel);
-
         }
     }
 }

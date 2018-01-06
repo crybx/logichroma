@@ -183,6 +183,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BusinessObjects\CardModel.cs" />
     <Compile Include="Models\BusinessObjects\GameModel.cs" />
+    <Compile Include="Models\BusinessObjects\GameStatusModel.cs" />
     <Compile Include="Models\BusinessObjects\PlayerModel.cs" />
     <Compile Include="Models\Database\AspNetRole.cs">
       <DependentUpon>DatabaseModel.tt</DependentUpon>
