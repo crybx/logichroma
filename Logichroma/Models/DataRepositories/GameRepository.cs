@@ -45,9 +45,7 @@ namespace Logichroma.Models.DataRepositories
             _db.SaveChanges();
 
             createShuffledDeck(game);
-
-            //TODO: create and save a game status of 'Created'
-
+            
             var gameModel = Mapper.Map<Game, GameModel>(game);
             return gameModel;
         }
@@ -61,6 +59,19 @@ namespace Logichroma.Models.DataRepositories
             };
 
             _db.GamePlayers.Add(player);
+            _db.SaveChanges();
+        }
+
+        public void AddGameStatus(string gameStatus, GameModel game)
+        {
+            var status = new GameStatus
+            {
+                GameId = game.Id,
+                DateTime = DateTime.Now,
+                GameStatusType = _db.GameStatusTypes.FirstOrDefault(x => x.Name == gameStatus)
+            };
+
+            _db.GameStatuses.Add(status);
             _db.SaveChanges();
         }
 

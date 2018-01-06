@@ -12,5 +12,7 @@ namespace Logichroma.Models.BusinessObjects
         public int DifficultyLevel { get; set; }
         public List<CardModel> GameCards { get; set; }
         public List<PlayerModel> GamePlayers { get; set; }
+        public List<GameStatusModel> GameStatuses { get; set; }
+        public string Status => GameStatuses.OrderByDescending(x => x.DateTime).FirstOrDefault()?.Status;
     }
 }
