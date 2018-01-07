@@ -44,16 +44,27 @@ namespace Logichroma.Controllers
             var gameModel = _gameRepo.AddGame(options);
             var userId = User.Identity.GetUserId();
                 
-            _gameRepo.AddPlayerToGame(userId, gameModel);
+            _gameRepo.AddPlayerToGame(userId, gameModel.Id);
             _gameRepo.AddGameStatus("Created", gameModel);
 
             return View("Created", gameModel);
         }
 
-        public ActionResult Join(int gameId)
+        public ActionResult Details(int gameId)
         {
             var gameModel = _gameRepo.GetGame(gameId);
+
+            ViewBag.CurrentUser = User.Identity.GetUserId();
+
             return View(gameModel);
+        }
+
+        public ActionResult Join(int gameId)
+        {
+            var userId = User.Identity.GetUserId();
+            _gameRepo.AddPlayerToGame(userId, gameId);
+
+            return RedirectToAction(nameof(Details), new { gameId });
         }
     }
 }

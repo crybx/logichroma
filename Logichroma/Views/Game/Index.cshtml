@@ -11,7 +11,7 @@
     {
         <div>
             @game.Id - @game.Name - Game @game.Status - @game.GamePlayers.Count Players - 
-            @Html.ActionLink("Join Game", "Join", "Game", new { gameId = game.Id }, null)
+            @Html.ActionLink("Details", "Details", "Game", new { gameId = game.Id }, null)
         </div>
     }
 </div>

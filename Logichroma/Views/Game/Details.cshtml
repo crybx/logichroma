@@ -3,12 +3,12 @@
     ViewBag.Title = "Logichroma";
 }
 
-<h2>You are about to join the "@Model.Name" game.</h2>
+<h2>@Model.Name</h2>
 
 <div>
     <label>@Model.GamePlayers.Count/5 players joined so far.</label>
-    
 </div>
+
 <div>
     <label>Players:</label>
     <ul>
@@ -18,3 +18,12 @@
         }
     </ul>
 </div>
+
+@if(Model.GamePlayers.All(x => x.PlayerId != ViewBag.CurrentUser))
+{
+    <div>
+        <p>
+            <a class="btn btn-default" href="@Url.Action("Join", "Game", new { gameId = Model.Id }, null)">Join Game</a>
+        </p>
+    </div>
+}
