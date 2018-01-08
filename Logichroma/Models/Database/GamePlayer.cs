@@ -17,6 +17,7 @@ namespace Logichroma.Models.Database
         public int GameId { get; set; }
         public string PlayerId { get; set; }
         public Nullable<int> PlayerNumber { get; set; }
+        public string Nickname { get; set; }
     
         public virtual AspNetUser AspNetUser { get; set; }
         public virtual Game Game { get; set; }
