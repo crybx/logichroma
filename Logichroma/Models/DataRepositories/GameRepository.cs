@@ -57,12 +57,13 @@ namespace Logichroma.Models.DataRepositories
             return gameModel;
         }
 
-        public void AddPlayerToGame(string userId, int gameId)
+        public void AddPlayerToGame(int gameId, string userId, string nickname)
         {
             var player = new GamePlayer
             {
                 GameId = gameId,
-                PlayerId = userId
+                PlayerId = userId,
+                Nickname = nickname
             };
 
             _db.GamePlayers.Add(player);
