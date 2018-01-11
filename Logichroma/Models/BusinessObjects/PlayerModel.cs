@@ -7,5 +7,6 @@ namespace Logichroma.Models.BusinessObjects
         public string PlayerId { get; set; }
         public string AspNetUserUserName { get; set; }
         public string UserName => AspNetUserUserName;
+        public string Nickname;
     }
 }

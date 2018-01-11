@@ -241,6 +241,7 @@
     <Compile Include="Models\DataRepositories\UsersRepository.cs" />
     <Compile Include="Models\DataRepositoryInterfaces\ICardTypeRepository.cs" />
     <Compile Include="Models\DataRepositoryInterfaces\IGameRepository.cs" />
+    <Compile Include="Models\GameDetailsViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,4 +1,5 @@
-﻿using Logichroma.Models.BusinessObjects;
+﻿using Logichroma.Models;
+using Logichroma.Models.BusinessObjects;
 using Logichroma.Models.DataRepositories;
 using Logichroma.Models.DataRepositoryInterfaces;
 using Microsoft.AspNet.Identity;
@@ -43,8 +44,9 @@ namespace Logichroma.Controllers
 
             var gameModel = _gameRepo.AddGame(options);
             var userId = User.Identity.GetUserId();
-                
-            _gameRepo.AddPlayerToGame(userId, gameModel.Id);
+            
+            //TODO: Allow creator of game to choose a nickname too.
+            _gameRepo.AddPlayerToGame(gameModel.Id, userId, null);
             _gameRepo.AddGameStatus("Created", gameModel);
 
             return View("Created", gameModel);
@@ -52,17 +54,23 @@ namespace Logichroma.Controllers
 
         public ActionResult Details(int gameId)
         {
-            var gameModel = _gameRepo.GetGame(gameId);
-
-            ViewBag.CurrentUser = User.Identity.GetUserId();
-
-            return View(gameModel);
+            var model = new GameDetailsViewModel
+            {
+                Game = _gameRepo.GetGame(gameId),
+                CurrentUser = User.Identity.GetUserId()
+            };
+            
+            return View(model);
         }
 
-        public ActionResult Join(int gameId)
+        [HttpPost]
+        public ActionResult Join(GameDetailsViewModel model)
         {
+            var gameId = model.Game.Id;
             var userId = User.Identity.GetUserId();
-            _gameRepo.AddPlayerToGame(userId, gameId);
+            var nickname = string.IsNullOrWhiteSpace(model.PlayerNickname) ? null : model.PlayerNickname;
+
+            _gameRepo.AddPlayerToGame(gameId, userId, nickname);
 
             return RedirectToAction(nameof(Details), new { gameId });
         }

@@ -1,29 +1,44 @@
-﻿@model Logichroma.Models.BusinessObjects.GameModel
+﻿@model Logichroma.Models.GameDetailsViewModel
 @{
     ViewBag.Title = "Logichroma";
 }
 
-<h2>@Model.Name</h2>
+<h2>@Model.Game.Name</h2>
 
 <div>
-    <label>@Model.GamePlayers.Count/5 players joined so far.</label>
+    <label>@Model.Game.GamePlayers.Count/5 players joined so far.</label>
 </div>
 
 <div>
     <label>Players:</label>
     <ul>
-        @foreach (var player in Model.GamePlayers)
+        @foreach (var player in Model.Game.GamePlayers)
         {
-            <li>@player.UserName</li>
+            <li>@(player.Nickname ?? player.UserName)</li>
         }
     </ul>
 </div>
 
-@if(Model.GamePlayers.All(x => x.PlayerId != ViewBag.CurrentUser))
+@if (Model.Game.GamePlayers.All(x => x.PlayerId != Model.CurrentUser))
 {
-    <div>
-        <p>
-            <a class="btn btn-default" href="@Url.Action("Join", "Game", new { gameId = Model.Id }, null)">Join Game</a>
-        </p>
-    </div>
+    using (Html.BeginForm("Join", "Game"))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(x => x.Game.Id);
+        <div class="form-horizontal">
+            <h3>Join This Game</h3>
+            <div class="form-group">
+                @Html.LabelFor(model => model.PlayerNickname, "Choose Your Nickname:", new { @class = "col-xs-12" })
+                <div class="col-xs-12">
+                    @Html.EditorFor(model => model.PlayerNickname, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.PlayerNickname, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Join Game" class="btn btn-default"/>
+                </div>
+            </div>
+        </div>
+    }
 }
