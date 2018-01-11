@@ -1,6 +1,5 @@
-﻿
+﻿using Logichroma.Models.BusinessObjects;
 using System.Collections.Generic;
-using Logichroma.Models.BusinessObjects;
 
 namespace Logichroma.Models.DataRepositoryInterfaces
 {

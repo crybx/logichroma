@@ -1,5 +1,4 @@
-﻿
-namespace Logichroma.Models.BusinessObjects
+﻿namespace Logichroma.Models.BusinessObjects
 {
     public class PlayerModel
     {
