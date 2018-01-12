@@ -27,14 +27,14 @@ namespace Logichroma.Controllers
 
         public ActionResult Create()
         {
-            var model = new GameModel();
+            var model = new GameDetailsViewModel { Game = new GameModel() };
             return View(model);
         }
 
         [HttpPost]
-        public ActionResult Create(GameModel options)
+        public ActionResult Create(GameDetailsViewModel model)
         {
-            var gameTitleAvaible = _gameRepo.IsGameNameAvailable(options.Name);
+            var gameTitleAvaible = _gameRepo.IsGameNameAvailable(model.Game.Name);
 
             if (!gameTitleAvaible)
             {
@@ -42,14 +42,13 @@ namespace Logichroma.Controllers
                 return Create();
             }
 
-            var gameModel = _gameRepo.AddGame(options);
-            var userId = User.Identity.GetUserId();
-            
-            //TODO: Allow creator of game to choose a nickname too.
-            _gameRepo.AddPlayerToGame(gameModel.Id, userId, null);
-            _gameRepo.AddGameStatus("Created", gameModel);
+            model.Game = _gameRepo.AddGame(model.Game);
 
-            return View("Created", gameModel);
+            _gameRepo.AddGameStatus("Created", model.Game);
+            
+            addPlayerToGame(model);
+
+            return View("Created", model.Game);
         }
 
         public ActionResult Details(int gameId)
@@ -66,13 +65,17 @@ namespace Logichroma.Controllers
         [HttpPost]
         public ActionResult Join(GameDetailsViewModel model)
         {
-            var gameId = model.Game.Id;
+            addPlayerToGame(model);
+
+            return RedirectToAction(nameof(Details), new { gameId = model.Game.Id });
+        }
+
+        private void addPlayerToGame(GameDetailsViewModel model)
+        {
             var userId = User.Identity.GetUserId();
             var nickname = string.IsNullOrWhiteSpace(model.PlayerNickname) ? null : model.PlayerNickname;
 
-            _gameRepo.AddPlayerToGame(gameId, userId, nickname);
-
-            return RedirectToAction(nameof(Details), new { gameId });
+            _gameRepo.AddPlayerToGame(model.Game.Id, userId, nickname);
         }
     }
 }
