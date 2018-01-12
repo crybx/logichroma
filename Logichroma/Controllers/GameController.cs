@@ -50,7 +50,7 @@ namespace Logichroma.Controllers
 
             return RedirectToAction(nameof(Details), new { gameId = model.Game.Id });
         }
-
+        
         public ActionResult Details(int gameId)
         {
             var model = new GameDetailsViewModel
