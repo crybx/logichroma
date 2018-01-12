@@ -42,3 +42,11 @@
         </div>
     }
 }
+
+<h3>The order of the deck is:</h3>
+<div>
+    @foreach (var card in Model.Game.GameCards)
+    {
+        <div>@card.ColorName @card.CardTypeFaceValue</div>
+    }
+</div>
