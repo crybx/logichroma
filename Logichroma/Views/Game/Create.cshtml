@@ -1,5 +1,5 @@
-﻿@using Logichroma.Models.BusinessObjects
-@model GameModel
+﻿@using Logichroma.Models
+@model GameDetailsViewModel
 @{
     ViewBag.Title = "Logichroma";
 }
@@ -13,22 +13,19 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.Name, "Name Your Game", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Game.Name, "Name Your Game", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Name, new {htmlAttributes = new {@class = "form-control"}})
-                @Html.ValidationMessageFor(model => model.Name, "", new {@class = "text-danger"})
+                @Html.EditorFor(model => model.Game.Name, new {htmlAttributes = new {@class = "form-control"}})
+                @Html.ValidationMessageFor(model => model.Game.Name, "", new {@class = "text-danger"})
             </div>
         </div>
-
-        @*<div class="form-group">
-            @Html.LabelFor(model => model.PlayerCount, "Number of Players", htmlAttributes: new {@class = "control-label col-md-2"})
+        <div class="form-group">
+            @Html.LabelFor(model => model.PlayerNickname, "Choose Your Nickname", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.PlayerCount,
-                                    new SelectList(Model.PlayerCounts, Model.PlayerCount),
-                                    new { @class = "form-control", title = "Select number of players...", tabindex = "2" })
+                @Html.EditorFor(model => model.PlayerNickname, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PlayerNickname, "", new { @class = "text-danger" })
             </div>
-        </div>*@
-
+        </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Create Game" class="btn btn-default" />
