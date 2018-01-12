@@ -48,7 +48,7 @@ namespace Logichroma.Controllers
             
             addPlayerToGame(model);
 
-            return View("Created", model.Game);
+            return RedirectToAction(nameof(Details), new { gameId = model.Game.Id });
         }
 
         public ActionResult Details(int gameId)
