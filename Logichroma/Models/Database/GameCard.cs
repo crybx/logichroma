@@ -19,10 +19,12 @@ namespace Logichroma.Models.Database
         public int CardTypeId { get; set; }
         public int CardStateId { get; set; }
         public int ColorId { get; set; }
+        public Nullable<int> GamePlayerId { get; set; }
     
         public virtual CardState CardState { get; set; }
         public virtual CardType CardType { get; set; }
         public virtual Color Color { get; set; }
         public virtual Game Game { get; set; }
+        public virtual GamePlayer GamePlayer { get; set; }
     }
 }

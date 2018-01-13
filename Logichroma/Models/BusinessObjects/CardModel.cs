@@ -3,6 +3,7 @@
     public class CardModel
     {
         public int GameId { get; set; }
+        public int GamePlayerId { get; set; }
         public int Order { get; set; }
         public int CardTypeId { get; set; }
         public int CardTypeFaceValue { get; set; }

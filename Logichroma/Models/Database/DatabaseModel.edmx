@@ -88,12 +88,13 @@
           <Property Name="CardTypeId" Type="int" Nullable="false" />
           <Property Name="CardStateId" Type="int" Nullable="false" />
           <Property Name="ColorId" Type="int" Nullable="false" />
+          <Property Name="GamePlayerId" Type="int" />
         </EntityType>
         <EntityType Name="GamePlayers">
           <Key>
-            <PropertyRef Name="GameId" />
-            <PropertyRef Name="PlayerId" />
+            <PropertyRef Name="GamePlayerId" />
           </Key>
+          <Property Name="GamePlayerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="GameId" Type="int" Nullable="false" />
           <Property Name="PlayerId" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="PlayerNumber" Type="int" />
@@ -229,6 +230,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_GameCards_GamePlayerId">
+          <End Role="GamePlayers" Type="Self.GamePlayers" Multiplicity="0..1" />
+          <End Role="GameCards" Type="Self.GameCards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GamePlayers">
+              <PropertyRef Name="GamePlayerId" />
+            </Principal>
+            <Dependent Role="GameCards">
+              <PropertyRef Name="GamePlayerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_GamePlayers_GameId">
           <End Role="Games" Type="Self.Games" Multiplicity="1" />
           <End Role="GamePlayers" Type="Self.GamePlayers" Multiplicity="*" />
@@ -321,6 +334,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_GameCards_GameId" Association="Self.FK_GameCards_GameId">
             <End Role="Games" EntitySet="Games" />
+            <End Role="GameCards" EntitySet="GameCards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GameCards_GamePlayerId" Association="Self.FK_GameCards_GamePlayerId">
+            <End Role="GamePlayers" EntitySet="GamePlayers" />
             <End Role="GameCards" EntitySet="GameCards" />
           </AssociationSet>
           <AssociationSet Name="FK_GamePlayers_GameId" Association="Self.FK_GamePlayers_GameId">
@@ -433,6 +450,8 @@
           <NavigationProperty Name="CardType" Relationship="Self.FK_GameCards_CardTypeId" FromRole="GameCards" ToRole="CardTypes" />
           <NavigationProperty Name="Color" Relationship="Self.FK_GameCards_ColorId" FromRole="GameCards" ToRole="Colors" />
           <NavigationProperty Name="Game" Relationship="Self.FK_GameCards_GameId" FromRole="GameCards" ToRole="Games" />
+          <Property Name="GamePlayerId" Type="Int32" />
+          <NavigationProperty Name="GamePlayer" Relationship="LogichromaDbModel.FK_GameCards_GamePlayerId" FromRole="GameCard" ToRole="GamePlayer" />
         </EntityType>
         <EntityType Name="Game">
           <Key>
@@ -623,6 +642,10 @@
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
             <End Role="GamePlayer" EntitySet="GamePlayers" />
           </AssociationSet>
+          <AssociationSet Name="FK_GameCards_GamePlayerId" Association="LogichromaDbModel.FK_GameCards_GamePlayerId">
+            <End Role="GamePlayer" EntitySet="GamePlayers" />
+            <End Role="GameCard" EntitySet="GameCards" />
+          </AssociationSet>
           <AssociationSet Name="FK_GamePlayers_GameId" Association="LogichromaDbModel.FK_GamePlayers_GameId">
             <End Role="Game" EntitySet="Games" />
             <End Role="GamePlayer" EntitySet="GamePlayers" />
@@ -630,15 +653,16 @@
         </EntityContainer>
         <EntityType Name="GamePlayer">
           <Key>
-            <PropertyRef Name="GameId" />
-            <PropertyRef Name="PlayerId" />
+            <PropertyRef Name="GamePlayerId" />
           </Key>
+          <Property Name="GamePlayerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="GameId" Type="Int32" Nullable="false" />
           <Property Name="PlayerId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="PlayerNumber" Type="Int32" />
-          <NavigationProperty Name="AspNetUser" Relationship="LogichromaDbModel.FK_GamePlayers_PlayerId" FromRole="GamePlayer" ToRole="AspNetUser" />
-          <NavigationProperty Name="Game" Relationship="LogichromaDbModel.FK_GamePlayers_GameId" FromRole="GamePlayer" ToRole="Game" />
           <Property Name="Nickname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="LogichromaDbModel.FK_GamePlayers_PlayerId" FromRole="GamePlayer" ToRole="AspNetUser" />
+          <NavigationProperty Name="GameCards" Relationship="LogichromaDbModel.FK_GameCards_GamePlayerId" FromRole="GamePlayer" ToRole="GameCard" />
+          <NavigationProperty Name="Game" Relationship="LogichromaDbModel.FK_GamePlayers_GameId" FromRole="GamePlayer" ToRole="Game" />
         </EntityType>
         <Association Name="FK_GamePlayers_PlayerId">
           <End Type="LogichromaDbModel.AspNetUser" Role="AspNetUser" Multiplicity="1" />
@@ -649,6 +673,18 @@
             </Principal>
             <Dependent Role="GamePlayer">
               <PropertyRef Name="PlayerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GameCards_GamePlayerId">
+          <End Type="LogichromaDbModel.GamePlayer" Role="GamePlayer" Multiplicity="0..1" />
+          <End Type="LogichromaDbModel.GameCard" Role="GameCard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GamePlayer">
+              <PropertyRef Name="GamePlayerId" />
+            </Principal>
+            <Dependent Role="GameCard">
+              <PropertyRef Name="GamePlayerId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -743,6 +779,7 @@
           <EntitySetMapping Name="GameCards">
             <EntityTypeMapping TypeName="LogichromaDbModel.GameCard">
               <MappingFragment StoreEntitySet="GameCards">
+                <ScalarProperty Name="GamePlayerId" ColumnName="GamePlayerId" />
                 <ScalarProperty Name="GameId" ColumnName="GameId" />
                 <ScalarProperty Name="Order" ColumnName="Order" />
                 <ScalarProperty Name="CardTypeId" ColumnName="CardTypeId" />
@@ -795,6 +832,7 @@
                 <ScalarProperty Name="PlayerNumber" ColumnName="PlayerNumber" />
                 <ScalarProperty Name="PlayerId" ColumnName="PlayerId" />
                 <ScalarProperty Name="GameId" ColumnName="GameId" />
+                <ScalarProperty Name="GamePlayerId" ColumnName="GamePlayerId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

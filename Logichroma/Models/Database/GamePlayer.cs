@@ -14,12 +14,21 @@ namespace Logichroma.Models.Database
     
     public partial class GamePlayer
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public GamePlayer()
+        {
+            this.GameCards = new HashSet<GameCard>();
+        }
+    
+        public int GamePlayerId { get; set; }
         public int GameId { get; set; }
         public string PlayerId { get; set; }
         public Nullable<int> PlayerNumber { get; set; }
         public string Nickname { get; set; }
     
         public virtual AspNetUser AspNetUser { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<GameCard> GameCards { get; set; }
         public virtual Game Game { get; set; }
     }
 }
