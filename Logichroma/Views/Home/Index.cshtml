@@ -6,11 +6,18 @@
     <h1>Logichroma</h1>
     <p class="lead">A cooperative logic and memory game where players have to work together to build sequential stacks of color matched cards.</p>
     <p>
-        <a class="btn btn-primary btn-lg" href="@Url.Action("Create", "Game")" >Start New Game &raquo;</a>
+        <a class="btn btn-primary btn-lg" href="@Url.Action("Create", "Game")" >Start a New Game &raquo;</a>
     </p>
 </div>
 
 <div class="row">
+    <div class="col-md-4">
+        <h2>Continue a game</h2>
+        <p>You can easily pick up where you left off on a previously started Logichroma game.</p>
+        <p>
+            <a class="btn btn-default" href="@Url.Action("Index", "Game")">Continue &raquo;</a>
+        </p>
+    </div>
     <div class="col-md-4">
         <h2>How to play</h2>
         <p>
@@ -21,16 +28,10 @@
         </p>
     </div>
     <div class="col-md-4">
-        <h2>Continue a game</h2>
-        <p>You can easily pick up where you left off on a previously saved Logichroma game.</p>
+        <h2>Contact</h2>
+        <p>Send any questions, comments, concerns, or other feedback you have about Logichroma. (Messages can be anonymous.)</p>
         <p>
-            <a class="btn btn-default" href="@Url.Action("Index", "Game")">Continue &raquo;</a>
-        </p>
-    </div>
-    <div class="col-md-4">
-        <h2>Tips and Strategies</h2>
-        <p>Want to get better at Logichroma? We've got some suggestions.</p>
-        <p><a class="btn btn-default" href="#">Learn more &raquo;</a>
+            <a class="btn btn-default" href="@Url.Action("Contact", "Home")">Contact &raquo;</a>
         </p>
     </div>
 </div>
