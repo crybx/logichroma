@@ -46,7 +46,7 @@ namespace Logichroma.Controllers
 
             _gameRepo.AddGameStatus("Created", model.Game);
             
-            addPlayerToGame(model);
+            addPlayerToGame(model, true);
 
             return RedirectToAction(nameof(Details), new { gameId = model.Game.Id });
         }
@@ -56,7 +56,7 @@ namespace Logichroma.Controllers
             var model = new GameDetailsViewModel
             {
                 Game = _gameRepo.GetGame(gameId),
-                CurrentUser = User.Identity.GetUserId()
+                CurrentUserId = User.Identity.GetUserId()
             };
             
             return View(model);
@@ -65,17 +65,17 @@ namespace Logichroma.Controllers
         [HttpPost]
         public ActionResult Join(GameDetailsViewModel model)
         {
-            addPlayerToGame(model);
+            addPlayerToGame(model, false);
 
             return RedirectToAction(nameof(Details), new { gameId = model.Game.Id });
         }
 
-        private void addPlayerToGame(GameDetailsViewModel model)
+        private void addPlayerToGame(GameDetailsViewModel model, bool isOwner)
         {
             var userId = User.Identity.GetUserId();
             var nickname = string.IsNullOrWhiteSpace(model.PlayerNickname) ? null : model.PlayerNickname;
 
-            _gameRepo.AddPlayerToGame(model.Game.Id, userId, nickname);
+            _gameRepo.AddPlayerToGame(model.Game.Id, userId, nickname, isOwner);
         }
     }
 }

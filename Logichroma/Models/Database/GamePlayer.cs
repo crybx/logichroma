@@ -25,6 +25,7 @@ namespace Logichroma.Models.Database
         public string PlayerId { get; set; }
         public Nullable<int> PlayerNumber { get; set; }
         public string Nickname { get; set; }
+        public bool IsGameOwner { get; set; }
     
         public virtual AspNetUser AspNetUser { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

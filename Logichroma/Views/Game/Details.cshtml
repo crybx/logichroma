@@ -19,7 +19,7 @@
     </ul>
 </div>
 
-@if (Model.Game.GamePlayers.All(x => x.PlayerId != Model.CurrentUser))
+@if (Model.CurrentPlayer == null && Model.PlayerCount < 5)
 {
     using (Html.BeginForm("Join", "Game"))
     {
@@ -41,6 +41,12 @@
             </div>
         </div>
     }
+}
+
+@if (Model.CurrentPlayer != null && Model.CurrentPlayer.IsGameOwner && Model.PlayerCount > 1)
+{
+    //TODO: Show a button for getting the game started.
+    <div>START GAME</div>
 }
 
 <h3>The order of the deck is:</h3>
