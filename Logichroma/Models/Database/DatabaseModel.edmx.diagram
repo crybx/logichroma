@@ -25,7 +25,7 @@
         <AssociationConnector Association="LogichromaDbModel.FK_GameStatuses_GameId" ManuallyRouted="false" />
         <AssociationConnector Association="LogichromaDbModel.FK_GameStatuses_GameStatusTypeId" ManuallyRouted="false" />
         <AssociationConnector Association="LogichromaDbModel.AspNetUserRoles" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="LogichromaDbModel.GamePlayer" Width="1.5" PointX="6" PointY="2.375" />
+        <EntityTypeShape EntityType="LogichromaDbModel.GamePlayer" Width="1.5" PointX="6" PointY="2.125" />
         <AssociationConnector Association="LogichromaDbModel.FK_GamePlayers_PlayerId" />
         <AssociationConnector Association="LogichromaDbModel.FK_GameCards_GamePlayerId" />
         <AssociationConnector Association="LogichromaDbModel.FK_GamePlayers_GameId" />

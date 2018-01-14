@@ -97,6 +97,7 @@
           <Property Name="GamePlayerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="GameId" Type="int" Nullable="false" />
           <Property Name="PlayerId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="IsGameOwner" Type="bit" Nullable="false" />
           <Property Name="PlayerNumber" Type="int" />
           <Property Name="Nickname" Type="nvarchar" MaxLength="50" />
         </EntityType>
@@ -663,6 +664,7 @@
           <NavigationProperty Name="AspNetUser" Relationship="LogichromaDbModel.FK_GamePlayers_PlayerId" FromRole="GamePlayer" ToRole="AspNetUser" />
           <NavigationProperty Name="GameCards" Relationship="LogichromaDbModel.FK_GameCards_GamePlayerId" FromRole="GamePlayer" ToRole="GameCard" />
           <NavigationProperty Name="Game" Relationship="LogichromaDbModel.FK_GamePlayers_GameId" FromRole="GamePlayer" ToRole="Game" />
+          <Property Name="IsGameOwner" Type="Boolean" Nullable="false" />
         </EntityType>
         <Association Name="FK_GamePlayers_PlayerId">
           <End Type="LogichromaDbModel.AspNetUser" Role="AspNetUser" Multiplicity="1" />
@@ -828,6 +830,7 @@
           <EntitySetMapping Name="GamePlayers">
             <EntityTypeMapping TypeName="LogichromaDbModel.GamePlayer">
               <MappingFragment StoreEntitySet="GamePlayers">
+                <ScalarProperty Name="IsGameOwner" ColumnName="IsGameOwner" />
                 <ScalarProperty Name="Nickname" ColumnName="Nickname" />
                 <ScalarProperty Name="PlayerNumber" ColumnName="PlayerNumber" />
                 <ScalarProperty Name="PlayerId" ColumnName="PlayerId" />
