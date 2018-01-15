@@ -13,7 +13,7 @@ namespace Logichroma.Tests.Controllers
         public void Index()
         {
             // Arrange
-            var cardTypeRepo = new Mock<ICardTypeRepository>();
+            var cardTypeRepo = new Mock<ICardValuesRepository>();
             var controller = new CardTypesController(cardTypeRepo.Object);
 
             // Act

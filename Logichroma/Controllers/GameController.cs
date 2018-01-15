@@ -1,5 +1,5 @@
 ﻿using Logichroma.Models;
-using Logichroma.Models.BusinessObjects;
+using Logichroma.Models.GameObjectModels;
 using Logichroma.Models.DataRepositories;
 using Logichroma.Models.DataRepositoryInterfaces;
 using Microsoft.AspNet.Identity;
@@ -21,7 +21,7 @@ namespace Logichroma.Controllers
 
         public ActionResult Index()
         {
-            var model = _gameRepo.GetGames();
+            var model = _gameRepo.GetActiveGames();
             return View(model);
         }
 

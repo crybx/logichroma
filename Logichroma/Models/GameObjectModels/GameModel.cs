@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
-namespace Logichroma.Models.BusinessObjects
+namespace Logichroma.Models.GameObjectModels
 {
     public class GameModel
     {
@@ -15,6 +15,6 @@ namespace Logichroma.Models.BusinessObjects
         public List<CardModel> GameCards { get; set; }
         public List<PlayerModel> GamePlayers { get; set; }
         public List<GameStatusModel> GameStatuses { get; set; }
-        public string Status => GameStatuses.OrderByDescending(x => x.DateTime).FirstOrDefault()?.Status;
+        public string Status => GameStatuses?.OrderByDescending(x => x.DateTime).FirstOrDefault()?.Status;
     }
 }

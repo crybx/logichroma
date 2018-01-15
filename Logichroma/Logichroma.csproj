@@ -177,69 +177,70 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Extensions\ListExtensions.cs" />
+    <Compile Include="GameEngine\GameMechanics.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\BusinessObjects\CardModel.cs" />
-    <Compile Include="Models\BusinessObjects\GameModel.cs" />
-    <Compile Include="Models\BusinessObjects\GameStatusModel.cs" />
-    <Compile Include="Models\BusinessObjects\PlayerModel.cs" />
-    <Compile Include="Models\Database\AspNetRole.cs">
+    <Compile Include="Models\GameObjectModels\CardModel.cs" />
+    <Compile Include="Models\GameObjectModels\GameModel.cs" />
+    <Compile Include="Models\GameObjectModels\GameStatusModel.cs" />
+    <Compile Include="Models\GameObjectModels\PlayerModel.cs" />
+    <Compile Include="Database\AspNetRole.cs">
       <DependentUpon>DatabaseModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Database\AspNetUser.cs">
+    <Compile Include="Database\AspNetUser.cs">
       <DependentUpon>DatabaseModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Database\AspNetUserClaim.cs">
+    <Compile Include="Database\AspNetUserClaim.cs">
       <DependentUpon>DatabaseModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Database\AspNetUserLogin.cs">
+    <Compile Include="Database\AspNetUserLogin.cs">
       <DependentUpon>DatabaseModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Database\CardState.cs">
+    <Compile Include="Database\CardState.cs">
       <DependentUpon>DatabaseModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Database\CardType.cs">
+    <Compile Include="Database\CardType.cs">
       <DependentUpon>DatabaseModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Database\Color.cs">
+    <Compile Include="Database\Color.cs">
       <DependentUpon>DatabaseModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Database\DatabaseModel.Context.cs">
+    <Compile Include="Database\DatabaseModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DatabaseModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Database\DatabaseModel.cs">
+    <Compile Include="Database\DatabaseModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DatabaseModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Database\DatabaseModel.Designer.cs">
+    <Compile Include="Database\DatabaseModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DatabaseModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\Database\Game.cs">
+    <Compile Include="Database\Game.cs">
       <DependentUpon>DatabaseModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Database\GameCard.cs">
+    <Compile Include="Database\GameCard.cs">
       <DependentUpon>DatabaseModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Database\GamePlayer.cs">
+    <Compile Include="Database\GamePlayer.cs">
       <DependentUpon>DatabaseModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Database\GameStatus.cs">
+    <Compile Include="Database\GameStatus.cs">
       <DependentUpon>DatabaseModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Database\GameStatusType.cs">
+    <Compile Include="Database\GameStatusType.cs">
       <DependentUpon>DatabaseModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DataRepositories\CardTypeRepository.cs" />
+    <Compile Include="Models\DataRepositories\CardValuesRepository.cs" />
     <Compile Include="Models\DataRepositories\GameRepository.cs" />
     <Compile Include="Models\DataRepositories\UsersRepository.cs" />
-    <Compile Include="Models\DataRepositoryInterfaces\ICardTypeRepository.cs" />
+    <Compile Include="Models\DataRepositoryInterfaces\ICardValuesRepository.cs" />
     <Compile Include="Models\DataRepositoryInterfaces\IGameRepository.cs" />
     <Compile Include="Models\GameDetailsViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -256,23 +257,23 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\Database\DatabaseModel.Context.tt">
+    <Content Include="Database\DatabaseModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DatabaseModel.edmx</DependentUpon>
       <LastGenOutput>DatabaseModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\Database\DatabaseModel.tt">
+    <Content Include="Database\DatabaseModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DatabaseModel.edmx</DependentUpon>
       <LastGenOutput>DatabaseModel.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\Database\DatabaseModel.edmx">
+    <EntityDeploy Include="Database\DatabaseModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>DatabaseModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\Database\DatabaseModel.edmx.diagram">
+    <Content Include="Database\DatabaseModel.edmx.diagram">
       <DependentUpon>DatabaseModel.edmx</DependentUpon>
     </Content>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

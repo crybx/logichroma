@@ -1,4 +1,4 @@
-﻿using Logichroma.Models.Database;
+﻿using Logichroma.Database;
 using System.Linq;
 
 namespace Logichroma.Models.DataRepositories

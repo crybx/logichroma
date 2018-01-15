@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using Logichroma.Models.BusinessObjects;
-using Logichroma.Models.Database;
+using Logichroma.Models.GameObjectModels;
+using Logichroma.Database;
 
 namespace Logichroma
 {
