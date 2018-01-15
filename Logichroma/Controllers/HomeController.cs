@@ -13,8 +13,6 @@ namespace Logichroma.Controllers
         [AllowAnonymous]
         public ActionResult Rules()
         {
-            ViewBag.Message = "Describe the rules here.";
-
             return View();
         }
 

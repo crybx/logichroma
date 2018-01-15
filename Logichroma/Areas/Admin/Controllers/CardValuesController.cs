@@ -1,22 +1,24 @@
-﻿using Logichroma.Database;
+﻿using System.Net;
+using System.Web.Mvc;
+using Logichroma.Areas.Admin.Models.DataRepositories;
+using Logichroma.Areas.Admin.Models.DataRepositoryInterfaces;
+using Logichroma.Database;
 using Logichroma.Models.DataRepositories;
 using Logichroma.Models.DataRepositoryInterfaces;
-using System.Net;
-using System.Web.Mvc;
 
-namespace Logichroma.Controllers
+namespace Logichroma.Areas.Admin.Controllers
 {
     [Authorize(Roles = "canEditGameAssets")]
-    public class CardTypesController : Controller
+    public class CardValuesController : Controller
     {
         private readonly ICardValuesRepository _cardValuesRepo;
 
-        public CardTypesController(ICardValuesRepository cardValuesRepo)
+        public CardValuesController(ICardValuesRepository cardValuesRepo)
         {
             _cardValuesRepo = cardValuesRepo;
         }
 
-        public CardTypesController() : this(new CardValuesRepository()) {}
+        public CardValuesController() : this(new CardValuesRepository()) {}
 
         // GET: Cards
         public ActionResult Index()

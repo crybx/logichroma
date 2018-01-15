@@ -171,8 +171,10 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\CardTypesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CardValuesController.cs" />
     <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -237,10 +239,10 @@
     <Compile Include="Database\GameStatusType.cs">
       <DependentUpon>DatabaseModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DataRepositories\CardValuesRepository.cs" />
+    <Compile Include="Areas\Admin\Models\DataRepositories\CardValuesRepository.cs" />
     <Compile Include="Models\DataRepositories\GameRepository.cs" />
     <Compile Include="Models\DataRepositories\UsersRepository.cs" />
-    <Compile Include="Models\DataRepositoryInterfaces\ICardValuesRepository.cs" />
+    <Compile Include="Areas\Admin\Models\DataRepositoryInterfaces\ICardValuesRepository.cs" />
     <Compile Include="Models\DataRepositoryInterfaces\IGameRepository.cs" />
     <Compile Include="Models\GameDetailsViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -284,6 +286,10 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Dashboard\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.2.1.js" />
@@ -340,11 +346,11 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Game\Create.cshtml" />
-    <Content Include="Views\CardTypes\Create.cshtml" />
-    <Content Include="Views\CardTypes\Delete.cshtml" />
-    <Content Include="Views\CardTypes\Details.cshtml" />
-    <Content Include="Views\CardTypes\Edit.cshtml" />
-    <Content Include="Views\CardTypes\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\CardValues\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\CardValues\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\CardValues\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\CardValues\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\CardValues\Index.cshtml" />
     <Content Include="Views\Game\Index.cshtml" />
     <Content Include="Scripts\jquery-3.2.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.2.1.min.map" />

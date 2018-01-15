@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Logichroma.Database;
 
-namespace Logichroma.Models.DataRepositoryInterfaces
+namespace Logichroma.Areas.Admin.Models.DataRepositoryInterfaces
 {
     public interface ICardValuesRepository
     {
