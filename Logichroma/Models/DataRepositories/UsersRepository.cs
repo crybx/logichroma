@@ -1,9 +1,10 @@
 ﻿using Logichroma.Database;
+using Logichroma.Models.DataRepositoryInterfaces;
 using System.Linq;
 
 namespace Logichroma.Models.DataRepositories
 {
-    public class UsersRepository
+    public class UsersRepository : IUsersRepository
     {
         private readonly LogichromaDbEntities _dataContext = new LogichromaDbEntities();
 

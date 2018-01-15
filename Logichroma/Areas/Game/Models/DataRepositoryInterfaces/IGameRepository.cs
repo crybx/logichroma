@@ -1,7 +1,7 @@
-﻿using Logichroma.Models.GameObjectModels;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Logichroma.Areas.Game.Models.GameObjectModels;
 
-namespace Logichroma.Models.DataRepositoryInterfaces
+namespace Logichroma.Areas.Game.Models.DataRepositoryInterfaces
 {
     public interface IGameRepository
     {

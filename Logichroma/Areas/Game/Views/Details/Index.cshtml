@@ -1,4 +1,4 @@
-﻿@model Logichroma.Models.GameDetailsViewModel
+﻿@model Logichroma.Areas.Game.Models.GameDetailsViewModel
 @{
     ViewBag.Title = "Logichroma";
 }
@@ -21,7 +21,7 @@
 
 @if (Model.CanJoinGame)
 {
-    using (Html.BeginForm("Join", "Game"))
+    using (Html.BeginForm("Join", "Details"))
     {
         @Html.AntiForgeryToken()
         @Html.HiddenFor(x => x.Game.Id);
@@ -47,7 +47,7 @@
 {
     <div>
         <p>
-            <a class="btn btn-primary btn-lg" href="@Url.Action("StartGame", "Game", new { gameId = Model.Game.Id })" >START GAME</a>
+            <a class="btn btn-primary btn-lg" href="@Url.Action("StartGame", "Details", new { Area = "Game", gameId = Model.Game.Id })" >START GAME</a>
         </p>
     </div>
 }

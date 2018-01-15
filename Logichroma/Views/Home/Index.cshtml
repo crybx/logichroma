@@ -6,7 +6,7 @@
     <h1>Logichroma</h1>
     <p class="lead">A cooperative logic and memory game where players have to work together to build sequential stacks of color matched cards.</p>
     <p>
-        <a class="btn btn-primary btn-lg" href="@Url.Action("Create", "Game")" >Start a New Game &raquo;</a>
+        <a class="btn btn-primary btn-lg" href="@Url.Action("Index", "Create", new { Area = "Game" })" >Start a New Game &raquo;</a>
     </p>
 </div>
 
@@ -15,7 +15,7 @@
         <h2>Continue a game</h2>
         <p>You can easily pick up where you left off on a previously started Logichroma game.</p>
         <p>
-            <a class="btn btn-default" href="@Url.Action("Index", "Game")">Continue &raquo;</a>
+            <a class="btn btn-default" href="@Url.Action("Index", "List", new { Area = "Game" })">Continue &raquo;</a>
         </p>
     </div>
     <div class="col-md-4">
