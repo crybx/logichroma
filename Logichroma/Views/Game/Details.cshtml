@@ -6,11 +6,11 @@
 <h2>@Model.Game.Name</h2>
 
 <div>
-    <label>@Model.Game.GamePlayers.Count/5 players joined so far.</label>
+    <label>Game Status: </label>@Model.Game.Status
 </div>
 
 <div>
-    <label>Players:</label>
+    <label>@Model.Game.GamePlayers.Count player(s) in this game:</label>
     <ul>
         @foreach (var player in Model.Game.GamePlayers)
         {
@@ -19,7 +19,7 @@
     </ul>
 </div>
 
-@if (Model.CurrentPlayer == null && Model.PlayerCount < 5)
+@if (Model.CanJoinGame)
 {
     using (Html.BeginForm("Join", "Game"))
     {
@@ -43,10 +43,13 @@
     }
 }
 
-@if (Model.CurrentPlayer != null && Model.CurrentPlayer.IsGameOwner && Model.PlayerCount > 1)
+@if (Model.CanStartGame)
 {
-    //TODO: Show a button for getting the game started.
-    <div>START GAME</div>
+    <div>
+        <p>
+            <a class="btn btn-primary btn-lg" href="@Url.Action("StartGame", "Game", new { gameId = Model.Game.Id })" >START GAME</a>
+        </p>
+    </div>
 }
 
 <h3>The order of the deck is:</h3>
