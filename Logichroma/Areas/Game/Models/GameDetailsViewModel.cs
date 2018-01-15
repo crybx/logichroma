@@ -1,8 +1,7 @@
-﻿using System.Linq;
-using Logichroma.Models.GameObjectModels;
-using Logichroma.Database;
+﻿using Logichroma.Areas.Game.Models.GameObjectModels;
+using System.Linq;
 
-namespace Logichroma.Models
+namespace Logichroma.Areas.Game.Models
 {
     public class GameDetailsViewModel
     {

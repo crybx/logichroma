@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using Logichroma.Models;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using Logichroma.Models;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;

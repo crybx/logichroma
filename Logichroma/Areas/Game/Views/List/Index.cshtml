@@ -1,0 +1,16 @@
+﻿@model List<Logichroma.Areas.Game.Models.GameObjectModels.GameModel>
+@{
+    ViewBag.Title = "Logichroma";
+}
+
+<h2>Games</h2>
+
+<div>
+    @foreach (var game in Model)
+    {
+        <div>
+            @game.Id - @game.Name - Game @game.Status - @game.GamePlayers.Count Players -
+            @Html.ActionLink("Details", "Index", "Details", new { gameId = game.Id }, null)
+        </div>
+    }
+</div>

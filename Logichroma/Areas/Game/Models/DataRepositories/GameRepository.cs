@@ -1,13 +1,13 @@
 ﻿using AutoMapper;
+using Logichroma.Areas.Game.Models.DataRepositoryInterfaces;
+using Logichroma.Areas.Game.Models.GameObjectModels;
 using Logichroma.Database;
 using Logichroma.GameEngine;
-using Logichroma.Models.GameObjectModels;
-using Logichroma.Models.DataRepositoryInterfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Logichroma.Models.DataRepositories
+namespace Logichroma.Areas.Game.Models.DataRepositories
 {
     public class GameRepository : IGameRepository
     {
@@ -16,7 +16,7 @@ namespace Logichroma.Models.DataRepositories
         public GameModel GetGame(int gameId)
         {
             var game = _db.Games.FirstOrDefault(x => x.Id == gameId);
-            var gameModel = Mapper.Map<Game, GameModel>(game);
+            var gameModel = Mapper.Map<Database.Game, GameModel>(game);
             return gameModel;
         }
 
@@ -27,7 +27,7 @@ namespace Logichroma.Models.DataRepositories
                                                      s.GameStatusType.Name == "Completed"))
                 .ToList();
 
-            var gameModels = Mapper.Map<List<Game>, List<GameModel>>(games);
+            var gameModels = Mapper.Map<List<Database.Game>, List<GameModel>>(games);
 
             return gameModels;
         }
@@ -40,7 +40,7 @@ namespace Logichroma.Models.DataRepositories
 
         public GameModel AddGame(GameModel gameOptions)
         {
-            var game = new Game
+            var game = new Database.Game
             {
                 Name = gameOptions.Name,
                 DifficultyLvl = 1,
@@ -61,7 +61,7 @@ namespace Logichroma.Models.DataRepositories
             _db.GameCards.AddRange(deck);
             _db.SaveChanges();
 
-            var gameModel = Mapper.Map<Game, GameModel>(game);
+            var gameModel = Mapper.Map<Database.Game, GameModel>(game);
             return gameModel;
         }
 

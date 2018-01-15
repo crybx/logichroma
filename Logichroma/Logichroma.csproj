@@ -173,9 +173,13 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\Game\Controllers\CreateController.cs" />
+    <Compile Include="Areas\Game\Controllers\GameController.cs" />
+    <Compile Include="Areas\Game\Controllers\ListController.cs" />
+    <Compile Include="Areas\Game\GameAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\CardValuesController.cs" />
-    <Compile Include="Controllers\GameController.cs" />
+    <Compile Include="Areas\Game\Controllers\DetailsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Extensions\ListExtensions.cs" />
@@ -184,10 +188,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\GameObjectModels\CardModel.cs" />
-    <Compile Include="Models\GameObjectModels\GameModel.cs" />
-    <Compile Include="Models\GameObjectModels\GameStatusModel.cs" />
-    <Compile Include="Models\GameObjectModels\PlayerModel.cs" />
+    <Compile Include="Areas\Game\Models\GameObjectModels\CardModel.cs" />
+    <Compile Include="Areas\Game\Models\GameObjectModels\GameModel.cs" />
+    <Compile Include="Areas\Game\Models\GameObjectModels\GameStatusModel.cs" />
+    <Compile Include="Areas\Game\Models\GameObjectModels\PlayerModel.cs" />
     <Compile Include="Database\AspNetRole.cs">
       <DependentUpon>DatabaseModel.tt</DependentUpon>
     </Compile>
@@ -240,11 +244,12 @@
       <DependentUpon>DatabaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Areas\Admin\Models\DataRepositories\CardValuesRepository.cs" />
-    <Compile Include="Models\DataRepositories\GameRepository.cs" />
+    <Compile Include="Areas\Game\Models\DataRepositories\GameRepository.cs" />
     <Compile Include="Models\DataRepositories\UsersRepository.cs" />
     <Compile Include="Areas\Admin\Models\DataRepositoryInterfaces\ICardValuesRepository.cs" />
-    <Compile Include="Models\DataRepositoryInterfaces\IGameRepository.cs" />
-    <Compile Include="Models\GameDetailsViewModel.cs" />
+    <Compile Include="Areas\Game\Models\DataRepositoryInterfaces\IGameRepository.cs" />
+    <Compile Include="Models\DataRepositoryInterfaces\IUsersRepository.cs" />
+    <Compile Include="Areas\Game\Models\GameDetailsViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -290,6 +295,8 @@
     <Content Include="Areas\Admin\Views\Dashboard\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Game\Views\web.config" />
+    <Content Include="Areas\Game\Views\_ViewStart.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.2.1.js" />
@@ -308,7 +315,7 @@
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Views\Game\Details.cshtml" />
+    <Content Include="Areas\Game\Views\Details\Index.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -345,13 +352,13 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Game\Create.cshtml" />
+    <Content Include="Areas\Game\Views\Create\Index.cshtml" />
     <Content Include="Areas\Admin\Views\CardValues\Create.cshtml" />
     <Content Include="Areas\Admin\Views\CardValues\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\CardValues\Details.cshtml" />
     <Content Include="Areas\Admin\Views\CardValues\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\CardValues\Index.cshtml" />
-    <Content Include="Views\Game\Index.cshtml" />
+    <Content Include="Areas\Game\Views\List\Index.cshtml" />
     <Content Include="Scripts\jquery-3.2.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.2.1.min.map" />
     <None Include="Web.AzureSandbox.config">
@@ -361,6 +368,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Game\Views\Shared\" />
     <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
   <ItemGroup>

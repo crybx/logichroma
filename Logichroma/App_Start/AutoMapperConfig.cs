@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Logichroma.Models.GameObjectModels;
+using Logichroma.Areas.Game.Models.GameObjectModels;
 using Logichroma.Database;
 
 namespace Logichroma

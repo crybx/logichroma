@@ -1,10 +1,9 @@
-﻿@using Logichroma.Models
-@model GameDetailsViewModel
+﻿@model Logichroma.Areas.Game.Models.GameDetailsViewModel
 @{
     ViewBag.Title = "Logichroma";
 }
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Create", "Create"))
 {
     @Html.AntiForgeryToken()
 
