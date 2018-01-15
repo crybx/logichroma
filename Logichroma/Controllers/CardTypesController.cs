@@ -1,4 +1,4 @@
-﻿using Logichroma.Models.Database;
+﻿using Logichroma.Database;
 using Logichroma.Models.DataRepositories;
 using Logichroma.Models.DataRepositoryInterfaces;
 using System.Net;
@@ -9,19 +9,19 @@ namespace Logichroma.Controllers
     [Authorize(Roles = "canEditGameAssets")]
     public class CardTypesController : Controller
     {
-        private readonly ICardTypeRepository _cardTypeRepo;
+        private readonly ICardValuesRepository _cardValuesRepo;
 
-        public CardTypesController(ICardTypeRepository cardTypeRepo)
+        public CardTypesController(ICardValuesRepository cardValuesRepo)
         {
-            _cardTypeRepo = cardTypeRepo;
+            _cardValuesRepo = cardValuesRepo;
         }
 
-        public CardTypesController() : this(new CardTypeRepository()) {}
+        public CardTypesController() : this(new CardValuesRepository()) {}
 
         // GET: Cards
         public ActionResult Index()
         {
-            var model = _cardTypeRepo.GetCards();
+            var model = _cardValuesRepo.GetCards();
             return View(model);
         }
 
@@ -33,7 +33,7 @@ namespace Logichroma.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var cardType = _cardTypeRepo.GetCardDetails(id.Value);
+            var cardType = _cardValuesRepo.GetCardDetails(id.Value);
 
             if (cardType == null)
             {
@@ -58,7 +58,7 @@ namespace Logichroma.Controllers
         {
             if (ModelState.IsValid)
             {
-                _cardTypeRepo.AddCard(cardType);
+                _cardValuesRepo.AddCard(cardType);
                 return RedirectToAction("Index");
             }
 
@@ -72,7 +72,7 @@ namespace Logichroma.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var card = _cardTypeRepo.GetCardDetails(id.Value);
+            var card = _cardValuesRepo.GetCardDetails(id.Value);
             if (card == null)
             {
                 return HttpNotFound();
@@ -89,7 +89,7 @@ namespace Logichroma.Controllers
         {
             if (ModelState.IsValid)
             {
-                _cardTypeRepo.UpdateCard(cardType);
+                _cardValuesRepo.UpdateCard(cardType);
                 return RedirectToAction("Index");
             }
             return View(cardType);
@@ -102,7 +102,7 @@ namespace Logichroma.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var cardType = _cardTypeRepo.GetCardDetails(id.Value);
+            var cardType = _cardValuesRepo.GetCardDetails(id.Value);
             if (cardType == null)
             {
                 return HttpNotFound();
@@ -115,7 +115,7 @@ namespace Logichroma.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            _cardTypeRepo.DeleteCard(id);
+            _cardValuesRepo.DeleteCard(id);
             return RedirectToAction("Index");
         }
     }

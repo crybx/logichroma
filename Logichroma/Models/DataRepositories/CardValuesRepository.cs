@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using Logichroma.Models.Database;
+using Logichroma.Database;
 using Logichroma.Models.DataRepositoryInterfaces;
 
 namespace Logichroma.Models.DataRepositories
 {
-    public class CardTypeRepository : ICardTypeRepository
+    public class CardValuesRepository : ICardValuesRepository
     {
         private readonly LogichromaDbEntities _db = new LogichromaDbEntities();
         
@@ -43,6 +43,9 @@ namespace Logichroma.Models.DataRepositories
         public void DeleteCard(int id)
         {
             var card = _db.CardTypes.Find(id);
+
+            if (card == null) return;
+
             _db.CardTypes.Remove(card);
             _db.SaveChanges();
         }

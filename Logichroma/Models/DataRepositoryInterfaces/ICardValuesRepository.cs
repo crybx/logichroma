@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using Logichroma.Models.Database;
+using Logichroma.Database;
 
 namespace Logichroma.Models.DataRepositoryInterfaces
 {
-    public interface ICardTypeRepository
+    public interface ICardValuesRepository
     {
         IList<CardType> GetCards();
         CardType GetCardDetails(int id);

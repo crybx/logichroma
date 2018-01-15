@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
-using Logichroma.Extensions;
-using Logichroma.Models.BusinessObjects;
-using Logichroma.Models.Database;
+using Logichroma.Database;
+using Logichroma.GameEngine;
+using Logichroma.Models.GameObjectModels;
 using Logichroma.Models.DataRepositoryInterfaces;
 using System;
 using System.Collections.Generic;
@@ -20,7 +20,7 @@ namespace Logichroma.Models.DataRepositories
             return gameModel;
         }
 
-        public List<GameModel> GetGames()
+        public List<GameModel> GetActiveGames()
         {
             var games = _db.Games
                 .Where(x => !x.GameStatuses.Any(s => s.GameStatusType.Name == "Aborted" ||
@@ -51,8 +51,16 @@ namespace Logichroma.Models.DataRepositories
             _db.Games.Add(game);
             _db.SaveChanges();
 
-            createShuffledDeck(game);
-            
+            // Create the deck.
+            var colors = _db.Colors.ToList();
+            var cardValues = _db.CardTypes.ToList();
+            var inDeck = _db.CardStates.FirstOrDefault(x => x.Name == "Deck");
+            var deck = GameMechanics.CreateGameDeck(colors, cardValues, inDeck, game.Id);
+
+            // Save the deck in the database.
+            _db.GameCards.AddRange(deck);
+            _db.SaveChanges();
+
             var gameModel = Mapper.Map<Game, GameModel>(game);
             return gameModel;
         }
@@ -82,55 +90,6 @@ namespace Logichroma.Models.DataRepositories
 
             _db.GameStatuses.Add(status);
             _db.SaveChanges();
-        }
-
-        private void createShuffledDeck(Game game)
-        {
-            // Create the deck.
-            var deck = createDeck();
-
-            // Shuffle the deck.
-            deck.Shuffle();
-
-            // Record the order of the GameCard objects in the deck.
-            for (var i = 0; i < deck.Count; i++)
-            {
-                deck[i].Game = game;
-                deck[i].Order = i;
-            }
-
-            // Save the deck in the database.
-            _db.GameCards.AddRange(deck);
-            _db.SaveChanges();
-        }
-
-        private List<GameCard> createDeck()
-        {
-            var deck = new List<GameCard>();
-
-            var colors = _db.Colors.ToList();
-            var cardValues = _db.CardTypes.ToList();
-            var cardStateInDeck = _db.CardStates.FirstOrDefault(x => x.Name == "Deck");
-            
-            foreach (var color in colors)
-            {
-                foreach (var cardValue in cardValues)
-                {
-                    for (var i = 0; i < cardValue.CountInDeck; i++)
-                    {
-                        var card = new GameCard
-                        {
-                            CardType = cardValue,
-                            Color = color,
-                            CardState = cardStateInDeck
-                        };
-
-                        deck.Add(card);
-                    }
-                }
-            }
-
-            return deck;
         }
     }
 }

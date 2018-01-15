@@ -1,4 +1,4 @@
-﻿namespace Logichroma.Models.BusinessObjects
+﻿namespace Logichroma.Models.GameObjectModels
 {
     public class CardModel
     {

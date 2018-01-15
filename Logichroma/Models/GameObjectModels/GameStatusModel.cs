@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Logichroma.Models.BusinessObjects
+namespace Logichroma.Models.GameObjectModels
 {
     public class GameStatusModel
     {
