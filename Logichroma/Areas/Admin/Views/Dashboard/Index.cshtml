@@ -1,0 +1,12 @@
+﻿@{
+    ViewBag.Title = "Admin Dashboard";
+}
+
+<h1>@ViewBag.Title</h1>
+
+<div class="row">
+    <label>Game Assets:</label>
+    <ul class="nav navbar-nav">
+        <li>@Html.ActionLink("Card Values", "Index", "CardValues", new { Area = "Admin" }, new { })</li>
+    </ul>
+</div>

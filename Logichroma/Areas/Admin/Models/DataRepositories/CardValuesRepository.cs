@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using Logichroma.Areas.Admin.Models.DataRepositoryInterfaces;
 using Logichroma.Database;
 using Logichroma.Models.DataRepositoryInterfaces;
 
-namespace Logichroma.Models.DataRepositories
+namespace Logichroma.Areas.Admin.Models.DataRepositories
 {
     public class CardValuesRepository : ICardValuesRepository
     {
