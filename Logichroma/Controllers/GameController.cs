@@ -44,20 +44,17 @@ namespace Logichroma.Controllers
 
             model.Game = _gameRepo.AddGame(model.Game);
 
-            _gameRepo.AddGameStatus("Created", model.Game);
+            var gameId = model.Game.Id;
+            _gameRepo.AddGameStatus("Created", gameId);
             
             addPlayerToGame(model, true);
 
-            return RedirectToAction(nameof(Details), new { gameId = model.Game.Id });
+            return RedirectToAction(nameof(Details), new { gameId });
         }
         
         public ActionResult Details(int gameId)
         {
-            var model = new GameDetailsViewModel
-            {
-                Game = _gameRepo.GetGame(gameId),
-                CurrentUserId = User.Identity.GetUserId()
-            };
+            var model = getGameDetails(gameId);
             
             return View(model);
         }
@@ -70,12 +67,35 @@ namespace Logichroma.Controllers
             return RedirectToAction(nameof(Details), new { gameId = model.Game.Id });
         }
 
+        [HttpGet]
+        public ActionResult StartGame(int gameId)
+        {
+            var model = getGameDetails(gameId);
+
+            if (!model.CanStartGame) return View(nameof(Details), model);
+
+            _gameRepo.AddGameStatus("Started", gameId);
+
+            return View(nameof(Details), model);
+        }
+
         private void addPlayerToGame(GameDetailsViewModel model, bool isOwner)
         {
             var userId = User.Identity.GetUserId();
             var nickname = string.IsNullOrWhiteSpace(model.PlayerNickname) ? null : model.PlayerNickname;
 
             _gameRepo.AddPlayerToGame(model.Game.Id, userId, nickname, isOwner);
+        }
+
+        private GameDetailsViewModel getGameDetails(int gameId)
+        {
+            var model = new GameDetailsViewModel
+            {
+                Game = _gameRepo.GetGame(gameId),
+                CurrentUserId = User.Identity.GetUserId()
+            };
+
+            return model;
         }
     }
 }

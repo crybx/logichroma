@@ -71,11 +71,11 @@ namespace Logichroma.Models.DataRepositories
             _db.SaveChanges();
         }
 
-        public void AddGameStatus(string gameStatus, GameModel game)
+        public void AddGameStatus(string gameStatus, int gameId)
         {
             var status = new GameStatus
             {
-                GameId = game.Id,
+                GameId = gameId,
                 DateTime = DateTime.Now,
                 GameStatusType = _db.GameStatusTypes.FirstOrDefault(x => x.Name == gameStatus)
             };
