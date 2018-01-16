@@ -2,9 +2,11 @@
 using Logichroma.Areas.Game.Models.DataRepositoryInterfaces;
 using Logichroma.Areas.Game.Models.GameObjectModels;
 using Logichroma.Database;
+using Logichroma.Extensions;
 using Logichroma.GameEngine;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 
 namespace Logichroma.Areas.Game.Models.DataRepositories
@@ -90,6 +92,42 @@ namespace Logichroma.Areas.Game.Models.DataRepositories
 
             _db.GameStatuses.Add(status);
             _db.SaveChanges();
+        }
+        
+        public void SetPlayerOrder(int gameId)
+        {
+            var players = _db.GamePlayers.Where(x => x.GameId == gameId).ToList();
+
+            players.Shuffle();
+
+            // Set a random order for the players.
+            for (var i = 0; i < players.Count; i++)
+            {
+                players[i].PlayerNumber = i;
+                _db.Entry(players[i]).State = EntityState.Modified;
+            }
+
+            _db.SaveChanges();
+        }
+
+        public void DealStartingCards(int gameId)
+        {
+            var game = _db.Games.FirstOrDefault(x => x.Id == gameId);
+
+            if (game != null)
+            {
+                var inHand = _db.CardStates.FirstOrDefault(x => x.Name == "Hand");
+                var updatedCards = GameMechanics.DealStartingCards(game, inHand);
+
+                game.NextCard = updatedCards.Count - 1;
+
+                foreach (var card in updatedCards)
+                {
+                    _db.Entry(card).State = EntityState.Modified;
+                }
+
+                _db.SaveChanges();
+            }
         }
     }
 }

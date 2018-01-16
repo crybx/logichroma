@@ -1,5 +1,4 @@
 ﻿using Logichroma.Areas.Game.Models;
-using Microsoft.AspNet.Identity;
 using System.Web.Mvc;
 
 namespace Logichroma.Areas.Game.Controllers
@@ -9,8 +8,7 @@ namespace Logichroma.Areas.Game.Controllers
     {
         public ActionResult Index(int gameId)
         {
-            var model = getGameDetails(gameId);
-            
+            var model = GetGameDetails(gameId);
             return View(model);
         }
 
@@ -25,24 +23,15 @@ namespace Logichroma.Areas.Game.Controllers
         [HttpGet]
         public ActionResult StartGame(int gameId)
         {
-            var model = getGameDetails(gameId);
+            var model = GetGameDetails(gameId);
 
             if (!model.CanStartGame) return View(nameof(Index), model);
 
+            GameRepo.SetPlayerOrder(gameId);
+            GameRepo.DealStartingCards(gameId);
             GameRepo.AddGameStatus("Started", gameId);
 
-            return View(nameof(Index), model);
-        }
-        
-        private GameDetailsViewModel getGameDetails(int gameId)
-        {
-            var model = new GameDetailsViewModel
-            {
-                Game = GameRepo.GetGame(gameId),
-                CurrentUserId = User.Identity.GetUserId()
-            };
-
-            return model;
+            return RedirectToAction("Index", "Play", new { gameId });
         }
     }
 }
