@@ -25,5 +25,16 @@ namespace Logichroma.Areas.Game.Controllers
 
             GameRepo.AddPlayerToGame(model.Game.Id, userId, nickname, isOwner);
         }
+
+        public GameDetailsViewModel GetGameDetails(int gameId)
+        {
+            var model = new GameDetailsViewModel
+            {
+                Game = GameRepo.GetGame(gameId),
+                CurrentUserId = User.Identity.GetUserId()
+            };
+
+            return model;
+        }
     }
 }

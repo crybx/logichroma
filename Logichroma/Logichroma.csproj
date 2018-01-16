@@ -176,6 +176,7 @@
     <Compile Include="Areas\Game\Controllers\CreateController.cs" />
     <Compile Include="Areas\Game\Controllers\GameController.cs" />
     <Compile Include="Areas\Game\Controllers\ListController.cs" />
+    <Compile Include="Areas\Game\Controllers\PlayController.cs" />
     <Compile Include="Areas\Game\GameAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\CardValuesController.cs" />
@@ -297,6 +298,7 @@
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Game\Views\web.config" />
     <Content Include="Areas\Game\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Game\Views\Play\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.2.1.js" />
@@ -368,7 +370,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Game\Views\Shared\" />
     <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
   <ItemGroup>
