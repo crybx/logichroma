@@ -1,4 +1,4 @@
-﻿namespace Logichroma.Areas.Game.Models.GameObjectModels
+﻿namespace Logichroma.Areas.Game.Models.GameModels
 {
     public class PlayerModel
     {

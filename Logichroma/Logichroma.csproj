@@ -178,21 +178,27 @@
     <Compile Include="Areas\Game\Controllers\ListController.cs" />
     <Compile Include="Areas\Game\Controllers\PlayController.cs" />
     <Compile Include="Areas\Game\GameAreaRegistration.cs" />
+    <Compile Include="Areas\Game\Models\GameModels\ChildObjects\CardStateModel.cs" />
+    <Compile Include="Areas\Game\Models\GameModels\ChildObjects\CardTypeModel.cs" />
+    <Compile Include="Areas\Game\Models\GameModels\ChildObjects\ColorModel.cs" />
+    <Compile Include="Areas\Game\Models\GameModels\ChildObjects\GameStatusTypeModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\CardValuesController.cs" />
     <Compile Include="Areas\Game\Controllers\DetailsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Extensions\ListExtensions.cs" />
+    <Compile Include="GameEngine\ColorRules.cs" />
+    <Compile Include="GameEngine\Enums\CardColor.cs" />
     <Compile Include="GameEngine\GameMechanics.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Areas\Game\Models\GameObjectModels\CardModel.cs" />
-    <Compile Include="Areas\Game\Models\GameObjectModels\GameModel.cs" />
-    <Compile Include="Areas\Game\Models\GameObjectModels\GameStatusModel.cs" />
-    <Compile Include="Areas\Game\Models\GameObjectModels\PlayerModel.cs" />
+    <Compile Include="Areas\Game\Models\GameModels\CardModel.cs" />
+    <Compile Include="Areas\Game\Models\GameModels\GameModel.cs" />
+    <Compile Include="Areas\Game\Models\GameModels\ChildObjects\GameStatusModel.cs" />
+    <Compile Include="Areas\Game\Models\GameModels\PlayerModel.cs" />
     <Compile Include="Database\AspNetRole.cs">
       <DependentUpon>DatabaseModel.tt</DependentUpon>
     </Compile>
