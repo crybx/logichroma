@@ -1,18 +1,19 @@
-﻿using Logichroma.Database;
+﻿using Logichroma.Areas.Game.Models.GameModels;
+using Logichroma.Areas.Game.Models.GameModels.ChildObjects;
+using Logichroma.Database;
 using Logichroma.Extensions;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Logichroma.GameEngine
 {
     public static class GameMechanics
     {
-        public static List<GameCard> DealStartingCards(Game game, CardState inHand)
+        public static GameModel DealStartingCards(GameModel game, CardStateModel inHand)
         {
-            var deck = game.GameCards.ToList();
+            game.ChangedCards = new List<CardModel>();
+            game.NextCard = 0;
+
             var players = game.GamePlayers;
-            var updatedCards = new List<GameCard>();
-            var nextCard = 0;
             var handSize = 5;
 
             if (players.Count == 4 || players.Count == 5) { handSize = 4; }
@@ -21,16 +22,19 @@ namespace Logichroma.GameEngine
             {
                 for (var i = 0; i < handSize; i++)
                 {
-                    var card = deck[nextCard++];
-                    card.GamePlayer = player;
+                    var card = game.GameCards[game.NextCard];
+
+                    card.GamePlayerId = player.GamePlayerId;
                     card.CardState = inHand;
-                    updatedCards.Add(card);
+
+                    game.ChangedCards.Add(card);
+                    game.NextCard++;
                 }
             }
 
-            return updatedCards;
+            return game;
         }
-        
+
         public static List<GameCard> CreateGameDeck(List<Color> colors, List<CardType> cardValues, CardState inDeck, int gameId)
         {
             var deck = new List<GameCard>();

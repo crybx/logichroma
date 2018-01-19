@@ -2,13 +2,10 @@
 @{
     ViewBag.Title = "Logichroma";
 }
-
 <h2>@Model.Game.Name</h2>
-
 <div>
     <label>Game Status: </label>@Model.Game.Status
 </div>
-
 <div>
     <label>@Model.Game.GamePlayers.Count player(s) in this game:</label>
     <ul>
@@ -18,9 +15,7 @@
         }
     </ul>
 </div>
-
 <h3>Player Hands:</h3>
-
 @foreach (var player in Model.Game.PlayersInOrder)
 {
     var playerCards = Model.Game.GameCards.Where(x => x.GamePlayerId == player.GamePlayerId);
@@ -41,3 +36,17 @@
     <div class="clear"></div>
 }
 
+<h3>The remaining deck is:</h3>
+<div class="deck">
+    @foreach (var card in Model.Game.GameCards.Where(x => x.CardState.Name == "Deck"))
+    {
+        <div class="card" style="background-color: @card.Color.BackgroundColor;">
+            <div class="card-container">
+                <p style="color: @card.Color.TextColor">
+                    @card.CardType.FaceValue
+                </p>
+            </div>
+        </div>
+    }
+</div>
+<div class="clear"></div>
