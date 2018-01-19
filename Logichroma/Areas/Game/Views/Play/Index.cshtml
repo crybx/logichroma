@@ -21,7 +21,7 @@
 
 <h3>Player Hands:</h3>
 
-@foreach (var player in Model.Game.GamePlayersInOrder)
+@foreach (var player in Model.Game.PlayersInOrder)
 {
     var playerCards = Model.Game.GameCards.Where(x => x.GamePlayerId == player.GamePlayerId);
 
@@ -29,10 +29,10 @@
     <div class="deck">
         @foreach (var card in playerCards)
         {
-            <div class="card" style="background-color: @card.BackgroundColor;">
+            <div class="card" style="background-color: @card.Color.BackgroundColor;">
                 <div class="card-container">
-                    <p style="color: @card.TextColor">
-                        @card.CardTypeFaceValue
+                    <p style="color: @card.Color.TextColor">
+                        @card.CardType.FaceValue
                     </p>
                 </div>
             </div>

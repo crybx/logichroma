@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Logichroma.Areas.Game.Models.GameObjectModels;
+using Logichroma.Areas.Game.Models.GameModels;
 
 namespace Logichroma.Areas.Game.Models.DataRepositoryInterfaces
 {

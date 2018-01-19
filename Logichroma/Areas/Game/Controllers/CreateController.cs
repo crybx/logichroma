@@ -1,5 +1,5 @@
 ﻿using Logichroma.Areas.Game.Models;
-using Logichroma.Areas.Game.Models.GameObjectModels;
+using Logichroma.Areas.Game.Models.GameModels;
 using System.Web.Mvc;
 
 namespace Logichroma.Areas.Game.Controllers

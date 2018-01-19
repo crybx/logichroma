@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Logichroma.Areas.Game.Models.DataRepositoryInterfaces;
-using Logichroma.Areas.Game.Models.GameObjectModels;
+using Logichroma.Areas.Game.Models.GameModels;
 using Logichroma.Database;
 using Logichroma.Extensions;
 using Logichroma.GameEngine;
