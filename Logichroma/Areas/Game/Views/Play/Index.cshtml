@@ -5,6 +5,7 @@
 }
 
 <h2>@Model.Game.Name</h2>
+<p>Waiting on @Model.CurrentPlayer.DisplayName</p>
 
 <!-- DECK -->
 <div>
@@ -55,6 +56,15 @@
             }
         </div>
         <div class="clear"></div>
+
+        if (Model.IsCurrentPlayer && player == Model.Player)
+        {
+            <div style="padding: 5px 0 10px 5px;">
+                <a class="btn btn-default" href="#">Give Hint</a>
+                <a class="btn btn-default" href="#">Discard Card</a>
+                <a class="btn btn-default" href="#">Play Card</a>
+            </div>
+        }
     }
 </div>
 
