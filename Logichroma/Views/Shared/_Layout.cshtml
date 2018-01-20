@@ -22,8 +22,8 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Games", "Index", "List", new { Area = "Game" }, new {})</li>
-                    <li>@Html.ActionLink("Rules", "Rules", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Rules", "Rules", "Home", new { Area = "" }, new {})</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home", new { Area = "" }, new {})</li>
                     @if (User.IsInRole("canManageUsers"))
                     {
                         <li>@Html.ActionLink("Admin Dashboard", "Index", "Dashboard", new { Area = "Admin" }, new {})</li>
