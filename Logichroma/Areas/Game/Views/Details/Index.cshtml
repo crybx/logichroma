@@ -14,7 +14,7 @@
     <ul>
         @foreach (var player in Model.Game.GamePlayers)
         {
-            <li>@(player.Nickname ?? player.UserName)</li>
+            <li>@player.DisplayName</li>
         }
     </ul>
 </div>
