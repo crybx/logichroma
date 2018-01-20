@@ -15,11 +15,11 @@ namespace Logichroma.Database
 using System;
     using System.Collections.Generic;
     
-public partial class Color
+public partial class CardValue
 {
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public Color()
+    public CardValue()
     {
 
         this.GameCards = new HashSet<GameCard>();
@@ -29,7 +29,9 @@ public partial class Color
 
     public int Id { get; set; }
 
-    public string Name { get; set; }
+    public int FaceValue { get; set; }
+
+    public int CountInDeck { get; set; }
 
 
 

@@ -12,8 +12,8 @@ namespace Logichroma.Areas.Game.Models.GameModels
         
         public CardStateModel CardState { get; set; }
 
-        public CardTypeModel CardType { get; set; }
+        public CardValueModel CardValue { get; set; }
         
-        public ColorModel Color { get; set; }
+        public CardSuitModel CardSuit { get; set; }
     }
 }

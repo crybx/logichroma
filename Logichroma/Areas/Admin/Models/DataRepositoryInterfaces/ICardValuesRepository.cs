@@ -5,10 +5,10 @@ namespace Logichroma.Areas.Admin.Models.DataRepositoryInterfaces
 {
     public interface ICardValuesRepository
     {
-        IList<CardType> GetCards();
-        CardType GetCardDetails(int id);
-        void AddCard(CardType card);
-        void UpdateCard(CardType card);
+        IList<CardValue> GetCards();
+        CardValue GetCardDetails(int id);
+        void AddCard(CardValue card);
+        void UpdateCard(CardValue card);
         void DeleteCard(int id);
     }
 }

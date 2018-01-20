@@ -9,8 +9,8 @@ Post-Deployment Script Template
                SELECT * FROM [$(TableName)]					
 --------------------------------------------------------------------------------------
 */
-:r AddColors.sql
+:r AddCardSuits.sql
 :r AddCardStates.sql
-:r AddCardTypes.sql
+:r AddCardValues.sql
 :r AddGameStatusTypes.sql
 :r AddAspNetRoles.sql

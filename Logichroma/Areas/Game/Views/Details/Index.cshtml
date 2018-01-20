@@ -65,10 +65,10 @@
 <div class="deck">
     @foreach (var card in Model.Game.GameCards)
     {
-        <div class="card" style="background-color: @card.Color.BackgroundColor;">
+        <div class="card" style="background-color: @card.CardSuit.BackgroundColor;">
             <div class="card-container">
-                <p style="color: @card.Color.TextColor">
-                    @card.CardType.FaceValue
+                <p style="color: @card.CardSuit.TextColor">
+                    @card.CardValue.FaceValue
                 </p>
             </div>
         </div>

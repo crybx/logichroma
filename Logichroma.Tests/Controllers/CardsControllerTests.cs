@@ -1,10 +1,8 @@
-﻿using System.Web.Mvc;
-using Logichroma.Areas.Admin.Controllers;
+﻿using Logichroma.Areas.Admin.Controllers;
 using Logichroma.Areas.Admin.Models.DataRepositoryInterfaces;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using Logichroma.Controllers;
-using Logichroma.Models.DataRepositoryInterfaces;
+using System.Web.Mvc;
 
 namespace Logichroma.Tests.Controllers
 {
@@ -15,8 +13,8 @@ namespace Logichroma.Tests.Controllers
         public void Index()
         {
             // Arrange
-            var cardTypeRepo = new Mock<ICardValuesRepository>();
-            var controller = new CardValuesController(cardTypeRepo.Object);
+            var cardValueRepo = new Mock<ICardValuesRepository>();
+            var controller = new CardValuesController(cardValueRepo.Object);
 
             // Act
             var result = controller.Index() as ViewResult;

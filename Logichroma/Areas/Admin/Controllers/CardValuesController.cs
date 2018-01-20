@@ -1,10 +1,8 @@
-﻿using System.Net;
-using System.Web.Mvc;
-using Logichroma.Areas.Admin.Models.DataRepositories;
+﻿using Logichroma.Areas.Admin.Models.DataRepositories;
 using Logichroma.Areas.Admin.Models.DataRepositoryInterfaces;
 using Logichroma.Database;
-using Logichroma.Models.DataRepositories;
-using Logichroma.Models.DataRepositoryInterfaces;
+using System.Net;
+using System.Web.Mvc;
 
 namespace Logichroma.Areas.Admin.Controllers
 {
@@ -35,14 +33,14 @@ namespace Logichroma.Areas.Admin.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var cardType = _cardValuesRepo.GetCardDetails(id.Value);
+            var cardValue = _cardValuesRepo.GetCardDetails(id.Value);
 
-            if (cardType == null)
+            if (cardValue == null)
             {
                 return HttpNotFound();
             }
 
-            return View(cardType);
+            return View(cardValue);
         }
 
         // GET: Cards/Create
@@ -56,15 +54,15 @@ namespace Logichroma.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,FaceValue,CountInDeck")] CardType cardType)
+        public ActionResult Create([Bind(Include = "Id,FaceValue,CountInDeck")] CardValue cardValue)
         {
             if (ModelState.IsValid)
             {
-                _cardValuesRepo.AddCard(cardType);
+                _cardValuesRepo.AddCard(cardValue);
                 return RedirectToAction("Index");
             }
 
-            return View(cardType);
+            return View(cardValue);
         }
 
         // GET: Cards/Edit/5
@@ -87,14 +85,14 @@ namespace Logichroma.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,FaceValue,CountInDeck")] CardType cardType)
+        public ActionResult Edit([Bind(Include = "Id,FaceValue,CountInDeck")] CardValue cardValue)
         {
             if (ModelState.IsValid)
             {
-                _cardValuesRepo.UpdateCard(cardType);
+                _cardValuesRepo.UpdateCard(cardValue);
                 return RedirectToAction("Index");
             }
-            return View(cardType);
+            return View(cardValue);
         }
 
         // GET: Cards/Delete/5
@@ -104,12 +102,12 @@ namespace Logichroma.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var cardType = _cardValuesRepo.GetCardDetails(id.Value);
-            if (cardType == null)
+            var cardValue = _cardValuesRepo.GetCardDetails(id.Value);
+            if (cardValue == null)
             {
                 return HttpNotFound();
             }
-            return View(cardType);
+            return View(cardValue);
         }
 
         // POST: Cards/Delete/5

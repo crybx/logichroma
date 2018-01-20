@@ -1,0 +1,7 @@
+﻿CREATE TABLE [dbo].[CardSuits]
+(
+	[Id] INT IDENTITY NOT NULL PRIMARY KEY,
+    [Name] NVARCHAR(50) NOT NULL,
+	[BackgroundColor] NVARCHAR(15) NOT NULL,
+	[TextColor] NVARCHAR(15) NOT NULL
+)
