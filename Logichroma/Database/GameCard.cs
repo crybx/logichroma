@@ -36,9 +36,9 @@ public partial class GameCard
 
     public virtual CardValue CardValue { get; set; }
 
-    public virtual Game Game { get; set; }
-
     public virtual GamePlayer GamePlayer { get; set; }
+
+    public virtual Game Game { get; set; }
 
 }
 

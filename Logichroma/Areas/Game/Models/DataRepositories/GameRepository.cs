@@ -47,8 +47,7 @@ namespace Logichroma.Areas.Game.Models.DataRepositories
             {
                 Name = gameOptions.Name,
                 DifficultyLvl = 1,
-                NextCard = 0,
-                StartDateTime = DateTime.Now
+                CreateDateTime = DateTime.Now
             };
 
             _db.Games.Add(game);
