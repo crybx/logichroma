@@ -6,65 +6,65 @@
 
 <h2>@Model.Game.Name</h2>
 
+<!-- DECK -->
 <div>
-    <label>@Model.Game.GamePlayers.Count player(s) in this game:</label>
-    <ul>
-        @foreach (var player in Model.Game.PlayersInOrder)
-        {
-            <li>@player.DisplayName</li>
-        }
-    </ul>
+    <h3>Deck:</h3>
+    <div class="card-stack">
+        <div class="card" style="background-color: gray;">
+            <div class="card-container">
+                <p style="color: darkgray">
+                    (@Model.DeckCount)
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
 </div>
 
+<!-- PLAYER HANDS -->
 <div>
-    <table class="table">
-        <tr>
-            <td>
-                Game Status
-            </td>
-            <td>
-                @Model.Game.Status
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Cards Remaining in Deck
-            </td>
-            <td>
-                @Model.DeckCount
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Current Player
-            </td>
-            <td>
-                @Model.CurrentPlayer.DisplayName
-            </td>
-        </tr>
-    </table>
-</div>
+    <h3>Players:</h3>
+    @foreach (var player in Model.Game.PlayersInOrder)
+    {
+        var playerCards = Model.Game.GameCards.Where(x => x.GamePlayerId == player.GamePlayerId);
 
-<h3>Player Hands:</h3>
-@foreach (var player in Model.Game.PlayersInOrder)
-{
-    var playerCards = Model.Game.GameCards.Where(x => x.GamePlayerId == player.GamePlayerId);
-
-    <div>Player @(player.PlayerNumber + 1) - @player.DisplayName</div>
-    <div class="deck">
-        @foreach (var card in playerCards)
-        {
-            if (player == Model.Player)
+        <div>Player @(player.PlayerNumber + 1) - @player.DisplayName</div>
+        <div class="card-stack">
+            @foreach (var card in playerCards)
             {
-                <div class="card" style="background-color: gray;">
-                    <div class="card-container">
-                        <p style="color: darkgray">
-                            ?
-                        </p>
+                if (player == Model.Player)
+                {
+                    <div class="card" style="background-color: gray;">
+                        <div class="card-container">
+                            <p style="color: darkgray">
+                                ?
+                            </p>
+                        </div>
                     </div>
-                </div>
+                }
+                else
+                {
+                    <div class="card" style="background-color: @card.CardSuit.BackgroundColor;">
+                        <div class="card-container">
+                            <p style="color: @card.CardSuit.TextColor">
+                                @card.CardValue.FaceValue
+                            </p>
+                        </div>
+                    </div>
+                }
             }
-            else
+        </div>
+        <div class="clear"></div>
+    }
+</div>
+
+<!-- PLAY STACKS -->
+@if (Model.Game.GameCards.Any(x => x.CardState == CardState.Played.ToString()))
+{
+    <div>
+        <h3>Play Stacks:</h3>
+        <div class="card-stack">
+            @foreach (var card in Model.Game.GameCards.Where(x => x.CardState == CardState.Played.ToString()))
             {
                 <div class="card" style="background-color: @card.CardSuit.BackgroundColor;">
                     <div class="card-container">
@@ -74,22 +74,28 @@
                     </div>
                 </div>
             }
-        }
+        </div>
+        <div class="clear"></div>
     </div>
-    <div class="clear"></div>
 }
 
-<h3>The remaining deck is:</h3>
-<div class="deck">
-    @foreach (var card in Model.Game.GameCards.Where(x => x.CardState == CardState.Deck.ToString()))
-    {
-        <div class="card" style="background-color: @card.CardSuit.BackgroundColor;">
-            <div class="card-container">
-                <p style="color: @card.CardSuit.TextColor">
-                    @card.CardValue.FaceValue
-                </p>
-            </div>
+<!-- DISCARD PILE -->
+@if (Model.Game.GameCards.Any(x => x.CardState == CardState.Discard.ToString()))
+{
+    <div>
+        <h3>Discards:</h3>
+        <div class="card-stack">
+            @foreach (var card in Model.Game.GameCards.Where(x => x.CardState == CardState.Discard.ToString()))
+            {
+                <div class="card" style="background-color: @card.CardSuit.BackgroundColor;">
+                    <div class="card-container">
+                        <p style="color: @card.CardSuit.TextColor">
+                            @card.CardValue.FaceValue
+                        </p>
+                    </div>
+                </div>
+            }
         </div>
-    }
-</div>
-<div class="clear"></div>
+        <div class="clear"></div>
+    </div>
+}
