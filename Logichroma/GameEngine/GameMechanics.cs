@@ -3,12 +3,13 @@ using Logichroma.Areas.Game.Models.GameModels.ChildObjects;
 using Logichroma.Database;
 using Logichroma.Extensions;
 using System.Collections.Generic;
+using Logichroma.GameEngine.Enums;
 
 namespace Logichroma.GameEngine
 {
     public static class GameMechanics
     {
-        public static GameModel DealStartingCards(GameModel game, CardStateModel inHand)
+        public static GameModel DealStartingCards(GameModel game)
         {
             game.ChangedCards = new List<CardModel>();
             game.NextCard = 0;
@@ -25,7 +26,7 @@ namespace Logichroma.GameEngine
                     var card = game.GameCards[game.NextCard];
 
                     card.GamePlayerId = player.GamePlayerId;
-                    card.CardState = inHand;
+                    card.CardState = CardState.Hand.ToString();
 
                     game.ChangedCards.Add(card);
                     game.NextCard++;
@@ -35,7 +36,7 @@ namespace Logichroma.GameEngine
             return game;
         }
 
-        public static List<GameCard> CreateGameDeck(List<CardSuit> cardSuits, List<CardValue> cardValues, CardState inDeck, int gameId)
+        public static List<GameCard> CreateGameDeck(List<CardSuit> cardSuits, List<CardValue> cardValues, int gameId)
         {
             var deck = new List<GameCard>();
 
@@ -50,7 +51,7 @@ namespace Logichroma.GameEngine
                         {
                             CardValue = cardValue,
                             CardSuit = cardSuit,
-                            CardState = inDeck
+                            CardState = CardState.Deck.ToString()
                         };
 
                         deck.Add(card);

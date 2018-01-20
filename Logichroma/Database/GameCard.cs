@@ -22,17 +22,15 @@ public partial class GameCard
 
     public int Order { get; set; }
 
+    public int CardSuitId { get; set; }
+
     public int CardValueId { get; set; }
 
-    public int CardStateId { get; set; }
-
-    public int CardSuitId { get; set; }
+    public string CardState { get; set; }
 
     public Nullable<int> GamePlayerId { get; set; }
 
 
-
-    public virtual CardState CardState { get; set; }
 
     public virtual CardSuit CardSuit { get; set; }
 

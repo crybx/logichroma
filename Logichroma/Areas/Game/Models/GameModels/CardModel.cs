@@ -10,7 +10,7 @@ namespace Logichroma.Areas.Game.Models.GameModels
         
         public int GamePlayerId { get; set; }
         
-        public CardStateModel CardState { get; set; }
+        public string CardState { get; set; }
 
         public CardValueModel CardValue { get; set; }
         
