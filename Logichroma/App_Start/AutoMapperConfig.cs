@@ -23,11 +23,11 @@ namespace Logichroma
                 cfg.CreateMap<CardState, CardStateModel>();
                 cfg.CreateMap<CardStateModel, CardState>();
 
-                cfg.CreateMap<CardType, CardTypeModel>();
-                cfg.CreateMap<CardTypeModel, CardType>();
+                cfg.CreateMap<CardValue, CardValueModel>();
+                cfg.CreateMap<CardValueModel, CardValue>();
 
-                cfg.CreateMap<Color, ColorModel>();
-                cfg.CreateMap<ColorModel, Color>();
+                cfg.CreateMap<CardSuit, CardSuitModel>();
+                cfg.CreateMap<CardSuitModel, CardSuit>();
 
                 cfg.CreateMap<GameStatus, GameStatusModel>();
                 cfg.CreateMap<GameStatusModel, GameStatus>();

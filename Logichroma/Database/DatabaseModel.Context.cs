@@ -42,12 +42,6 @@ public partial class LogichromaDbEntities : DbContext
 
     public virtual DbSet<CardState> CardStates { get; set; }
 
-    public virtual DbSet<CardType> CardTypes { get; set; }
-
-    public virtual DbSet<Color> Colors { get; set; }
-
-    public virtual DbSet<GameCard> GameCards { get; set; }
-
     public virtual DbSet<Game> Games { get; set; }
 
     public virtual DbSet<GameStatus> GameStatuses { get; set; }
@@ -55,6 +49,12 @@ public partial class LogichromaDbEntities : DbContext
     public virtual DbSet<GameStatusType> GameStatusTypes { get; set; }
 
     public virtual DbSet<GamePlayer> GamePlayers { get; set; }
+
+    public virtual DbSet<CardValue> CardValues { get; set; }
+
+    public virtual DbSet<CardSuit> CardSuits { get; set; }
+
+    public virtual DbSet<GameCard> GameCards { get; set; }
 
 }
 

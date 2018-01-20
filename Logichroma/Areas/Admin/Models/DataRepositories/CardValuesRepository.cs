@@ -1,10 +1,9 @@
-﻿using System;
+﻿using Logichroma.Areas.Admin.Models.DataRepositoryInterfaces;
+using Logichroma.Database;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using Logichroma.Areas.Admin.Models.DataRepositoryInterfaces;
-using Logichroma.Database;
-using Logichroma.Models.DataRepositoryInterfaces;
 
 namespace Logichroma.Areas.Admin.Models.DataRepositories
 {
@@ -12,14 +11,14 @@ namespace Logichroma.Areas.Admin.Models.DataRepositories
     {
         private readonly LogichromaDbEntities _db = new LogichromaDbEntities();
         
-        public IList<CardType> GetCards()
+        public IList<CardValue> GetCards()
         {
-            return _db.CardTypes.ToList();
+            return _db.CardValues.ToList();
         }
 
-        public CardType GetCardDetails(int id)
+        public CardValue GetCardDetails(int id)
         {
-            var card = _db.CardTypes.Find(id);
+            var card = _db.CardValues.Find(id);
 
             if (card == null)
             {
@@ -29,13 +28,13 @@ namespace Logichroma.Areas.Admin.Models.DataRepositories
             return card;
         }
 
-        public void AddCard(CardType card)
+        public void AddCard(CardValue card)
         {
-            _db.CardTypes.Add(card);
+            _db.CardValues.Add(card);
             _db.SaveChanges();
         }
 
-        public void UpdateCard(CardType card)
+        public void UpdateCard(CardValue card)
         {
             _db.Entry(card).State = EntityState.Modified;
             _db.SaveChanges();
@@ -43,11 +42,11 @@ namespace Logichroma.Areas.Admin.Models.DataRepositories
 
         public void DeleteCard(int id)
         {
-            var card = _db.CardTypes.Find(id);
+            var card = _db.CardValues.Find(id);
 
             if (card == null) return;
 
-            _db.CardTypes.Remove(card);
+            _db.CardValues.Remove(card);
             _db.SaveChanges();
         }
     }

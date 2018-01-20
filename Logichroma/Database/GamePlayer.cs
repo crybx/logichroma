@@ -43,11 +43,11 @@ public partial class GamePlayer
 
     public virtual AspNetUser AspNetUser { get; set; }
 
+    public virtual Game Game { get; set; }
+
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
     public virtual ICollection<GameCard> GameCards { get; set; }
-
-    public virtual Game Game { get; set; }
 
 }
 

@@ -55,10 +55,10 @@ namespace Logichroma.Areas.Game.Models.DataRepositories
             _db.SaveChanges();
 
             // Create the deck.
-            var colors = _db.Colors.ToList();
-            var cardValues = _db.CardTypes.ToList();
+            var cardSuits = _db.CardSuits.ToList();
+            var cardValues = _db.CardValues.ToList();
             var inDeck = _db.CardStates.FirstOrDefault(x => x.Name == "Deck");
-            var deck = GameMechanics.CreateGameDeck(colors, cardValues, inDeck, game.Id);
+            var deck = GameMechanics.CreateGameDeck(cardSuits, cardValues, inDeck, game.Id);
 
             // Save the deck in the database.
             _db.GameCards.AddRange(deck);

@@ -35,12 +35,12 @@ namespace Logichroma.GameEngine
             return game;
         }
 
-        public static List<GameCard> CreateGameDeck(List<Color> colors, List<CardType> cardValues, CardState inDeck, int gameId)
+        public static List<GameCard> CreateGameDeck(List<CardSuit> cardSuits, List<CardValue> cardValues, CardState inDeck, int gameId)
         {
             var deck = new List<GameCard>();
 
             // Create all the cards in the deck.
-            foreach (var color in colors)
+            foreach (var cardSuit in cardSuits)
             {
                 foreach (var cardValue in cardValues)
                 {
@@ -48,8 +48,8 @@ namespace Logichroma.GameEngine
                     {
                         var card = new GameCard
                         {
-                            CardType = cardValue,
-                            Color = color,
+                            CardValue = cardValue,
+                            CardSuit = cardSuit,
                             CardState = inDeck
                         };
 

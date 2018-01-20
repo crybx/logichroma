@@ -22,11 +22,11 @@ public partial class GameCard
 
     public int Order { get; set; }
 
-    public int CardTypeId { get; set; }
+    public int CardValueId { get; set; }
 
     public int CardStateId { get; set; }
 
-    public int ColorId { get; set; }
+    public int CardSuitId { get; set; }
 
     public Nullable<int> GamePlayerId { get; set; }
 
@@ -34,9 +34,9 @@ public partial class GameCard
 
     public virtual CardState CardState { get; set; }
 
-    public virtual CardType CardType { get; set; }
+    public virtual CardSuit CardSuit { get; set; }
 
-    public virtual Color Color { get; set; }
+    public virtual CardValue CardValue { get; set; }
 
     public virtual Game Game { get; set; }
 
