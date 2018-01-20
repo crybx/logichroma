@@ -1,5 +1,6 @@
 ﻿using Logichroma.Areas.Game.Models;
 using System.Web.Mvc;
+using Logichroma.GameEngine.Enums;
 
 namespace Logichroma.Areas.Game.Controllers
 {
@@ -29,7 +30,7 @@ namespace Logichroma.Areas.Game.Controllers
 
             GameRepo.SetPlayerOrder(gameId);
             GameRepo.DealStartingCards(gameId);
-            GameRepo.AddGameStatus("Started", gameId);
+            GameRepo.AddGameStatus(GameStatus.Started, gameId);
 
             return RedirectToAction("Index", "Play", new { gameId });
         }

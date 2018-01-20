@@ -25,7 +25,7 @@ namespace Logichroma.Areas.Game.Models.GameModels
 
         public List<PlayerModel> GamePlayers { get; set; }
 
-        public string Status => GameStatuses?.OrderByDescending(x => x.DateTime).FirstOrDefault()?.Status;
+        public string Status => GameStatuses?.OrderByDescending(x => x.StatusChangeDateTime).FirstOrDefault()?.Status;
 
         public List<PlayerModel> PlayersInOrder => GamePlayers?.OrderBy(x => x.PlayerNumber).ToList();
 

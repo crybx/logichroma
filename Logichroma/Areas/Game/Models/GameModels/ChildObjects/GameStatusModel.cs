@@ -6,10 +6,10 @@ namespace Logichroma.Areas.Game.Models.GameModels.ChildObjects
     {
         public int Id { get; set; }
 
-        public DateTime DateTime { get; set; }
-        
-        public GameStatusTypeModel GameStatusType { get; set; }
+        public string Status { get; set; }
 
-        public string Status => GameStatusType?.Name;
+        public DateTime StatusChangeDateTime { get; set; }
+
+        public int GameId { get; set; }
     }
 }

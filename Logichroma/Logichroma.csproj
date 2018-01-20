@@ -181,7 +181,6 @@
     <Compile Include="Areas\Game\Models\GameModels\ChildObjects\CardStateModel.cs" />
     <Compile Include="Areas\Game\Models\GameModels\ChildObjects\CardValueModel.cs" />
     <Compile Include="Areas\Game\Models\GameModels\ChildObjects\CardSuitModel.cs" />
-    <Compile Include="Areas\Game\Models\GameModels\ChildObjects\GameStatusTypeModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\CardValuesController.cs" />
     <Compile Include="Areas\Game\Controllers\DetailsController.cs" />
@@ -196,6 +195,7 @@
     <Compile Include="Extensions\ListExtensions.cs" />
     <Compile Include="GameEngine\Enums\CardColor.cs" />
     <Compile Include="GameEngine\Enums\CardState.cs" />
+    <Compile Include="GameEngine\Enums\GameStatus.cs" />
     <Compile Include="GameEngine\GameMechanics.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -242,9 +242,6 @@
       <DependentUpon>DatabaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Database\GameStatus.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\GameStatusType.cs">
       <DependentUpon>DatabaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Areas\Admin\Models\DataRepositories\CardValuesRepository.cs" />

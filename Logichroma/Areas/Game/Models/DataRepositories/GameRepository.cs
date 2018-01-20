@@ -1,15 +1,14 @@
 ﻿using AutoMapper;
 using Logichroma.Areas.Game.Models.DataRepositoryInterfaces;
 using Logichroma.Areas.Game.Models.GameModels;
-using Logichroma.Areas.Game.Models.GameModels.ChildObjects;
 using Logichroma.Database;
 using Logichroma.Extensions;
 using Logichroma.GameEngine;
+using Logichroma.GameEngine.Enums;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using Logichroma.GameEngine.Enums;
 
 namespace Logichroma.Areas.Game.Models.DataRepositories
 {
@@ -27,8 +26,8 @@ namespace Logichroma.Areas.Game.Models.DataRepositories
         public List<GameModel> GetActiveGames()
         {
             var games = _db.Games
-                .Where(x => !x.GameStatuses.Any(s => s.GameStatusType.Name == "Aborted" ||
-                                                     s.GameStatusType.Name == "Completed"))
+                .Where(x => !x.GameStatuses.Any(s => s.Status == GameEngine.Enums.GameStatus.Aborted.ToString() ||
+                                                     s.Status == GameEngine.Enums.GameStatus.Complete.ToString()))
                 .ToList();
 
             var gameModels = Mapper.Map<List<Database.Game>, List<GameModel>>(games);
@@ -82,13 +81,13 @@ namespace Logichroma.Areas.Game.Models.DataRepositories
             _db.SaveChanges();
         }
 
-        public void AddGameStatus(string gameStatus, int gameId)
+        public void AddGameStatus(GameEngine.Enums.GameStatus gameStatus, int gameId)
         {
-            var status = new GameStatus
+            var status = new Database.GameStatus
             {
                 GameId = gameId,
-                DateTime = DateTime.Now,
-                GameStatusType = _db.GameStatusTypes.FirstOrDefault(x => x.Name == gameStatus)
+                StatusChangeDateTime = DateTime.Now,
+                Status = gameStatus.ToString()
             };
 
             _db.GameStatuses.Add(status);

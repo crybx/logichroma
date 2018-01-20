@@ -1,6 +1,7 @@
 ﻿using Logichroma.Areas.Game.Models;
 using Logichroma.Areas.Game.Models.GameModels;
 using System.Web.Mvc;
+using Logichroma.GameEngine.Enums;
 
 namespace Logichroma.Areas.Game.Controllers
 {
@@ -27,7 +28,7 @@ namespace Logichroma.Areas.Game.Controllers
             model.Game = GameRepo.AddGame(model.Game);
 
             var gameId = model.Game.Id;
-            GameRepo.AddGameStatus("Created", gameId);
+            GameRepo.AddGameStatus(GameStatus.Created, gameId);
 
             AddPlayerToGame(model, true);
             
