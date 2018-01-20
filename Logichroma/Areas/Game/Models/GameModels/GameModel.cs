@@ -15,9 +15,11 @@ namespace Logichroma.Areas.Game.Models.GameModels
 
         public int DifficultyLevel { get; set; }
 
+        public DateTime CreateDateTime { get; set; }
+
         public int NextCard { get; set; }
 
-        public DateTime StartDateTime { get; set; }
+        public int CurrentPlayerNumber { get; set; }
 
         public List<CardModel> GameCards { get; set; }
         

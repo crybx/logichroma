@@ -22,9 +22,9 @@ public partial class Game
     public Game()
     {
 
-        this.GamePlayers = new HashSet<GamePlayer>();
-
         this.GameCards = new HashSet<GameCard>();
+
+        this.GamePlayers = new HashSet<GamePlayer>();
 
         this.GameStatuses = new HashSet<GameStatus>();
 
@@ -37,19 +37,21 @@ public partial class Game
 
     public int DifficultyLvl { get; set; }
 
+    public System.DateTime CreateDateTime { get; set; }
+
     public int NextCard { get; set; }
 
-    public System.DateTime StartDateTime { get; set; }
+    public int CurrentPlayerNumber { get; set; }
 
 
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-
-    public virtual ICollection<GamePlayer> GamePlayers { get; set; }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
     public virtual ICollection<GameCard> GameCards { get; set; }
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+
+    public virtual ICollection<GamePlayer> GamePlayers { get; set; }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 

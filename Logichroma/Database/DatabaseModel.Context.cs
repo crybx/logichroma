@@ -40,8 +40,6 @@ public partial class LogichromaDbEntities : DbContext
 
     public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
 
-    public virtual DbSet<Game> Games { get; set; }
-
     public virtual DbSet<GamePlayer> GamePlayers { get; set; }
 
     public virtual DbSet<CardValue> CardValues { get; set; }
@@ -51,6 +49,8 @@ public partial class LogichromaDbEntities : DbContext
     public virtual DbSet<GameCard> GameCards { get; set; }
 
     public virtual DbSet<GameStatus> GameStatuses { get; set; }
+
+    public virtual DbSet<Game> Games { get; set; }
 
 }
 
