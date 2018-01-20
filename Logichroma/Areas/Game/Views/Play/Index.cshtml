@@ -1,4 +1,5 @@
-﻿@model Logichroma.Areas.Game.Models.GameDetailsViewModel
+﻿@using Logichroma.GameEngine.Enums
+@model Logichroma.Areas.Game.Models.GameDetailsViewModel
 @{
     ViewBag.Title = "Logichroma";
 }
@@ -38,7 +39,7 @@
 
 <h3>The remaining deck is:</h3>
 <div class="deck">
-    @foreach (var card in Model.Game.GameCards.Where(x => x.CardState.Name == "Deck"))
+    @foreach (var card in Model.Game.GameCards.Where(x => x.CardState == CardState.Deck.ToString()))
     {
         <div class="card" style="background-color: @card.CardSuit.BackgroundColor;">
             <div class="card-container">

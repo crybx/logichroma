@@ -195,6 +195,7 @@
     </Compile>
     <Compile Include="Extensions\ListExtensions.cs" />
     <Compile Include="GameEngine\Enums\CardColor.cs" />
+    <Compile Include="GameEngine\Enums\CardState.cs" />
     <Compile Include="GameEngine\GameMechanics.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -214,9 +215,6 @@
       <DependentUpon>DatabaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Database\AspNetUserLogin.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\CardState.cs">
       <DependentUpon>DatabaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Database\DatabaseModel.Context.cs">

@@ -10,7 +10,6 @@ Post-Deployment Script Template
 --------------------------------------------------------------------------------------
 */
 :r AddCardSuits.sql
-:r AddCardStates.sql
 :r AddCardValues.sql
 :r AddGameStatusTypes.sql
 :r AddAspNetRoles.sql

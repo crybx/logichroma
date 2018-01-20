@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using Logichroma.GameEngine.Enums;
 
 namespace Logichroma.Areas.Game.Models.DataRepositories
 {
@@ -57,8 +58,7 @@ namespace Logichroma.Areas.Game.Models.DataRepositories
             // Create the deck.
             var cardSuits = _db.CardSuits.ToList();
             var cardValues = _db.CardValues.ToList();
-            var inDeck = _db.CardStates.FirstOrDefault(x => x.Name == "Deck");
-            var deck = GameMechanics.CreateGameDeck(cardSuits, cardValues, inDeck, game.Id);
+            var deck = GameMechanics.CreateGameDeck(cardSuits, cardValues, game.Id);
 
             // Save the deck in the database.
             _db.GameCards.AddRange(deck);
@@ -113,12 +113,9 @@ namespace Logichroma.Areas.Game.Models.DataRepositories
 
         public void DealStartingCards(int gameId)
         {
-            var cardState = getCardState("Hand");
-            var cardStateModel = Mapper.Map<CardState, CardStateModel>(cardState);
-
             var game = _db.Games.First(x => x.Id == gameId);
             var gameModel = Mapper.Map<Database.Game, GameModel>(game);
-            var updatedGameModel = GameMechanics.DealStartingCards(gameModel, cardStateModel);
+            var updatedGameModel = GameMechanics.DealStartingCards(gameModel);
 
             game.NextCard = updatedGameModel.NextCard;
 
@@ -126,16 +123,10 @@ namespace Logichroma.Areas.Game.Models.DataRepositories
             {
                 var card = game.GameCards.Single(x => x.Order == cardModel.Order);
                 card.GamePlayer = game.GamePlayers.Single(x => x.GamePlayerId == cardModel.GamePlayerId);
-                card.CardState = cardState;
+                card.CardState = CardState.Hand.ToString();
             }
 
             _db.SaveChanges();
-        }
-
-        private CardState getCardState(string cardStateName)
-        {
-            var cardState = _db.CardStates.First(x => x.Name == cardStateName);
-            return cardState;
         }
     }
 }

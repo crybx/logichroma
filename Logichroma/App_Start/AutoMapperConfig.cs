@@ -20,9 +20,6 @@ namespace Logichroma
                 cfg.CreateMap<GamePlayer, PlayerModel>();
                 cfg.CreateMap<PlayerModel, GamePlayer>();
 
-                cfg.CreateMap<CardState, CardStateModel>();
-                cfg.CreateMap<CardStateModel, CardState>();
-
                 cfg.CreateMap<CardValue, CardValueModel>();
                 cfg.CreateMap<CardValueModel, CardValue>();
 
