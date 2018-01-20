@@ -22,11 +22,11 @@ public partial class Game
     public Game()
     {
 
-        this.GameStatuses = new HashSet<GameStatus>();
-
         this.GamePlayers = new HashSet<GamePlayer>();
 
         this.GameCards = new HashSet<GameCard>();
+
+        this.GameStatuses = new HashSet<GameStatus>();
 
     }
 
@@ -45,15 +45,15 @@ public partial class Game
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
-    public virtual ICollection<GameStatus> GameStatuses { get; set; }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-
     public virtual ICollection<GamePlayer> GamePlayers { get; set; }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
     public virtual ICollection<GameCard> GameCards { get; set; }
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+
+    public virtual ICollection<GameStatus> GameStatuses { get; set; }
 
 }
 

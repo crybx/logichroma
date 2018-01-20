@@ -79,7 +79,6 @@
     <Build Include="dbo\Tables\GameCards.sql" />
     <None Include="dbo\Scripts\PostDeploy\AddCardValues.sql" />
     <Build Include="dbo\Tables\GameStatuses.sql" />
-    <Build Include="dbo\Tables\GameStatusTypes.sql" />
     <Build Include="dbo\Tables\__MigrationHistory.sql" />
     <Build Include="dbo\Tables\AspNetUserLogins.sql" />
     <Build Include="dbo\Tables\AspNetUsers.sql" />
@@ -97,7 +96,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="dbo\Scripts\PostDeploy\AddCardSuits.sql" />
-    <None Include="dbo\Scripts\PostDeploy\AddGameStatusTypes.sql" />
     <None Include="Logichroma.Database.local.publish.xml" />
   </ItemGroup>
 </Project>

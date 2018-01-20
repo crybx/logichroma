@@ -20,17 +20,15 @@ public partial class GameStatus
 
     public int Id { get; set; }
 
-    public int GameStatusTypeId { get; set; }
+    public string Status { get; set; }
 
-    public System.DateTime DateTime { get; set; }
+    public System.DateTime StatusChangeDateTime { get; set; }
 
     public int GameId { get; set; }
 
 
 
     public virtual Game Game { get; set; }
-
-    public virtual GameStatusType GameStatusType { get; set; }
 
 }
 

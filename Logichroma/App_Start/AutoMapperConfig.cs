@@ -28,9 +28,6 @@ namespace Logichroma
 
                 cfg.CreateMap<GameStatus, GameStatusModel>();
                 cfg.CreateMap<GameStatusModel, GameStatus>();
-
-                cfg.CreateMap<GameStatusType, GameStatusTypeModel>();
-                cfg.CreateMap<GameStatusTypeModel, GameStatusType>();
             });
         }
     }
