@@ -30,6 +30,10 @@ public partial class GameCard
 
     public Nullable<int> GamePlayerId { get; set; }
 
+    public bool IsSuitRevealed { get; set; }
+
+    public bool IsValueRevealed { get; set; }
+
 
 
     public virtual CardSuit CardSuit { get; set; }
