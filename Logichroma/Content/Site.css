@@ -27,6 +27,10 @@ textarea {
     clear: both;
 }
 
+#main-navbar {
+    background: linear-gradient(to right, #085db9, #442a61, #272529);
+}
+
 /* ----- Card Styles ----- */
 .card-stack {
     position: relative;
