@@ -84,6 +84,8 @@
           <Property Name="CardValueId" Type="int" Nullable="false" />
           <Property Name="CardState" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="GamePlayerId" Type="int" />
+          <Property Name="IsSuitRevealed" Type="bit" Nullable="false" />
+          <Property Name="IsValueRevealed" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="GamePlayers">
           <Key>
@@ -511,6 +513,8 @@
           <NavigationProperty Name="CardValue" Relationship="LogichromaDbModel.FK_GameCards_CardValueId" FromRole="GameCard" ToRole="CardValue" />
           <NavigationProperty Name="GamePlayer" Relationship="LogichromaDbModel.FK_GameCards_GamePlayerId" FromRole="GameCard" ToRole="GamePlayer" />
           <NavigationProperty Name="Game" Relationship="LogichromaDbModel.FK_GameCards_GameId" FromRole="GameCard" ToRole="Game" />
+          <Property Name="IsSuitRevealed" Type="Boolean" Nullable="false" />
+          <Property Name="IsValueRevealed" Type="Boolean" Nullable="false" />
         </EntityType>
         <Association Name="FK_GameCards_CardSuitId">
           <End Type="LogichromaDbModel.CardSuit" Role="CardSuit" Multiplicity="1" />
@@ -701,6 +705,8 @@
           <EntitySetMapping Name="GameCards">
             <EntityTypeMapping TypeName="LogichromaDbModel.GameCard">
               <MappingFragment StoreEntitySet="GameCards">
+                <ScalarProperty Name="IsValueRevealed" ColumnName="IsValueRevealed" />
+                <ScalarProperty Name="IsSuitRevealed" ColumnName="IsSuitRevealed" />
                 <ScalarProperty Name="GamePlayerId" ColumnName="GamePlayerId" />
                 <ScalarProperty Name="CardState" ColumnName="CardState" />
                 <ScalarProperty Name="CardValueId" ColumnName="CardValueId" />

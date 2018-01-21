@@ -35,10 +35,14 @@
             {
                 if (player == Model.Player)
                 {
-                    <div class="card" style="background-color: gray;">
+                    var bgColor = card.IsSuitRevealed ? card.CardSuit.BackgroundColor : "gray";
+                    var textColor = card.IsSuitRevealed ? card.CardSuit.TextColor : "lightgray";
+                    var cardValue = card.IsValueRevealed ? card.CardValue.FaceValue.ToString() : "?";
+
+                    <div class="card" style="background-color: @bgColor;">
                         <div class="card-container">
-                            <p style="color: darkgray">
-                                ?
+                            <p style="color: @textColor">
+                                @cardValue
                             </p>
                         </div>
                     </div>

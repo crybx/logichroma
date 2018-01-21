@@ -15,5 +15,9 @@ namespace Logichroma.Areas.Game.Models.GameModels
         public CardValueModel CardValue { get; set; }
         
         public CardSuitModel CardSuit { get; set; }
+
+        public bool IsSuitRevealed { get; set; }
+
+        public bool IsValueRevealed { get; set; }
     }
 }
