@@ -1,16 +1,48 @@
-﻿@model List<Logichroma.Areas.Game.Models.GameModels.GameModel>
+﻿@using Logichroma.GameEngine.Enums
+@model List<Logichroma.Areas.Game.Models.GameModels.GameModel>
 @{
     ViewBag.Title = "Logichroma";
 }
 
-<h2>Games</h2>
-
-<div>
-    @foreach (var game in Model)
-    {
-        <div>
-            @game.Id - @game.Name - Game @game.Status - @game.GamePlayers.Count Players -
-            @Html.ActionLink("Details", "Index", "Details", new { gameId = game.Id }, null)
-        </div>
-    }
+<div class="clearfix">
+    <h2 class="float-left">Games</h2>
+    <a class="btn btn-secondary float-right" href="@Url.Action("Index", "Create", new { Area = "Game" })">Create New Game</a>
 </div>
+
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Game Name</th>
+            <th scope="col">Status</th>
+            <th scope="col">Players</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var game in Model)
+        {
+            <tr>
+                <th scope="row">@game.Name</th>
+                <td>@game.Status</td>
+                <td>@game.GamePlayers.Count</td>
+                
+                @if (game.Status == GameStatus.Created.ToString())
+                {
+                    <td>
+                        @Html.ActionLink("Details", "Index", "Details", new {gameId = game.Id}, new {@class = "btn btn-secondary"})
+                    </td>
+                }
+                else if (game.Status == GameStatus.Started.ToString())
+                {
+                    <td>
+                        <a class="btn btn-primary" href="@Url.Action("Index", "Play", new {Area = "Game", gameId = game.Id})">Resume</a>
+                    </td>
+                }
+                else
+                {
+                    <td></td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
