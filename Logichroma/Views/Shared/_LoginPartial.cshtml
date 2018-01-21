@@ -7,10 +7,10 @@
 
         <ul class="navbar-nav justify-content-end">
             <li class="nav-item">
-                @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: new { Area = "" }, htmlAttributes: new { title = "Manage", @class = "nav-link" })
+                @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: new { Area = "" }, htmlAttributes: new { title = "Manage", @class = "nav-link text-light" })
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+                <a class="btn btn-outline-light" href="javascript:document.getElementById('logoutForm').submit()">Sign out</a>
             </li>
         </ul>
     }
@@ -19,10 +19,10 @@ else
 {
     <ul class="navbar-nav justify-content-end">
         <li class="nav-item">
-            @Html.ActionLink("Register", "Register", "Account", routeValues: new {Area = ""}, htmlAttributes: new { id = "registerLink", @class = "nav-link" })
+            @Html.ActionLink("Register", "Register", "Account", routeValues: new {Area = ""}, htmlAttributes: new { id = "registerLink", @class = "nav-link text-light" })
         </li>
         <li class="nav-item">
-            @Html.ActionLink("Log in", "Login", "Account", routeValues: new {Area = ""}, htmlAttributes: new { id = "loginLink", @class = "nav-link" })
+            @Html.ActionLink("Log in", "Login", "Account", routeValues: new {Area = ""}, htmlAttributes: new { id = "loginLink", @class = "btn btn-outline-light" })
         </li>
     </ul>
 }

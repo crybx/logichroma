@@ -28,7 +28,7 @@ textarea {
 }
 
 #main-navbar {
-    background: linear-gradient(to right, #085db9, #442a61, #272529);
+    background: #2f4965 !important;
 }
 
 /* ----- Card Styles ----- */
