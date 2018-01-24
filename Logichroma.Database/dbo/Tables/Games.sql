@@ -5,5 +5,7 @@
     [DifficultyLvl] INT NOT NULL,
 	[CreateDateTime] DATETIME NOT NULL, 
     [NextCard] INT NOT NULL DEFAULT 0,
-    [CurrentPlayerNumber] INT NOT NULL DEFAULT 0
+    [CurrentPlayerNumber] INT NOT NULL DEFAULT 0, 
+    [HintTokens] INT NOT NULL DEFAULT 0, 
+    [MisfireTokens] INT NOT NULL DEFAULT 0
 )
