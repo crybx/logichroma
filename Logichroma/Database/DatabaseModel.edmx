@@ -108,6 +108,8 @@
           <Property Name="CreateDateTime" Type="datetime" Nullable="false" />
           <Property Name="NextCard" Type="int" Nullable="false" />
           <Property Name="CurrentPlayerNumber" Type="int" Nullable="false" />
+          <Property Name="HintTokens" Type="int" Nullable="false" />
+          <Property Name="MisfireTokens" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="GameStatuses">
           <Key>
@@ -575,6 +577,8 @@
           <NavigationProperty Name="GameCards" Relationship="LogichromaDbModel.FK_GameCards_GameId" FromRole="Game" ToRole="GameCard" />
           <NavigationProperty Name="GamePlayers" Relationship="LogichromaDbModel.FK_GamePlayers_GameId" FromRole="Game" ToRole="GamePlayer" />
           <NavigationProperty Name="GameStatuses" Relationship="LogichromaDbModel.FK_GameStatuses_GameId" FromRole="Game" ToRole="GameStatus" />
+          <Property Name="HintTokens" Type="Int32" Nullable="false" />
+          <Property Name="MisfireTokens" Type="Int32" Nullable="false" />
         </EntityType>
         <Association Name="FK_GameCards_GameId">
           <End Type="LogichromaDbModel.Game" Role="Game" Multiplicity="1" />
@@ -729,6 +733,8 @@
           <EntitySetMapping Name="Games">
             <EntityTypeMapping TypeName="LogichromaDbModel.Game">
               <MappingFragment StoreEntitySet="Games">
+                <ScalarProperty Name="MisfireTokens" ColumnName="MisfireTokens" />
+                <ScalarProperty Name="HintTokens" ColumnName="HintTokens" />
                 <ScalarProperty Name="CurrentPlayerNumber" ColumnName="CurrentPlayerNumber" />
                 <ScalarProperty Name="NextCard" ColumnName="NextCard" />
                 <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />

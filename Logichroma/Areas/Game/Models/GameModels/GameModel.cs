@@ -1,5 +1,5 @@
-﻿using System;
-using Logichroma.Areas.Game.Models.GameModels.ChildObjects;
+﻿using Logichroma.Areas.Game.Models.GameModels.ChildObjects;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -32,5 +32,9 @@ namespace Logichroma.Areas.Game.Models.GameModels
         public List<PlayerModel> PlayersInOrder => GamePlayers?.OrderBy(x => x.PlayerNumber).ToList();
 
         public List<CardModel> ChangedCards { get; set; }
+
+        public int HintTokens { get; set; }
+
+        public int MisfireTokens { get; set; }
     }
 }

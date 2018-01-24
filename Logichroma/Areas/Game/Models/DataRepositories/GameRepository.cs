@@ -47,7 +47,9 @@ namespace Logichroma.Areas.Game.Models.DataRepositories
             {
                 Name = gameOptions.Name,
                 DifficultyLvl = 1,
-                CreateDateTime = DateTime.Now
+                CreateDateTime = DateTime.Now,
+                HintTokens = 8,
+                MisfireTokens = 4
             };
 
             _db.Games.Add(game);

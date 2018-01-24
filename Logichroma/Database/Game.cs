@@ -43,6 +43,10 @@ public partial class Game
 
     public int CurrentPlayerNumber { get; set; }
 
+    public int HintTokens { get; set; }
+
+    public int MisfireTokens { get; set; }
+
 
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
