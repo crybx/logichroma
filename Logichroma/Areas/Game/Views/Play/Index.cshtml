@@ -48,8 +48,16 @@
     {
         var playerCards = Model.Game.GameCards.Where(x => x.GamePlayerId == player.GamePlayerId);
 
-        <div>Player @(player.PlayerNumber + 1) - @player.DisplayName</div>
-        <div class="card-stack">
+        <div style="padding-top: 20px;">
+            Player @(player.PlayerNumber + 1) - @player.DisplayName
+            @if (Model.IsCurrentPlayer && player != Model.Player && Model.Game.HintTokens > 0)
+            {
+                <span> - </span>
+                <a class="btn btn-outline-primary" href="#">Give Hint</a>
+            }
+        </div>
+        
+        <div class="card-stack row">
             @foreach (var card in playerCards)
             {
                 if (player == Model.Player)
@@ -58,12 +66,23 @@
                     var textColor = card.IsSuitRevealed ? card.CardSuit.TextColor : "lightgray";
                     var cardValue = card.IsValueRevealed ? card.CardValue.FaceValue.ToString() : "?";
 
-                    <div class="card" style="background-color: @bgColor;">
-                        <div class="card-container">
-                            <p style="color: @textColor">
-                                @cardValue
-                            </p>
+                    <div style="float: left; text-align: center;">
+                        <div class="card row" style="background-color: @bgColor;">
+                            <div class="card-container">
+                                <p style="color: @textColor">
+                                    @cardValue
+                                </p>
+                            </div>
                         </div>
+                        @if (Model.IsCurrentPlayer)
+                        {
+                            <div class="card-button-div">
+                                <a class="btn btn-outline-dark card-button" href="#">Discard</a>
+                            </div>
+                            <div class="card-button-div">
+                                <a class="btn btn-outline-secondary card-button" href="#">Play</a>
+                            </div>
+                        }
                     </div>
                 }
                 else
@@ -79,15 +98,6 @@
             }
         </div>
         <div class="clear"></div>
-
-        if (Model.IsCurrentPlayer && player == Model.Player)
-        {
-            <div style="padding: 5px 0 10px 5px;">
-                <a class="btn btn-secondary" href="#">Give Hint</a>
-                <a class="btn btn-secondary" href="#">Discard Card</a>
-                <a class="btn btn-secondary" href="#">Play Card</a>
-            </div>
-        }
     }
 </div>
 
@@ -132,3 +142,5 @@
         <div class="clear"></div>
     </div>
 }
+
+<div id="HintPopup" style="display: none;"></div>

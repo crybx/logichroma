@@ -58,3 +58,11 @@ textarea {
     font-size: 3em;
     text-align: center; 
 }
+
+.card-button-div {
+    padding: 5px 0 0 0;
+}
+
+.card-button {
+    width: 90px;
+}
