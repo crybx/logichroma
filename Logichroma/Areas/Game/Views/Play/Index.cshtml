@@ -7,19 +7,38 @@
 <h2>@Model.Game.Name</h2>
 <p>Waiting on @Model.CurrentPlayer.DisplayName</p>
 
-<!-- DECK -->
-<div>
-    <h3>Deck:</h3>
-    <div class="card-stack">
-        <div class="card" style="background-color: gray;">
-            <div class="card-container">
-                <p style="color: darkgray">
-                    @Model.DeckCount
-                </p>
+<!-- DECK AND TOKENS-->
+<div class="row">
+    <div class="col-3">
+        <h3>Deck:</h3>
+        <div class="card-stack">
+            <div class="card" style="background-color: gray;">
+                <div class="card-container">
+                    <p style="color: darkgray">
+                        @Model.DeckCount
+                    </p>
+                </div>
             </div>
         </div>
+        <div class="clear"></div>
     </div>
-    <div class="clear"></div>
+    <div class="col-3">
+        <dl class="dl-horizontal">
+            <dt>
+                Hints Remaining:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Game.HintTokens)
+            </dd>
+            <dt>
+                Misfires Remaining:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Game.MisfireTokens)
+            </dd>
+
+        </dl>
+    </div>
 </div>
 
 <!-- PLAYER HANDS -->

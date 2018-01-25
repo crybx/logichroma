@@ -49,7 +49,7 @@ namespace Logichroma.Areas.Game.Models.DataRepositories
                 DifficultyLvl = 1,
                 CreateDateTime = DateTime.Now,
                 HintTokens = 8,
-                MisfireTokens = 4
+                MisfireTokens = 3
             };
 
             _db.Games.Add(game);
