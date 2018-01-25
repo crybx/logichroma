@@ -6,7 +6,14 @@
 <h2>@Model.Game.Name</h2>
 
 <div>
-    <label>Game Status: </label>@Model.Game.Status
+    <dl class="dl-horizontal">
+        <dt>
+            Game Status:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Game.Status)
+        </dd>
+    </dl>
 </div>
 
 <div>
