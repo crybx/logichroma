@@ -142,10 +142,11 @@ namespace Logichroma.Areas.Game.Models.DataRepositories
                 nextCard.CardState = CardState.Hand.ToString();
                 game.NextCard++;
             }
-            
-            // Remove dicard from player's hand and mark as discarded.
+
+            // Mark as discarded.
+            card.Order = game.GameCards.Count(x => x.CardState == CardState.Discard.ToString() || x.CardState == CardState.Misfire.ToString());
             card.CardState = CardState.Discard.ToString();
-            card.GamePlayer = null;
+            card.GamePlayerId = null;
 
             // Replenish a hint token.
             if (game.HintTokens < 8) { game.HintTokens++; }

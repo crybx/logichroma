@@ -46,7 +46,7 @@
     <h3>Players:</h3>
     @foreach (var player in Model.Game.PlayersInOrder)
     {
-        var playerCards = Model.Game.GameCards.Where(x => x.GamePlayerId == player.GamePlayerId);
+        var playerCards = Model.Game.GameCards.Where(x => x.GamePlayerId == player.GamePlayerId).OrderBy(x => x.Order);
 
         <div style="padding-top: 20px;">
             Player @(player.PlayerNumber + 1) - @player.DisplayName
@@ -124,12 +124,12 @@
 }
 
 <!-- DISCARD PILE -->
-@if (Model.Game.GameCards.Any(x => x.CardState == CardState.Discard.ToString()))
+@if (Model.Game.Discards.Any())
 {
     <div>
         <h3>Discards:</h3>
         <div class="card-stack">
-            @foreach (var card in Model.Game.GameCards.Where(x => x.CardState == CardState.Discard.ToString()))
+            @foreach (var card in Model.Game.Discards)
             {
                 <div class="card" style="background-color: @card.CardSuit.BackgroundColor;">
                     <div class="card-container">
