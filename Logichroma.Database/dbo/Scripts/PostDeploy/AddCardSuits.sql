@@ -8,11 +8,11 @@ DECLARE @CardSuitsTemp TABLE
 
 INSERT INTO @CardSuitsTemp (name, backgroundColor, textColor)
 VALUES 
-		( N'Red', N'#900f0f', N'#f1c7c7' ), 
-		( N'Yellow', N'yellow', N'#565105' ), 
+		( N'Red', N'#dc3545', N'#f1c7c7' ), 
+		( N'Yellow', N'#ffc107', N'#565105' ), 
 		( N'White', N'#fbf4f2', N'#231c1cc9' ), 
-		( N'Blue', N'#3961f5', N'white' ), 
-		( N'Green', N'#008000', N'#b4dcb8' )
+		( N'Blue', N'#007bff', N'white' ), 
+		( N'Green', N'#28a745', N'#b4dcb8' )
 
 MERGE INTO CardSuits AS target
 USING 
