@@ -128,5 +128,33 @@ namespace Logichroma.Areas.Game.Models.DataRepositories
 
             _db.SaveChanges();
         }
+
+        public void DiscardCard(int order, int gameId)
+        {
+            var game = _db.Games.First(x => x.Id == gameId);
+            var card = game.GameCards.First(x => x.Order == order);
+            var nextCard = _db.GameCards.First(x => x.Order == game.NextCard);
+            
+            // Deal player another card if any are left in the deck.
+            if (nextCard != null)
+            {
+                nextCard.GamePlayer = card.GamePlayer;
+                nextCard.CardState = CardState.Hand.ToString();
+                game.NextCard++;
+            }
+            
+            // Remove dicard from player's hand and mark as discarded.
+            card.CardState = CardState.Discard.ToString();
+            card.GamePlayer = null;
+
+            // Replenish a hint token.
+            if (game.HintTokens < 8) { game.HintTokens++; }
+
+            // Advance the game to the next player's turn.
+            var nextPlayer = game.CurrentPlayerNumber + 1;
+            game.CurrentPlayerNumber = nextPlayer < game.GamePlayers.Count ? nextPlayer : 0;
+            
+            _db.SaveChanges();
+        }
     }
 }
