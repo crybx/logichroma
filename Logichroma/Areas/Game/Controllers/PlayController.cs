@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using Logichroma.Areas.Game.Models;
+using System.Web.Mvc;
 
 namespace Logichroma.Areas.Game.Controllers
 {
@@ -15,6 +16,32 @@ namespace Logichroma.Areas.Game.Controllers
         {
             GameRepo.DiscardCard(order, gameId);
             return RedirectToAction(nameof(Index), new { gameId });
+        }
+
+        public ActionResult GetHintOptions(int gameId, int playerId)
+        {
+            var model = new HintOptionsViewModel
+            {
+                GameId = gameId,
+                PlayerId = playerId,
+                Cards = GameRepo.GetPlayerCards(gameId, playerId)
+            };
+
+            return PartialView("_HintOptions", model);
+        }
+
+        public ActionResult GiveColorHint(HintOptionsViewModel model)
+        {
+            GameRepo.GivePlayerColorHint(model.GameId, model.PlayerId, model.SelectedColorId);
+
+            return RedirectToAction(nameof(Index), new { model.GameId });
+        }
+
+        public ActionResult GiveNumberHint(HintOptionsViewModel model)
+        {
+            GameRepo.GivePlayerNumberHint(model.GameId, model.PlayerId, model.SelectedNumberId);
+
+            return RedirectToAction(nameof(Index), new { model.GameId });
         }
     }
 }
