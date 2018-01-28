@@ -97,5 +97,6 @@
   <ItemGroup>
     <None Include="dbo\Scripts\PostDeploy\AddCardSuits.sql" />
     <None Include="Logichroma.Database.local.publish.xml" />
+    <None Include="Logichroma.Database.AzureSandbox.publish.xml" />
   </ItemGroup>
 </Project>
