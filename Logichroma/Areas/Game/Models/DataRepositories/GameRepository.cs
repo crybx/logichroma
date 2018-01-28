@@ -132,7 +132,7 @@ namespace Logichroma.Areas.Game.Models.DataRepositories
         public void DiscardCard(int order, int gameId)
         {
             var game = _db.Games.First(x => x.Id == gameId);
-            var card = game.GameCards.First(x => x.Order == order);
+            var card = game.GameCards.First(x => x.Order == order && x.CardState == CardState.Hand.ToString());
             
             dealReplacementCard(game, card);
 
@@ -251,7 +251,7 @@ namespace Logichroma.Areas.Game.Models.DataRepositories
 
         private void dealReplacementCard(Database.Game game, GameCard cardBeingReplaced)
         {
-            var nextCard = _db.GameCards.FirstOrDefault(x => x.Order == game.NextCard);
+            var nextCard = game.GameCards.FirstOrDefault(x => x.Order == game.NextCard && x.CardState == CardState.Deck.ToString());
 
             // Deal player another card if any are left in the deck.
             if (nextCard != null)
