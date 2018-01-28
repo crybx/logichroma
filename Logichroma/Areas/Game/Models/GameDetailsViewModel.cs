@@ -1,5 +1,7 @@
 ﻿using Logichroma.Areas.Game.Models.GameModels;
+using Logichroma.Areas.Game.Models.GameModels.ChildObjects;
 using Logichroma.GameEngine.Enums;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Logichroma.Areas.Game.Models
@@ -33,5 +35,12 @@ namespace Logichroma.Areas.Game.Models
 
         public bool CanPlayGame => Game.Status == "Started"
                                    && Player != null;
+
+        public List<CardSuitModel> CardSuitsInPlay =>
+            Game?.GameCards?.Where(x => x.CardState == CardState.Played.ToString())
+                .GroupBy(x => x.CardSuit.Name)
+                .Select(x => x.First())
+                .Select(x => x.CardSuit)
+                .ToList();
     }
 }

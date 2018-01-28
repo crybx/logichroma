@@ -87,7 +87,7 @@
                     var cardValue = card.IsValueRevealed ? card.CardValue.FaceValue.ToString() : "?";
 
                     <div style="float: left; text-align: center;">
-                        <div class="card row" style="background-color: @bgColor;">
+                        <div class="card" style="background-color: @bgColor;">
                             <div class="card-container">
                                 <p style="color: @textColor">
                                     @cardValue
@@ -138,19 +138,29 @@
 {
     <div>
         <h3>Play Stacks:</h3>
-        <div class="card-stack">
-            @foreach (var card in Model.Game.GameCards.Where(x => x.CardState == CardState.Played.ToString()))
-            {
-                <div class="card" style="background-color: @card.CardSuit.BackgroundColor;">
-                    <div class="card-container">
-                        <p style="color: @card.CardSuit.TextColor">
-                            @card.CardValue.FaceValue
-                        </p>
+        
+        @foreach (var cardSuit in Model.CardSuitsInPlay)
+        {
+            var cards = Model.Game.GameCards
+                .Where(x => x.CardState == CardState.Played.ToString() && x.CardSuit.Name == cardSuit.Name)
+                .OrderBy(x => x.CardValue.FaceValue);
+
+            <div class="card-stack">
+                @foreach (var card in cards)
+                {
+                    <div style="float: left;">
+                        <div class="card" style="background-color: @card.CardSuit.BackgroundColor;">
+                            <div class="card-container">
+                                <p style="color: @card.CardSuit.TextColor">
+                                    @card.CardValue.FaceValue
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            }
-        </div>
-        <div class="clear"></div>
+                }
+            </div>
+            <div class="clear"></div>
+        }
     </div>
 }
 
