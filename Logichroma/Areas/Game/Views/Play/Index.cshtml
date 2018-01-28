@@ -109,9 +109,19 @@
                 else
                 {
                     <div class="card" style="background-color: @card.CardSuit.BackgroundColor;">
-                        <div class="card-container">
-                            <p style="color: @card.CardSuit.TextColor">
+                        <div class="card-container" style="color: @card.CardSuit.TextColor">
+                            <p>
                                 @card.CardValue.FaceValue
+                            </p>
+                            <p style="font-size: 11px;">
+                                @if (card.IsSuitRevealed)
+                                {
+                                    <span>C</span>
+                                }
+                                @if (card.IsValueRevealed)
+                                {
+                                    <span>#</span>
+                                }
                             </p>
                         </div>
                     </div>
