@@ -101,7 +101,8 @@
                                    href="@Url.Action("Discard", new { order = card.Order, gameId = Model.Game.Id })">Discard</a>
                             </div>
                             <div class="card-button-div">
-                                <a class="btn btn-outline-secondary card-button" href="#">Play</a>
+                                <a class="btn btn-outline-secondary card-button" 
+                                   href="@Url.Action("PlayCard", new { order = card.Order, gameId = Model.Game.Id })">Play</a>
                             </div>
                         }
                     </div>

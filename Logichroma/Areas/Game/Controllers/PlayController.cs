@@ -33,15 +33,19 @@ namespace Logichroma.Areas.Game.Controllers
         public ActionResult GiveColorHint(HintOptionsViewModel model)
         {
             GameRepo.GivePlayerColorHint(model.GameId, model.PlayerId, model.SelectedColorId);
-
             return RedirectToAction(nameof(Index), new { model.GameId });
         }
 
         public ActionResult GiveNumberHint(HintOptionsViewModel model)
         {
             GameRepo.GivePlayerNumberHint(model.GameId, model.PlayerId, model.SelectedNumberId);
-
             return RedirectToAction(nameof(Index), new { model.GameId });
+        }
+
+        public ActionResult PlayCard(int order, int gameId)
+        {
+            GameRepo.PlayCard(order, gameId);
+            return RedirectToAction(nameof(Index), new { gameId });
         }
     }
 }

@@ -133,20 +133,12 @@ namespace Logichroma.Areas.Game.Models.DataRepositories
         {
             var game = _db.Games.First(x => x.Id == gameId);
             var card = game.GameCards.First(x => x.Order == order);
-            var nextCard = _db.GameCards.First(x => x.Order == game.NextCard);
             
-            // Deal player another card if any are left in the deck.
-            if (nextCard != null)
-            {
-                nextCard.GamePlayer = card.GamePlayer;
-                nextCard.CardState = CardState.Hand.ToString();
-                game.NextCard++;
-            }
+            dealReplacementCard(game, card);
 
-            // Mark as discarded.
+            // Mark old card as discarded.
             //card.Order = game.GameCards.Count(x => x.CardState == CardState.Discard.ToString() || x.CardState == CardState.Misfire.ToString());
             card.CardState = CardState.Discard.ToString();
-            card.GamePlayerId = null;
 
             // Replenish a hint token.
             if (game.HintTokens < 8) { game.HintTokens++; }
@@ -213,6 +205,41 @@ namespace Logichroma.Areas.Game.Models.DataRepositories
             _db.SaveChanges();
         }
 
+        public void PlayCard(int order, int gameId)
+        {
+            var game = _db.Games.First(x => x.Id == gameId);
+            var card = game.GameCards.First(x => x.Order == order);
+
+            dealReplacementCard(game, card);
+
+            // WHAT HAPPENED?! IS IT VALID CARD?! DO SPLOSIONS HAPPEN?
+            var cardIsValid = isCardValidToPlay(game, card);
+
+            if (cardIsValid)
+            {
+                // Mark card as played.
+                card.CardState = CardState.Played.ToString();
+
+                if (card.CardValue.FaceValue == 5 && game.HintTokens < 8)
+                {
+                    // A stack was completed. Replenish a hint token.
+                    game.HintTokens++;
+                }
+            }
+            else
+            {
+                // Mark card as misfired.
+                card.CardState = CardState.Misfire.ToString();
+                game.MisfireTokens--;
+
+                //TODO: End game if misfire tokens reach zero. Need end game state/process first.
+            }
+
+            advancePlayerTurn(game);
+
+            _db.SaveChanges();
+        }
+        
         /// <summary>
         /// Advances the game to the next player's turn.
         /// </summary>
@@ -220,6 +247,41 @@ namespace Logichroma.Areas.Game.Models.DataRepositories
         {
             var nextPlayer = game.CurrentPlayerNumber + 1;
             game.CurrentPlayerNumber = nextPlayer < game.GamePlayers.Count ? nextPlayer : 0;
+        }
+
+        private void dealReplacementCard(Database.Game game, GameCard cardBeingReplaced)
+        {
+            var nextCard = _db.GameCards.FirstOrDefault(x => x.Order == game.NextCard);
+
+            // Deal player another card if any are left in the deck.
+            if (nextCard != null)
+            {
+                nextCard.GamePlayer = cardBeingReplaced.GamePlayer;
+                nextCard.CardState = CardState.Hand.ToString();
+                game.NextCard++;
+            }
+
+            cardBeingReplaced.GamePlayerId = null;
+        }
+
+        private bool isCardValidToPlay(Database.Game game, GameCard card)
+        {
+            var isDuplicate = game.GameCards.Any(x =>
+                x.CardState == CardState.Played.ToString()
+                && x.CardSuit == card.CardSuit
+                && x.CardValue == card.CardValue);
+
+            if (isDuplicate) { return false; }
+
+            // If there's no duplicate, and the card is a one, it's good.
+            if (card.CardValue.FaceValue == 1) { return true; }
+
+            var isPreReqPlayed = game.GameCards.Any(x =>
+                x.CardState == CardState.Played.ToString()
+                && x.CardSuit == card.CardSuit
+                && x.CardValue.FaceValue == card.CardValue.FaceValue - 1);
+
+            return isPreReqPlayed;
         }
     }
 }
