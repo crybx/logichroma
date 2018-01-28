@@ -1,0 +1,40 @@
+﻿@model Logichroma.Areas.Game.Models.HintOptionsViewModel
+
+<div id="HintOptionsContainer" class="container" style="padding: 10px;">
+
+    @using (Html.BeginForm("GiveNumberHint", "Play", FormMethod.Post))
+    {
+        @Html.HiddenFor(x => x.GameId)
+        @Html.HiddenFor(x => x.PlayerId)
+
+        <div class="row">
+            <div class="col-2" style="text-align: right;">
+                <label>Numbers:</label>
+            </div>
+            <div class="col-2">
+                @Html.DropDownListFor(x => x.SelectedNumberId, Model.Numbers, new {style = "width:100%;"})
+            </div>
+            <div class="col-3">
+                <input type="submit" value="Give Number Hint" class="btn btn-link" style="padding: 0;"/>
+            </div>
+        </div>
+    }
+
+    @using (Html.BeginForm("GiveColorHint", "Play", FormMethod.Post))
+    {
+        @Html.HiddenFor(x => x.GameId)
+        @Html.HiddenFor(x => x.PlayerId)
+
+        <div class="row">
+            <div class="col-2" style="text-align: right;">
+                <label>Colors:</label>
+            </div>
+            <div class="col-2">
+                @Html.DropDownListFor(x => x.SelectedColorId, Model.Colors, new {style = "width:100%;"})
+            </div>
+            <div class="col-3">
+                <input type="submit" value="Give Color Hint" class="btn btn-link" style="padding: 0;"/>
+            </div>
+        </div>
+    }
+</div>

@@ -15,5 +15,8 @@ namespace Logichroma.Areas.Game.Models.DataRepositoryInterfaces
         void SetPlayerOrder(int gameId);
         void DealStartingCards(int gameId);
         void DiscardCard(int order, int gameId);
+        List<CardModel> GetPlayerCards(int gameId, int playerId);
+        void GivePlayerColorHint(int gameId, int playerId, int colorId);
+        void GivePlayerNumberHint(int gameId, int playerId, int numberId);
     }
 }

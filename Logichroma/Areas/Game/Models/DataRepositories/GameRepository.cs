@@ -144,18 +144,82 @@ namespace Logichroma.Areas.Game.Models.DataRepositories
             }
 
             // Mark as discarded.
-            card.Order = game.GameCards.Count(x => x.CardState == CardState.Discard.ToString() || x.CardState == CardState.Misfire.ToString());
+            //card.Order = game.GameCards.Count(x => x.CardState == CardState.Discard.ToString() || x.CardState == CardState.Misfire.ToString());
             card.CardState = CardState.Discard.ToString();
             card.GamePlayerId = null;
 
             // Replenish a hint token.
             if (game.HintTokens < 8) { game.HintTokens++; }
 
-            // Advance the game to the next player's turn.
+            advancePlayerTurn(game);
+
+            _db.SaveChanges();
+        }
+
+        public List<CardModel> GetPlayerCards(int gameId, int playerId)
+        {
+            var cards = _db.GameCards.Where(x => x.GameId == gameId && x.GamePlayerId == playerId).ToList();
+            var cardModels = Mapper.Map<List<GameCard>, List<CardModel>>(cards);
+            return cardModels;
+        }
+
+        public void GivePlayerColorHint(int gameId, int playerId, int colorId)
+        {
+            var game = _db.Games.First(x => x.Id == gameId);
+
+            if (game.HintTokens <= 0) return;
+
+            // Remove a hint token.
+            game.HintTokens--;
+
+            // Reveal all player's cards of the chosen color.
+            var cards = game.GameCards.Where(x => x.GamePlayerId == playerId);
+
+            foreach (var card in cards)
+            {
+                if (card.CardSuitId == colorId)
+                {
+                    card.IsSuitRevealed = true;
+                }
+            }
+
+            advancePlayerTurn(game);
+
+            _db.SaveChanges();
+        }
+
+        public void GivePlayerNumberHint(int gameId, int playerId, int numberId)
+        {
+            var game = _db.Games.First(x => x.Id == gameId);
+
+            if (game.HintTokens <= 0) return;
+
+            // Remove a hint token.
+            game.HintTokens--;
+
+            // Reveal all player's cards of the chosen number value.
+            var cards = game.GameCards.Where(x => x.GamePlayerId == playerId);
+
+            foreach (var card in cards)
+            {
+                if (card.CardValueId == numberId)
+                {
+                    card.IsValueRevealed = true;
+                }
+            }
+            
+            advancePlayerTurn(game);
+
+            _db.SaveChanges();
+        }
+
+        /// <summary>
+        /// Advances the game to the next player's turn.
+        /// </summary>
+        private void advancePlayerTurn(Database.Game game)
+        {
             var nextPlayer = game.CurrentPlayerNumber + 1;
             game.CurrentPlayerNumber = nextPlayer < game.GamePlayers.Count ? nextPlayer : 0;
-            
-            _db.SaveChanges();
         }
     }
 }

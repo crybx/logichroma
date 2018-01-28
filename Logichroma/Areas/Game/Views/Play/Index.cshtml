@@ -4,6 +4,21 @@
     ViewBag.Title = "Logichroma";
 }
 
+@section Scripts {
+<script type="text/javascript">
+
+    function showHintOptions(element) {
+
+        if (element.style.display === "none") {
+            element.style.display = "block";
+        } else {
+            element.style.display = "none";
+        }
+    }
+
+</script>  
+}
+
 <h2>@Model.Game.Name</h2>
 <p>Waiting on @Model.CurrentPlayer.DisplayName</p>
 
@@ -36,7 +51,6 @@
             <dd>
                 @Html.DisplayFor(model => model.Game.MisfireTokens)
             </dd>
-
         </dl>
     </div>
 </div>
@@ -44,6 +58,7 @@
 <!-- PLAYER HANDS -->
 <div>
     <h3>Players:</h3>
+    
     @foreach (var player in Model.Game.PlayersInOrder)
     {
         var playerCards = Model.Game.GameCards.Where(x => x.GamePlayerId == player.GamePlayerId).OrderBy(x => x.Order);
@@ -52,12 +67,17 @@
             Player @(player.PlayerNumber + 1) - @player.DisplayName
             @if (Model.IsCurrentPlayer && player != Model.Player && Model.Game.HintTokens > 0)
             {
+                var hintOptionsDivId = "HintOptionsForPlayer" + player.GamePlayerId;
+
                 <span> - </span>
-                <a class="btn btn-outline-primary" href="#">Give Hint</a>
+                <button class="btn btn-outline-primary" onclick="showHintOptions(@hintOptionsDivId)">Hint Options</button>
+                <div id="@hintOptionsDivId" style="display: none;">
+                    @Html.Action("GetHintOptions", new { gameId = Model.Game.Id, playerId = player.GamePlayerId })
+                </div>
             }
         </div>
         
-        <div class="card-stack row">
+        <div class="card-stack">
             @foreach (var card in playerCards)
             {
                 if (player == Model.Player)
@@ -143,5 +163,3 @@
         <div class="clear"></div>
     </div>
 }
-
-<div id="HintPopup" style="display: none;"></div>
