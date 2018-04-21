@@ -7,12 +7,16 @@
 @section Scripts {
     <script type="text/javascript">
 
-        var currentPlayer = @Model.CurrentPlayer.PlayerNumber;
-
         $(document).ready(function () {
 
-            // Start basic polling every 5 seconds.
-            setTimeout(checkPlayerTurn, 5000);
+            var isCurrentPlayer = @Json.Encode(Model.IsCurrentPlayer);
+
+            // We only need to poll if it is someone else's turn.
+            if (!isCurrentPlayer) {
+
+                // Start basic polling every 5 seconds.
+                setTimeout(checkPlayerTurn, 5000);
+            }
         });
 
         function checkPlayerTurn() {
@@ -24,6 +28,10 @@
                 cache: false,
                 success: function (result) {
 
+                    // What player's turn it is when the page loads.
+                    var currentPlayer = @Model.CurrentPlayer.PlayerNumber;
+
+                    // If it is now a different player's turn, reload.
                     if (result !== currentPlayer) {
 
                         location.reload();
