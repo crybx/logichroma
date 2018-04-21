@@ -47,5 +47,11 @@ namespace Logichroma.Areas.Game.Controllers
             GameRepo.PlayCard(order, gameId);
             return RedirectToAction(nameof(Index), new { gameId });
         }
+
+        public JsonResult GetCurrentPlayer(int gameId)
+        {
+            var player = GameRepo.GetCurrentPlayerNumber(gameId);
+            return Json(player, JsonRequestBehavior.AllowGet);
+        }
     }
 }
