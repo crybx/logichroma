@@ -1,32 +1,152 @@
 ﻿@{
     ViewBag.Title = "Rules";
 }
-<h2>@ViewBag.Title</h2>
 
-<h3>The Deck</h3>
-<p>There are 50 cards in total in a Logichroma deck.</p>
-<p>Each card has a numeric value of 1, 2, 3, 4, or 5.</p>
-<p>Each card has one of the following five colors: red, yellow, green, blue, or white.</p>
-<p>There are 10 cards of each color suit. The numeric values in each color suit are as follows:</p>
+<h1>@ViewBag.Title</h1>
+<hr />
+<p>Logichroma is a game for 2-5 players.</p>
+
+
+<h2>The Deck</h2>
+<p>There are 50 cards in a Logichroma deck.</p>
+<p>Each card has a number value of 1, 2, 3, 4, or 5, and is one of five color suits: red, yellow, green, blue, or white.</p>
+<p>A color suit contains a total of 10 cards with the distribution of  number values as follows:</p>
 <ul>
-    <li>Three cards with numeric value 1.</li>
-    <li>Two cards with numeric value 2.</li>
-    <li>Two cards with numeric value 3.</li>
-    <li>Two cards with numeric value 4.</li>
-    <li>One card with numeric value 5.</li>
+    <li>Three cards of value 1.</li>
+    <li>Two cards of value 2.</li>
+    <li>Two cards of value 3.</li>
+    <li>Two cards of value 4.</li>
+    <li><strong>One card of value 5.</strong></li>
 </ul>
 <p>The deck is shuffled before a game begins.</p>
 
-<h3>Players' Hands</h3>
+
+<h2>Player Hands</h2>
 <p>If there are 2 or 3 players in the game, each player is dealt 5 cards.</p>
 <p>If there are 4 or 5 players in the game, each player is dealt 4 cards.</p>
+<p>
+    One of the most unique aspects of Logichroma is that players can see everyone's hand EXCEPT their own. 
+    Imagine a physical game where players sit in a circle and hold their cards backwards.
+    Each player would see the back of their own cards and the front of everyone else's.
+</p>
 
-<p>One of the most unique aspects of Logichroma is that players can see everyone else's hand, EXCEPT their own. Imagine a physical game where players sit in a circle and hold their cards backwards.</p>
 
-<h3>The Game</h3>
+<h2>Gameplay</h2>
+
+<h3>Player Order</h3>
 <p>Player order is chosen at random and remains fixed for the duration of the game.</p>
-<p>Each player gets a single action on their turn. Turns are not allowed to be skipped.</p>
 
+<h3>Turns</h3>
+<p>Each player gets a single action on their turn, and turns are not allowed to be skipped.</p>
+<p>
+    Available actions include:
+    <ul>
+        <li>Give a hint to another player.</li>
+        <li>Discard a card from your hand.</li>
+        <li>Play a card from your hand.</li>
+    </ul>
+</p>
 
+<h3>Actions Explained</h3>
+<h4>Action: Giving a Hint</h4>
+<p>
+    Giving a hint requires that you have more than zero "Hints Remaining."
+    The number of Hints Remaining are displayed next to the deck when playing a game.
+    Additional hints can be gained by discarding or playing cards, 
+    as explained in the sections about the Discard and Play actions.
+    If you have no hints remaining, you'll have to take a different action.
+</p>
+<p>
+    Hints are how you tell other players information about the cards in their hands.
+    When giving a hint, you can tell one player about all of one color or all of one number value in their hand.
+</p>
+<p>
+    For example, say a player has two cards with a number value of 3. 
+    Choosing to give that player a hint about 3 will reveal the values of both 3 value cards to the player. 
+    One hint will be deducted from your Hints Remaining.
+</p>
+<p>
+    If a player has three cards that are green, 
+    choosing to give that player a hint about green will reveal the color of all three green cards to them, 
+    and one hint will be deducted from your Hints Remaining.
+</p>
+<p>
+    You can tell what information a player already knows about their own hand based on the symbols on their cards.
+    <ul>
+        <li># - Means the player holding the card can see its number value.</li>
+        <li>C - Means the player holding the card can see its color.</li>
+    </ul>
+</p>
 
+<h4>Action: Discarding a Card</h4>
+<p>
+    Discarding a card from your hand adds one hint to your Hints Remaining, 
+    unless you already have the maximum number of hints available (8).
+</p>
+<p>
+    Discarded cards go face up into the discard pile and cannot be recovered.
+    Note that this means if you discard a card required to complete a color stack,
+    you can no longer achieve a perfect game.
+</p>
+<p>A new card will automatically be dealt to replace the discarded card in your hand.</p>
 
+<h4>Action: Playing a Card</h4>
+<p>
+    Playing a card attempts to add the card to the play stacks. 
+    Only valid cards will be played successfully. 
+    Invalid cards will "misfire" and end up in the discard pile.
+</p>
+
+<h5>Misfires</h5>
+<p>
+    Up to three misfires can occur during a game with no bad effects.
+    <strong>A fourth misfire will end the game.</strong>
+    Misfires Remaining are displayed next to the deck when playing a game.
+</p>
+
+<h5>Valid Playable Cards</h5>
+<p>
+    There is only one play stack for each color suit. 
+    Cards must be placed in sequential, ascending order to their matching color play stack.
+</p>
+<p>
+    The following cards are valid plays:
+    <ul>
+        <li>A card with a value of 1, as long as no other 1 with the same color has yet been played.</li>
+        <li>The next highest value of a color's play stack.</li>
+    </ul>
+</p>
+<p>
+    Anything else is an invalid play and results in a misfire.
+</p>
+
+<h5>Completing a Stack</h5>
+<p>
+    Successfully playing a card of value 5 will add one hint to your Hints Remaining,
+    unless you already have the maximum number of hints available (8).
+</p>
+
+<h3>Ending the Game</h3>
+<p>
+    The game ends when any of the following occur:
+    <ul>
+        <li>Misfires go to zero.</li>
+        <li>All play stacks are filled.</li>
+        <li>The deck is empty and all players are down to 3 cards in their hand.</li>
+        <li>Players concede.</li>
+    </ul>
+</p>
+<p>
+    Once the game ends, a score will be calculated.
+</p>
+
+<h3>Scoring</h3>
+<p>
+    Points are awarded for the largest value card in each of your color play stacks.
+    The points for all the play stacks are added together to create the final score.
+    A score of 25 is a perfect game (and not so easy to achieve).
+    Any score over 20 is a well played game.
+</p>
+<p>
+    The objective of the game is to work together to get the highest score you can.
+</p>
