@@ -5,18 +5,45 @@
 }
 
 @section Scripts {
-<script type="text/javascript">
+    <script type="text/javascript">
 
-    function showHintOptions(element) {
+        var currentPlayer = @Model.CurrentPlayer.PlayerNumber;
 
-        if (element.style.display === "none") {
-            element.style.display = "block";
-        } else {
-            element.style.display = "none";
+        $(document).ready(function () {
+
+            // Start basic polling every 5 seconds.
+            setTimeout(checkPlayerTurn, 5000);
+        });
+
+        function checkPlayerTurn() {
+
+            $.ajax({
+                url: '@Url.Action("GetCurrentPlayer")',
+                type: 'GET',
+                data: { gameId: @Model.Game.Id },
+                cache: false,
+                success: function (result) {
+
+                    if (result !== currentPlayer) {
+
+                        location.reload();
+                    }
+                }
+            });
+
+            setTimeout(checkPlayerTurn, 5000);
         }
-    }
 
-</script>  
+        function showHintOptions(element) {
+
+            if (element.style.display === "none") {
+                element.style.display = "block";
+            } else {
+                element.style.display = "none";
+            }
+        }
+        
+    </script>  
 }
 
 <h2>@Model.Game.Name</h2>

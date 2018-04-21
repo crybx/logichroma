@@ -239,6 +239,12 @@ namespace Logichroma.Areas.Game.Models.DataRepositories
 
             _db.SaveChanges();
         }
+
+        public int GetCurrentPlayerNumber(int gameId)
+        {
+            var player = _db.Games.First(x => x.Id == gameId).CurrentPlayerNumber;
+            return player;
+        }
         
         /// <summary>
         /// Advances the game to the next player's turn.
