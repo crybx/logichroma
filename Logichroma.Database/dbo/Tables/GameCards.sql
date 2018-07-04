@@ -8,6 +8,7 @@
     [GamePlayerId] INT NULL,
     [IsSuitRevealed] BIT NOT NULL DEFAULT 0, 
     [IsValueRevealed] BIT NOT NULL DEFAULT 0, 
+    [DiscardOrder] INT NULL, 
     PRIMARY KEY ([GameId], [Order]),
 	CONSTRAINT [FK_GameCards_GameId] FOREIGN KEY (GameId) REFERENCES [Games]([Id]),
 	CONSTRAINT [FK_GameCards_CardValueId] FOREIGN KEY (CardValueId) REFERENCES [CardValues]([Id]),

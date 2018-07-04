@@ -44,7 +44,7 @@ namespace Logichroma.Areas.Game.Models.GameModels
 
         public List<CardModel> Discards =>
             GameCards.Where(x => x.CardState == CardState.Discard.ToString() || x.CardState == CardState.Misfire.ToString())
-                     .OrderBy(x => x.Order).ToList();
+                     .OrderBy(x => x.DiscardOrder).ToList();
 
         public string Status => GameStatuses?.OrderByDescending(x => x.StatusChangeDateTime).FirstOrDefault()?.Status;
 
