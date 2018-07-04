@@ -19,5 +19,7 @@ namespace Logichroma.Areas.Game.Models.GameModels
         public bool IsSuitRevealed { get; set; }
 
         public bool IsValueRevealed { get; set; }
+
+        public int DiscardOrder { get; set; }
     }
 }

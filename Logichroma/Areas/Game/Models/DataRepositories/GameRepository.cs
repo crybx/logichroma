@@ -25,9 +25,11 @@ namespace Logichroma.Areas.Game.Models.DataRepositories
 
         public List<GameModel> GetActiveGames()
         {
+            var aborted = GameEngine.Enums.GameStatus.Aborted.ToString();
+            var complete = GameEngine.Enums.GameStatus.Complete.ToString();
+
             var games = _db.Games
-                .Where(x => !x.GameStatuses.Any(s => s.Status == GameEngine.Enums.GameStatus.Aborted.ToString() ||
-                                                     s.Status == GameEngine.Enums.GameStatus.Complete.ToString()))
+                .Where(x => !x.GameStatuses.Any(s => s.Status == aborted || s.Status == complete))
                 .ToList();
 
             var gameModels = Mapper.Map<List<Database.Game>, List<GameModel>>(games);
@@ -137,7 +139,7 @@ namespace Logichroma.Areas.Game.Models.DataRepositories
             dealReplacementCard(game, card);
 
             // Mark old card as discarded.
-            //card.Order = game.GameCards.Count(x => x.CardState == CardState.Discard.ToString() || x.CardState == CardState.Misfire.ToString());
+            card.DiscardOrder = game.GameCards.Count(x => x.CardState == CardState.Discard.ToString() || x.CardState == CardState.Misfire.ToString());
             card.CardState = CardState.Discard.ToString();
 
             // Replenish a hint token.

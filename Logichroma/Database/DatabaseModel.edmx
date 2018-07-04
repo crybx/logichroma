@@ -86,6 +86,7 @@
           <Property Name="GamePlayerId" Type="int" />
           <Property Name="IsSuitRevealed" Type="bit" Nullable="false" />
           <Property Name="IsValueRevealed" Type="bit" Nullable="false" />
+          <Property Name="DiscardOrder" Type="int" />
         </EntityType>
         <EntityType Name="GamePlayers">
           <Key>
@@ -517,6 +518,7 @@
           <NavigationProperty Name="Game" Relationship="LogichromaDbModel.FK_GameCards_GameId" FromRole="GameCard" ToRole="Game" />
           <Property Name="IsSuitRevealed" Type="Boolean" Nullable="false" />
           <Property Name="IsValueRevealed" Type="Boolean" Nullable="false" />
+          <Property Name="DiscardOrder" Type="Int32" />
         </EntityType>
         <Association Name="FK_GameCards_CardSuitId">
           <End Type="LogichromaDbModel.CardSuit" Role="CardSuit" Multiplicity="1" />
@@ -709,6 +711,7 @@
           <EntitySetMapping Name="GameCards">
             <EntityTypeMapping TypeName="LogichromaDbModel.GameCard">
               <MappingFragment StoreEntitySet="GameCards">
+                <ScalarProperty Name="DiscardOrder" ColumnName="DiscardOrder" />
                 <ScalarProperty Name="IsValueRevealed" ColumnName="IsValueRevealed" />
                 <ScalarProperty Name="IsSuitRevealed" ColumnName="IsSuitRevealed" />
                 <ScalarProperty Name="GamePlayerId" ColumnName="GamePlayerId" />

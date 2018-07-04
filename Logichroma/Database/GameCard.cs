@@ -34,6 +34,8 @@ public partial class GameCard
 
     public bool IsValueRevealed { get; set; }
 
+    public Nullable<int> DiscardOrder { get; set; }
+
 
 
     public virtual CardSuit CardSuit { get; set; }
