@@ -1,5 +1,7 @@
 # How to play multiplayer using IIS Express
 
+Original instructions from [Accessing an IIS Express site from a remote computer](https://johan.driessen.se/posts/Accessing-an-IIS-Express-site-from-a-remote-computer/). Copied here in case of future broken links.
+
 ## 1 – Bind your application to your public IP address
 
 Normally when you run an application in IIS Express, it’s only accessible on http://localhost:[someport]. In order to access it from another machine, it needs to be bound to your public IP address as well.
