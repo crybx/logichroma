@@ -5,6 +5,7 @@
 bin
 obj
 packages
+.idea
 
 Pyrotechnics/Web.AzureSandbox.config
 Pyrotechnics/Properties/PublishProfiles/AzureSandbox.pubxml
